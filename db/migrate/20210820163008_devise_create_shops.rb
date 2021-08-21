@@ -35,7 +35,7 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
       t.string :shop_name, null: false
       t.string :manager, null: false
       t.text :introduction, null: false
-      t.string :shop_image_id, null: false
+      t.string :shop_image_id
       t.integer :shop_genre, null: false
       t.integer :postage, null: false
       t.string :address, null: false
