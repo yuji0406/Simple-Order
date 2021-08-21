@@ -12,7 +12,34 @@
   <body>
     <header>
       <div class="navbar">
-        
+        <div class="site-logo">
+          <%= image_tag 'logo.png' %>
+        </div>
+        <div class="right-navbar">
+          <% if customer_signed_in? %>
+          <ul>
+            <li>ログイン中：<%= current_customer.name %>様</li>
+            <li><%= link_to "マイページ", mypages_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
+            <li><%= link_to "業者一覧", shoops_path %></li>
+            <li><%= link_to "メッセージ一覧", rooms_path %></li>
+            <li><%= link_to "お気に入り一覧", favorites_path %></li>
+            <li><%= link_to "注文一覧", orders_path %></li>
+            <li><%= link_to "カート", cart_items_path %></li>
+            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          </ul>
+          <% elsif shops_signed_in? %>
+          <ul>
+            <li>ログイン中：<%= current_shop.name %>様</li>
+            <li><%= link_to "マイページ", shops_mypages_path %></li>
+            <li><%= link_to "商品一覧", shops_items_path %></li>
+            <li><%= link_to "メッセージ一覧", rooms_path %></li>
+            <li><%= link_to "顧客一覧", shops_customers_path %></li>
+            <li><%= link_to "注文一覧", shops_orders_path %></li>
+            <li><%= link_to "ログアウト", destroy_shop_session_path, method: :delete %></li>
+          </ul>
+          <% end %>
+        </div>
       </div>
     </header>
     <%= yield %>
