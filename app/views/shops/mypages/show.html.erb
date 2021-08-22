@@ -1,2 +1,64 @@
-<h1>Shops::Mypages#show</h1>
-<p>Find me in app/views/shops/mypages/show.html.erb</p>
+<div class="container">
+  <h3 class="page-title">マイページ</h3>
+  <div class="d-flex row mypage-content content">
+    <div class="col-12">
+      <%= attachment_image_tag current_shop, :shop_image, fallback:"no_image.jpeg" %>
+    </div>
+    <div class="col-6">
+      <label>会社名</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.shop_name %>
+    </div>
+    <div class="col-6">
+      <label>担当者氏名</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.manager %>
+    </div>
+    <div class="col-6">
+      <label>ジャンル</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.shop_genre %>
+    </div>
+    <div class="col-6">
+      <label>郵便番号</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.postal_code %>
+    </div>
+    <div class="col-6">
+      <label>住所</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.address%>
+    </div>
+    <div class="col-6">
+      <label>電話番号</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.phone_number%>
+    </div>
+    <div class="col-6">
+      <label>メールアドレス</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.email%>
+    </div>
+    <div class="col-6">
+      <label>会社紹介文</label>
+    </div>
+    <div class="col-6">
+      <%= current_shop.introduction%>
+    </div>
+    <div class="button-group row">
+      <div class="col-4">
+        <%= link_to "内容を編集する", edit_shops_mypages_path, class: "btn btn-success" %>
+      </div>
+      <div class="col-4">
+        <%= link_to "商品を登録する", new_shops_item_path, class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+</div>

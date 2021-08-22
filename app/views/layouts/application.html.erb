@@ -4,16 +4,16 @@
     <title>SimpleOrder</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
+    <header class="shadow-sm">
       <div class="navbar">
         <div class="site-logo">
-          <%= image_tag 'logo.png' %>
+          <%= image_tag 'logo.png',class: 'site-logo', size:"100x75" %>
         </div>
         <div class="right-navbar">
           <% if customer_signed_in? %>
@@ -28,9 +28,9 @@
             <li><%= link_to "カート", cart_items_path %></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
           </ul>
-          <% elsif shops_signed_in? %>
+          <% elsif shop_signed_in? %>
           <ul>
-            <li>ログイン中：<%= current_shop.name %>様</li>
+            <li>ログイン中：<%= current_shop.shop_name %>様</li>
             <li><%= link_to "マイページ", shops_mypages_path %></li>
             <li><%= link_to "商品一覧", shops_items_path %></li>
             <li><%= link_to "メッセージ一覧", rooms_path %></li>

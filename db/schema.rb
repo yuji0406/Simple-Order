@@ -120,10 +120,9 @@ ActiveRecord::Schema.define(version: 2021_08_20_163008) do
     t.datetime "remember_created_at"
     t.string "shop_name", null: false
     t.string "manager", null: false
-    t.text "introduction", null: false
+    t.text "introduction"
     t.string "shop_image_id"
     t.integer "shop_genre", null: false
-    t.integer "postage", null: false
     t.string "address", null: false
     t.string "postal_code", null: false
     t.string "phone_number", null: false

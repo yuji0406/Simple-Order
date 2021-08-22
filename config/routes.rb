@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  
+  scope module: :shops do
+  devise_for :shops, controllers:{
+    registrations: 'shops/registrations',
+    sessions: 'shops/sessions'
+  }
+  end
+
+  scope module: :customers do
+  devise_for :customers, controllers:{
+    registrations: 'customers/registrations',
+    sessions: 'customers/sessions'
+  }
+  end
 
   namespace :shops do
     resources :orders, only:[:show,:index,:update]
@@ -24,18 +38,6 @@ Rails.application.routes.draw do
     resources :items, only:[:show,:index]
 
   end
-  scope module: :shops do
-  devise_for :shops, controllers:{
-    registrations: 'shops/registrations',
-    sessions: 'shops/sessions'
-  }
-  end
 
-  scope module: :customers do
-  devise_for :customers, controllers:{
-    registrations: 'customers/registrations',
-    sessions: 'customers/sessions'
-  }
-  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
