@@ -1,2 +1,62 @@
-<h1>Shops::Items#new</h1>
-<p>Find me in app/views/shops/items/new.html.erb</p>
+<div class="container mt-3">
+  <h3 class="d-inline-block bg-light">商品新規登録</h3>
+  <%= form_with model: @item,url: shops_items_path,local: true do |f| %>
+   <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "商品イメージ画像", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.attachment_field :item_image, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "商品名", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :item_name,placeholder:"青森県産　王林", class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "ジャンル", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.select :item_genre, Item.item_genres.keys.to_a %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "価格（税抜き）", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.number_field :item_price, class:"form-control"%>
+    </div>
+  </div>
+   <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "商品説明", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_area :item_introduction, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "販売ステータス", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.radio_button :sale_status, :true, checked: true, class:"form-control"%>
+      <%= f.label "在庫あり", class: "d-inline-block" %>
+      <%= f.radio_button :sale_status, :false, class:"form-control"%>
+      <%= f.label "品切れ", class: "d-inline-block" %>
+    </div>
+  </div>
+
+  <div class="actions row my-4">
+    <div class="col-4"></div>
+    <div class="col-3">
+      <%= f.submit "商品を登録する",class:"btn-block btn btn-success" %>
+    </div>
+  </div>
+  <% end %>

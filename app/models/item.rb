@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
-  
-  attachment :item_image_id
-  
+
+  attachment :item_image
+
   enum item_genre:[
     "食肉",
     "食肉加工品",
