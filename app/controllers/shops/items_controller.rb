@@ -11,7 +11,7 @@ class Shops::ItemsController < ApplicationController
     if item.save
     redirect_to item
     else
-    render new
+    render :new
     end
   end
 
@@ -30,7 +30,7 @@ class Shops::ItemsController < ApplicationController
     params.require(:item).permit(
       :item_name,
       :item_genre,
-      :item_image_id,
+      :item_image,
       :item_introduction,
       :item_price,
       :sale_status
