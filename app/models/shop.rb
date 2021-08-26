@@ -5,6 +5,11 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :shop_image
+  
+  has_many :items, dependent: :destroy
+  has_many :rooms, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   enum shop_genre: [
     "食肉",

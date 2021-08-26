@@ -1,4 +1,9 @@
 class Item < ApplicationRecord
+  
+  belongs_to :shop
+  
+  has_many :cart_items
+  has_many :order_items
 
   attachment :item_image
 
