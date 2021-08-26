@@ -1,4 +1,6 @@
 class Shops::ItemsController < ApplicationController
+  before_action :set_item,only:[:show,:edit,:update]
+
   def index
   end
 
@@ -9,9 +11,9 @@ class Shops::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     if item.save
-    redirect_to item
+      redirect_to shops_item_path(item)
     else
-    render :new
+      render :new
     end
   end
 
@@ -22,10 +24,19 @@ class Shops::ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to shops_item_path(@item)
+    else
+      render :edit
+    end
   end
-  
+
   private
-  
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
     params.require(:item).permit(
       :item_name,

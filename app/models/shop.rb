@@ -12,5 +12,6 @@ class Shop < ApplicationRecord
     "野菜・青果",
     "その他"
   ]
+  
 
 end
