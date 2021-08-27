@@ -2,6 +2,7 @@ class Shops::ItemsController < ApplicationController
   before_action :set_item,only:[:show,:edit,:update]
 
   def index
+    @items = Item
   end
 
   def new
