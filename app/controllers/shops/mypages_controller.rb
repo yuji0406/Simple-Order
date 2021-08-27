@@ -13,12 +13,11 @@ class Shops::MypagesController < ApplicationController
   private
 
   def shop_params
-
     params.require(:shop).permit(
       :shop_name,
       :manager,
       :introduction,
-      :shop_image_id,
+      :shop_image,
       :shop_genre,
       :adddress,
       :postal_code,

@@ -10,8 +10,9 @@ class Shops::ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
+    item.shop_id = current_shop.id
     if item.save
-      redirect_to shops_item_path(item)
+      redirect_to shops_item_path(item.id)
     else
       render :new
     end
@@ -25,7 +26,7 @@ class Shops::ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to shops_item_path(@item)
+      redirect_to shops_item_path(@item.id)
     else
       render :edit
     end
