@@ -1,2 +1,38 @@
-<h1>Shops::Items#index</h1>
-<p>Find me in app/views/shops/items/index.html.erb</p>
+<div class="container">
+  <h3 class="page-title">
+    <%= "#{current_shop.shop_name}の商品一覧" %>
+  </h3>
+  <div class="d-flex order-wrapper">
+    <div class="saerch-box w-25">
+      <p>検索</p>
+      <p>ジャンル</p>
+      <% Item.distinct.pluck(:item_genre).each do |item_genre| %>
+      <%= link_to item_genre, shops_items_path(genre: item_genre) %><br>
+      <% end %>
+    </div>
+    <div class="w-75 order-index">
+      <table class="table">
+        <tr>
+          <td>商品名</td>
+          <td>ジャンル</td>
+          <td>価格</td>
+          <td>販売ステータス</td>
+          <td></td>
+        </tr>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.item_name %></td>
+          <td><%= item.item_genre %></td>
+          <td><%= item.item_price %></td>
+          <% if item.sale_status %>
+          <td class="text-success">在庫あり</td>
+          <% else %>
+          <td class="text-danger">品切れ</td>
+          <% end %>
+          <td><%= link_to "詳細を表示する", shops_item_path(item.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,11 @@ class Shops::ItemsController < ApplicationController
   before_action :set_item,only:[:show,:edit,:update]
 
   def index
-    @items = Item
+    if params[:genre]
+      @items = Item.where(item_genre: params[:genre], shop_id: current_shop.id)
+    else
+      @items = Item.where(shop_id: current_shop.id)
+    end
   end
 
   def new
