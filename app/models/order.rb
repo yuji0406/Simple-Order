@@ -11,8 +11,9 @@ class Order < ApplicationRecord
     "納品済み"
     ]
 
-    enum payment:[
-      "クレジットカード",
-      "銀行振込"
-      ]
+  enum payment:[
+    "クレジットカード",
+    "銀行振込"
+    ]
+  
 end
