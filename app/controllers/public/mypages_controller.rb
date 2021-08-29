@@ -1,4 +1,4 @@
-class Public::MypageController < ApplicationController
+class Public::MypagesController < ApplicationController
   def show
   end
 

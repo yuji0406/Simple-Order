@@ -9,5 +9,7 @@ class Shops::CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:id])
+    @reviews = Review.where(customer_id: params[:id])
   end
 end

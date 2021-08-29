@@ -18,10 +18,10 @@
         <div class="right-navbar">
           <% if customer_signed_in? %>
           <ul>
-            <li>ログイン中：<%= current_customer.name %>様</li>
+            <li>ログイン中：<%= current_customer.store_name %>様</li>
             <li><%= link_to "マイページ", mypages_path %></li>
             <li><%= link_to "商品一覧", items_path %></li>
-            <li><%= link_to "業者一覧", shoops_path %></li>
+            <li><%= link_to "業者一覧", shops_path %></li>
             <li><%= link_to "メッセージ一覧", rooms_path %></li>
             <li><%= link_to "お気に入り一覧", favorites_path %></li>
             <li><%= link_to "注文一覧", orders_path %></li>
