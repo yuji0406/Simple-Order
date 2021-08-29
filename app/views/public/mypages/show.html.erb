@@ -1,2 +1,44 @@
-<h1>Public::Mypage#show</h1>
-<p>Find me in app/views/public/mypage/show.html.erb</p>
+<div class="container">
+  <h3 class="page-title">マイページ</h3>
+  <div class="row mypage-content content">
+    <div class="col-6">
+      <label>店舗名</label>
+    </div>
+    <div class="col-6">
+      <%= current_customer.store_name %>
+    </div>
+    <div class="col-6">
+      <label>責任者氏名</label>
+    </div>
+    <div class="col-6">
+      <%= current_customer.store_manager %>
+    </div>
+    <div class="col-6">
+      <label>郵便番号</label>
+    </div>
+    <div class="col-6">
+      <%= current_customer.postal_code %>
+    </div>
+    <div class="col-6">
+      <label>住所</label>
+    </div>
+    <div class="col-6">
+      <%= current_customer.address%>
+    </div>
+    <div class="col-6">
+      <label>電話番号</label>
+    </div>
+    <div class="col-6">
+      <%= current_customer.phone_number%>
+    </div>
+    <div class="col-6">
+      <label>メールアドレス</label>
+    </div>
+    <div class="col-6">
+      <%= current_customer.email%>
+    </div>
+    <div class="text-align-center col-6">
+        <%= link_to "内容を編集する", edit_mypages_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

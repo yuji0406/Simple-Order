@@ -1,2 +1,56 @@
-<h1>Public::Mypage#edit</h1>
-<p>Find me in app/views/public/mypage/edit.html.erb</p>
+<div class="container mt-3">
+  <h3 class="d-inline-block bg-light">会員情報編集</h3>
+  <%= form_with model: current_customer, url: mypages_path, local: true do |f| %>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "店舗名", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :store_name, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "責任者氏名", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :store_manager, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "郵便番号（ハイフンなし）", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :postal_code, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "住所", class:"label-form"%>
+    </div>
+    <div class="col-8">
+      <%= f.text_field :address, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "電話番号（ハイフンなし）", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :phone_number, class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "メールアドレス", class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.email_field :email, class:"form-control"%>
+    </div>
+  </div>
+  <div class="actions row my-4">
+    <%= f.submit "変更する",class:"btn-block btn btn-success" %>
+  </div>
+  <% end %>
+</div>
