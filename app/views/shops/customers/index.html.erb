@@ -1,2 +1,30 @@
-<h1>Shops::Customers#index</h1>
-<p>Find me in app/views/shops/customers/index.html.erb</p>
+<div class="container">
+  <h3 class="page-title">
+    顧客一覧
+  </h3>
+  <div class="d-flex order-wrapper">
+    <div class="saerch-box w-25">
+      <p>検索</p>
+    </div>
+    <div class="w-75 order-index">
+      <table class="table">
+        <tr>
+          <td>店舗名</td>
+          <td>責任者氏名</td>
+          <td>住所</td>
+          <td>電話番号</td>
+          <td></td>
+        </tr>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.store_name %></td>
+          <td><%= customer.store_manager %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.phone_number %></td>
+          <td><%= link_to "詳細を表示する", shops_customer_path(customer.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
