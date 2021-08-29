@@ -1,29 +1,81 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container mt-3">
+  <h3 class="d-inline-block bg-light">新規会員登録</h3>
+  <%= form_with model:@shop,url: shop_registration_path,local: true do |f| %>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "店舗名",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :store_name,placeholder:"例：焼肉苑",class:"form-control"%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "責任者氏名",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :store_manager,placeholder:"責任者名",class:"form-control"%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "郵便番号(ハイフンなし）",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :postal_code %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "住所",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :address,placeholder:"東京都",class:"form-control"%>
+    </div>
   </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "電話番号（ハイフンなし）",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :phone_number,placeholder:"00000000000",class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "メールアドレス",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.email_field :email,placeholder:"example@email.com",class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "パスワード（６文字以上）",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.password_field :password,class:"form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "パスワード（確認用）",class:"label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.password_field :password_confirmation,class:"form-control"%>
+    </div>
+  </div>
+  <div class="actions row my-4">
+      <%= f.submit "登録する",class:"btn-block btn btn-success" %>
+  </div>
+  <% end %>
+  <div class="col-5">
+    <h4 class="d-inline-block bg-light">既に登録済みの方</h4>
+    <div class="d-flex justify-content-center mt-4">
+      <p><%= link_to"こちら",new_customer_session_path %>からログインしてください。</p>
+    </div>
+  </div>
+  <div class="shop-link">
+    <%= link_to "業者の方はこちらから", new_shop_registration_path %>
+  </div>
+</div>

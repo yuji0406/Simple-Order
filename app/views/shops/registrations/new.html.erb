@@ -81,8 +81,12 @@
   </div>
   <% end %>
   <div class="col-5">
-   <h3 class="d-inline-block bg-light">既に登録済みの方</h3>
-     <div class="d-flex justify-content-center mt-4">
-     <p><%= link_to"こちら",new_shop_session_path %>からログインしてください。</p>
-     </div>
+    <h3 class="d-inline-block bg-light">既に登録済みの方</h3>
+    <div class="d-flex justify-content-center mt-4">
+      <p><%= link_to"こちら",new_shop_session_path %>からログインしてください。</p>
+    </div>
   </div>
+  <div class="shop-link">
+    <%= link_to "店舗ユーザーの方はこちらから", new_customer_registration_path %>
+  </div>
+</div>
