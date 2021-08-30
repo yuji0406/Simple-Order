@@ -1,2 +1,22 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="d-flex w-100">
+    <div class="item-image w-50">
+      <%= attachment_image_tag @item, :item_image, class: "w-100", fallback: "no_image.jpeg"%>
+    </div>
+    <div class="item-info w-25 text-center">
+      <h3><%= @item.item_name %></h3>
+      <p><%= @item.tax_price %>円（税込）</p>
+      <%= link_to @item.shop.shop_name, shop_path(@item.shop_id) %>
+      <p>商品説明</p>
+      <p><%= @item.item_introduction %></p>
+    </div>
+    <div class="w-25 cart_button text-center">
+      <%= form_with model: @cart_item, local: true do |f| %>
+      <%= f.label "数量" %>
+      <%= f.number_field :amount, min: 1, max: 100 %>
+      <br>
+      <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
