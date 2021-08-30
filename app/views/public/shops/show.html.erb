@@ -1,2 +1,50 @@
-<h1>Public::Shops#show</h1>
-<p>Find me in app/views/public/shops/show.html.erb</p>
+<div class="container">
+  <div class="d-flex">
+    <div class="w-50 shop-image">
+      <%= attachment_image_tag @shop, :shop_image, class:"w-100" %>
+    </div>
+    <div class="w-25 shop-info">
+      <h4 class="text-center"><%= @shop.shop_name %></h4>
+      <table>
+        <tbody>
+          <tr>
+            <th>担当者：</th>
+            <td><%= @shop.manager %></td>
+          </tr>
+          <tr>
+            <th>所在地：</th>
+            <td><%= @shop.address %></td>
+          </tr>
+          <tr>
+            <th>TEL：</th>
+            <td><%= @shop.phone_number %></td>
+          </tr>
+          <tr>
+            <th>email：</th>
+            <td><%= @shop.email %></td>
+          </tr>
+          <tr>
+            <th>ジャンル：</th>
+            <td><%= @shop.shop_genre %></td>
+          </tr>
+          <tr>
+            <th>会社紹介：</th>
+            <td><%= @shop.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="w-25 link-group">
+      <p class="mx-4">
+        <%= link_to "この業者の商品を見る", items_path(shop_id: @shop.id), class: "btn btn-success" %>
+      </p>
+      <p class="mx-4">
+        <%= link_to "この業者を評価する", reviews_path, method: :post, class: "btn btn-success" %>
+      </p>
+      <p class="mx-4">
+        <%= link_to "この業者にメッセージを送る", rooms_path, class: "btn btn-success"%>
+      </p>
+
+    </div>
+  </div>
+</div>
