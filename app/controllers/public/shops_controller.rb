@@ -10,5 +10,6 @@ class Public::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @reviews = Review.where(shop_id: @shop.id)
   end
 end

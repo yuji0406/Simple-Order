@@ -1,38 +1,40 @@
 <div class="container">
   <div class="d-flex">
     <div class="w-50 shop-image">
-      <%= attachment_image_tag @shop, :shop_image, class:"w-100" %>
+      <%= attachment_image_tag @shop, :shop_image, class:"w-100", fallback: "no_image.jpeg" %>
     </div>
-    <div class="w-25 shop-info">
+    <div class="w-25 shop-wrapper">
       <h4 class="text-center"><%= @shop.shop_name %></h4>
-      <table>
-        <tbody>
-          <tr>
-            <th>担当者：</th>
-            <td><%= @shop.manager %></td>
-          </tr>
-          <tr>
-            <th>所在地：</th>
-            <td><%= @shop.address %></td>
-          </tr>
-          <tr>
-            <th>TEL：</th>
-            <td><%= @shop.phone_number %></td>
-          </tr>
-          <tr>
-            <th>email：</th>
-            <td><%= @shop.email %></td>
-          </tr>
-          <tr>
-            <th>ジャンル：</th>
-            <td><%= @shop.shop_genre %></td>
-          </tr>
-          <tr>
-            <th>会社紹介：</th>
-            <td><%= @shop.introduction %></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="shop-info">
+        <table class="mx-auto">
+          <tbody align="center">
+            <tr>
+              <th>担当者：</th>
+              <td><%= @shop.manager %></td>
+            </tr>
+            <tr>
+              <th>所在地：</th>
+              <td><%= @shop.address %></td>
+            </tr>
+            <tr>
+              <th>TEL：</th>
+              <td><%= @shop.phone_number %></td>
+            </tr>
+            <tr>
+              <th>email：</th>
+              <td><%= @shop.email %></td>
+            </tr>
+            <tr>
+              <th>ジャンル：</th>
+              <td><%= @shop.shop_genre %></td>
+            </tr>
+            <tr>
+              <th>会社紹介：</th>
+              <td><%= @shop.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="w-25 link-group">
       <p class="mx-4">
@@ -44,7 +46,22 @@
       <p class="mx-4">
         <%= link_to "この業者にメッセージを送る", rooms_path, class: "btn btn-success"%>
       </p>
-
     </div>
+  </div>
+  <div class="w-75 review mx-auto">
+    <table class="table">
+      <tr>
+        <th>店舗名</th>
+        <th>評価</th>
+        <th>口コミ</th>
+      </tr>
+      <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.customer.store_name %></td>
+        <td><%= review.rate %></td>
+        <td><%= review.content %></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 </div>

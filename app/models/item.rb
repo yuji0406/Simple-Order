@@ -2,6 +2,14 @@ class Item < ApplicationRecord
 
   attachment :item_image
 
+  def tax
+    1.1
+  end
+
+  def tax_price
+    (self.item_price*tax).floor
+  end
+
   belongs_to :shop
 
   has_many :cart_items
