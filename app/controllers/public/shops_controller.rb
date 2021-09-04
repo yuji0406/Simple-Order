@@ -12,4 +12,13 @@ class Public::ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @reviews = Review.where(shop_id: @shop.id)
   end
+  
+  def search
+    if params[:keyward].present?
+      @shops = Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{params[:keyward]}%", "%#{params[:keyward]}%")
+    else
+      @shops = Shop.none
+    end
+    @genres = Shop.distinct.pluck(:shop_genre)
+  end
 end

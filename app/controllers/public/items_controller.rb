@@ -18,4 +18,13 @@ class Public::ItemsController < ApplicationController
     end
       @genres = Item.distinct.pluck(:item_genre)
   end
+
+  def search
+    if params[:keyward].present?
+      @items = Item.where('item_name LIKE ? OR item_introduction LIKE ?', "%#{params[:keyward]}%", "%#{params[:keyward]}%")
+    else
+      @items = Item.none
+    end
+    @genres = Item.distinct.pluck(:item_genre)
+  end
 end

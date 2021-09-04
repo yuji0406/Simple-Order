@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :cart_items, only:[:index,:update,:destroy,:create]
       delete 'cart_items/empty'
     resource :mypages, only:[:show,:edit,:update]
+    get 'items/search' => 'items#search'
     resources :items, only:[:show,:index]
 
   end
