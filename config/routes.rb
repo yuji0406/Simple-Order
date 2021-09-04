@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   scope module: :shops do
   devise_for :shops, controllers:{
     registrations: 'shops/registrations',
@@ -26,12 +26,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     resources :shops, only:[:index,:show]
-    resources :rooms, only:[:index,:show]
+    resources :rooms, only:[:index,:show,:create]
     resources :messages, only:[:create]
     resources :reviews, only:[:create,:destroy]
     resources :favorites, only:[:index,:create,:destroy]
+    get 'orders/complete'
     resources :orders, only:[:new,:create,:index,:show]
-      get 'orders/complete'
     resources :cart_items, only:[:index,:update,:destroy,:create]
       delete 'cart_items/empty'
     resource :mypages, only:[:show,:edit,:update]

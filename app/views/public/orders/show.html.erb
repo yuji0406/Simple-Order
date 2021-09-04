@@ -1,2 +1,69 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <h2><%= "#{@order.shop.shop_name}：#{@order.created_at}" %>の注文</h2>
+  <div class="w-100 order-info d-flex">
+    <div class="w-50">
+      <p>お届け先情報</p>
+      <table>
+        <tr>
+          <th>店舗名</th>
+          <td><%= current_customer.store_name %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= current_customer.address %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= current_customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= current_customer.phone_number %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="w-25">
+      <label>お支払い方法</label><br>
+      <%= @order.payment %>
+      <label>納品日</label><br>
+      <%= @order.delivery_on %>
+      <label>配送状況</label><br>
+      <%= @order.delivery_status %>
+    </div>
+    <div class="w-25 prices text-center">
+      <table class="mx-auto">
+        <tr>
+          <th>小計金額:</th>
+          <td><%= @order.total_price - @order.order_postage %></td>
+        </tr>
+        <tr>
+          <th>送料：</th>
+          <td><%= @order.order_postage %></td>
+        </tr>
+        <tr>
+          <th>合計金額：</th>
+          <td><%= @order.total_price %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="order-items">
+    <% @order.order_items.each do |order_item| %>
+    <div class="w-100 order-item text-center d-flex my-4">
+      <div class="item_image">
+        <%= attachment_image_tag order_item.item, :item_image, class: "w-50", fallback:"no_image.jpeg" %>
+      </div>
+      <div class="item-info d-flex">
+        <label>商品名：</label>
+        <%= link_to order_item.item.item_name, item_path(order_item.item.id) %>
+        <label>単価：</label>
+        <%= "#{order_item.price}円" %>
+        <label>数量：</label>
+        <%= order_item.amount %>
+        <label>小計：</label>
+        <%= "#{order_item.price*order_item.amount}円" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

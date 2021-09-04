@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 
   belongs_to :customer
+  belongs_to :shop
 
   has_many :order_items, dependent: :destroy
 
@@ -15,5 +16,5 @@ class Order < ApplicationRecord
     "クレジットカード",
     "銀行振込"
     ]
-  
+
 end

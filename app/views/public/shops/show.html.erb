@@ -46,6 +46,11 @@
       <p class="mx-4">
         <%= link_to "この業者にメッセージを送る", rooms_path, class: "btn btn-success"%>
       </p>
+      <% unless Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
+      <p class="mx-4">
+        <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn btn-success"%>
+      </p>
+      <% end %>
     </div>
   </div>
   <div class="w-75 review mx-auto">

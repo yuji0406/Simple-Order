@@ -1,8 +1,8 @@
 <div class="container">
   <h3 class="page-title">マイページ</h3>
-  <div class="d-flex row mypage-content content">
+  <div class="d-flex row mypage-content text-center">
     <div class="col-12">
-      <%= attachment_image_tag current_shop, :shop_image, fallback:"no_image.jpeg" %>
+      <%= attachment_image_tag current_shop, :shop_image, fallback:"no_image.jpeg", class: "w-75" %>
     </div>
     <div class="col-6">
       <label>会社名</label>

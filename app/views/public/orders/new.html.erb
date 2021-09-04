@@ -1,2 +1,98 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <div class="d-flex">
+    <%= form_with model: @order, url: orders_path, method: :post, class: "w-100 d-flex", local: true do |f| %>
+    <div class="order-contet w-75">
+      <div class="w-100 order-info d-flex">
+        <div class="w-50">
+          <p>お届け先情報</p>
+          <table>
+            <tr>
+              <th>店舗名</th>
+              <td><%= current_customer.store_name %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= current_customer.address %></td>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= current_customer.postal_code %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= current_customer.phone_number %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="w-25">
+          <p>お支払い方法</p>
+          <%= f.radio_button :payment, :クレジットカード %>
+          <%= f.label :payment, "クレジットカード" %><br>
+          <%= f.radio_button :payment, :銀行振込 %>
+          <%= f.label :payment, "銀行振込" %>
+        </div>
+        <div class="w-25">
+          <p>納品日</p>
+          <%= f.date_field :delivery_on %>
+        </div>
+      </div>
+    </div>
+    <div class="w-25 prices text-center">
+      <table class="mx-auto">
+        <tr>
+          <th>小計金額:</th>
+          <td><%= params[:sum_price] %></td>
+        </tr>
+        <tr>
+          <th>送料：</th>
+          <td><%= @postage %></td>
+        </tr>
+        <tr>
+          <th>合計金額：</th>
+          <td><%= params[:total_price] %></td>
+        </tr>
+      </table>
+      <%= f.hidden_field :customer_id, value: current_customer.id %>
+      <%= f.hidden_field :shop_id, value: @shop.id %>
+      <%= f.hidden_field :order_postage, value: @postage %>
+      <%= f.hidden_field :total_price, value: params[:total_price] %>
+      <%= f.submit "注文を確定する", class: "btn btn-warning" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex w-75 my-4">
+    <div class=" d-flex w-25">
+      <div class="w-50">
+        <%= attachment_image_tag @shop,:shop_image, class: "w-100", fallback:"no_image.jpeg" %>
+      </div>
+      <div class="w-50">
+        <%= link_to @shop.shop_name, shop_path(@shop.id) %>
+      </div>
+    </div>
+    <div class="w-75">
+      <% @cart_items.each do |cart_item| %>
+      <div class=" d-flex w-100 cart-item my-3">
+        <div class="item-image w-25">
+          <%= attachment_image_tag cart_item.item, :item_image, class: "w-100", fallback: "no_image.jpeg" %>
+        </div>
+        <div class="w-75 item-info d-flex">
+          <div class="w-50">
+            <p><%= cart_item.item.item_name %></p>
+            <p><%= cart_item.item.tax_price %>（税込）</p>
+          </div>
+          <div class="w-50">
+            <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
+            <%= f.label "数量" %>
+            <%= f.number_field :amount, min: 1, max:100 %>
+            <%= f.submit "変更", class: "btn btn-success" %>
+            <% end %>
+            <label>小計</label>
+            <p><%= cart_item.item.tax_price*cart_item.amount %>円</p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
