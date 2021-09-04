@@ -1,2 +1,20 @@
-<h1>Public::Favorites#index</h1>
-<p>Find me in app/views/public/favorites/index.html.erb</p>
+<div class="container">
+  <h3>お気に入り一覧</h3>
+  <div class="row d-flex flex-wrap">
+    <% @favorites.each do |favorite| %>
+    <%= link_to shop_path(favorite.shop.id), class: "col-3 m-3" do %>
+    <div class="favorite-shop-box d-flex">
+      <div class="w-50">
+        <%= attachment_image_tag favorite.shop, :shop_image, class: "w-100" %>
+        <%= favorite.shop.shop_name %>
+      </div>
+      <div class="w-50 mx-2">
+        <%= favorite.shop.shop_genre %>
+        <label>会社概要</label><br>
+        <%= favorite.shop.introduction %>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>

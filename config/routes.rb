@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+    get 'shops/search' => 'shops#search'
     resources :shops, only:[:index,:show]
     resources :rooms, only:[:index,:show,:create]
     resources :messages, only:[:create]
