@@ -38,13 +38,13 @@
     </div>
     <div class="w-25 link-group">
       <p class="mx-4">
-        <%= link_to "この業者の商品を見る", items_path(shop_id: @shop.id), class: "btn btn-success" %>
+        <%= link_to "この業者の商品を見る", items_path(shop_id: @shop.id), class: "btn" %>
       </p>
       <p class="mx-4">
-        <%= link_to "この業者を評価する", reviews_path, method: :post, class: "btn btn-success" %>
+        <button id="js-review-btn">この業者を評価する</button>
       </p>
       <p class="mx-4">
-        <%= link_to "この業者にメッセージを送る", rooms_path, class: "btn btn-success"%>
+        <%= link_to "この業者にメッセージを送る", rooms_path, class: "btn"%>
       </p>
       <% unless Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
       <p class="mx-4">
@@ -68,5 +68,35 @@
       </tr>
       <% end %>
     </table>
+  </div>
+</div>
+<div class="modal js-modal">
+  <div class="modal-bg js-modal-close"></div>
+  <div class="modal-content">
+    <%= form_with model: @review,url: reviews_path, local: true do |f| %>
+    <p>レビュー投稿</p>
+    <div id="star">
+      <%= f.label :rate, "評価" %>
+      <%= f.hidden_field :rate, id: :review_star %>
+    </div>
+    <script>
+      $('#star').raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn: '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'review[rate]',
+        half: true,
+      });
+    </script>
+    <div>
+      <%= f.label :content, "コメント" %>
+      <%= f.text_area :content, class: "form-control", rows: 5, placeholder: "コメントはここに" %>
+    </div>
+    <%= f.hidden_field :shop_id, value: @shop.id %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
+    <%= f.submit "送信", class: "btn"%>
+    <% end %>
+    <a class="js-modal-close btn" href="">閉じる</a>
   </div>
 </div>

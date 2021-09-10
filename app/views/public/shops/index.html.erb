@@ -15,7 +15,13 @@
         <% end %>
       </div>
        <div class="ranking">
-         <p>登録者数ランキング</p>
+          <p>お気に入り登録者数ランキング</p>
+          <% ranking = 1 %>
+          <% @rank_shops.each do |rank_shop| %>
+          <%#= "第#{ranking}位" %>
+          <%= link_to "第#{ranking}位#{rank_shop.shop_name}", shop_path(rank_shop.id) %><br>
+          <% ranking += 1 %>
+          <% end %>
        </div>
     </div>
     <div class="shops w-75 d-flex flex-wrap">

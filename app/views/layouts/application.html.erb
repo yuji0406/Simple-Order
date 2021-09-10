@@ -13,7 +13,9 @@
     <header class="shadow-sm">
       <div class="navbar">
         <div class="site-logo">
+          <%= link_to root_path do %>
           <%= image_tag 'logo.png',class: 'site-logo', size:"100x75" %>
+          <% end %>
         </div>
         <div class="right-navbar">
           <% if customer_signed_in? %>
@@ -43,5 +45,5 @@
       </div>
     </header>
     <%= yield %>
-  </body>
+    <!--<script src= "../assets/javascripts/jquery.raty.js"></script>-->
 </html>

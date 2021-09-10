@@ -19,3 +19,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $('#js-review-btn').on('click',function(){
+    $('.js-modal').fadeIn();
+    return false;
+  });
+  $('.js-modal-close').on('click',function(){
+    $('.js-modal').fadeOut();
+    return false;
+  });
+});
