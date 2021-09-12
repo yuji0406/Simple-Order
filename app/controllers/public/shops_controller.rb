@@ -13,8 +13,9 @@ class Public::ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @reviews = Review.where(shop_id: @shop.id)
     @review = Review.new
+    @room = Room.find_by(customer_id: current_customer.id, shop_id: @shop.id)
   end
-  
+
   def search
   end
 end

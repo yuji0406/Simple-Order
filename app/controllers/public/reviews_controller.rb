@@ -3,9 +3,9 @@ class Public::ReviewsController < ApplicationController
     review = Review.new(review_params)
     if review.save
     redirect_to shop_path(review.shop.id)
-  else
+    else
     render "public/shops/show"
-  end
+    end
   end
 
   def destroy

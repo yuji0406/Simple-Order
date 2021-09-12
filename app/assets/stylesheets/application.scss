@@ -24,6 +24,7 @@
 
 header{
   border-bottom: 1px solid black;
+  margin-bottom: 20px;
 }
 p{
  word-break: break-all;
@@ -49,4 +50,15 @@ p{
  top: 50%;
  transform: translate(-50%,-50%);
  width: 60%;
+}
+.navbar{
+ display: flex;
+ li{
+  list-style: none;
+  margin: 10px;
+ }
+}
+.shop_image{
+ height: 55vh;
+ width: 30vw;
 }

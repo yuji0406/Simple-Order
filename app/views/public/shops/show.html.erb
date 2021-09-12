@@ -1,7 +1,7 @@
 <div class="container">
   <div class="d-flex">
     <div class="w-50 shop-image">
-      <%= attachment_image_tag @shop, :shop_image, class:"w-100", fallback: "no_image.jpeg" %>
+      <%= attachment_image_tag @shop, :shop_image, fallback: "no_image.jpeg" %>
     </div>
     <div class="w-25 shop-wrapper">
       <h4 class="text-center"><%= @shop.shop_name %></h4>
@@ -44,12 +44,21 @@
         <button id="js-review-btn">この業者を評価する</button>
       </p>
       <p class="mx-4">
-        <%= link_to "この業者にメッセージを送る", rooms_path, class: "btn"%>
+        <!--このショップとのチャットルームがあれば-->
+        <% if @room %>
+          <%= link_to "チャットルームへ移動", room_path(@room), class: "btn" %>
+        <% else %>
+          <%= form_with model: Room.new, local: true do |f| %>
+          <%= f.hidden_field :shop_id, value: @shop.id %>
+          <%= f.submit "この業者にチャットで連絡", class: "btn" %>
+          <% end %>
+        <% end %>
       </p>
+
       <% unless Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
-      <p class="mx-4">
-        <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn btn-success"%>
-      </p>
+        <p class="mx-4">
+          <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn btn-success"%>
+        </p>
       <% end %>
     </div>
   </div>
@@ -61,11 +70,11 @@
         <th>口コミ</th>
       </tr>
       <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.customer.store_name %></td>
-        <td><%= review.rate %></td>
-        <td><%= review.content %></td>
-      </tr>
+        <tr>
+          <td><%= review.customer.store_name %></td>
+          <td><%= review.rate %></td>
+          <td><%= review.content %></td>
+        </tr>
       <% end %>
     </table>
   </div>
@@ -74,28 +83,28 @@
   <div class="modal-bg js-modal-close"></div>
   <div class="modal-content">
     <%= form_with model: @review,url: reviews_path, local: true do |f| %>
-    <p>レビュー投稿</p>
-    <div id="star">
-      <%= f.label :rate, "評価" %>
-      <%= f.hidden_field :rate, id: :review_star %>
-    </div>
-    <script>
-      $('#star').raty({
-        size: 36,
-        starOff: '<%= asset_path('star-off.png') %>',
-        starOn: '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'review[rate]',
-        half: true,
-      });
-    </script>
-    <div>
-      <%= f.label :content, "コメント" %>
-      <%= f.text_area :content, class: "form-control", rows: 5, placeholder: "コメントはここに" %>
-    </div>
-    <%= f.hidden_field :shop_id, value: @shop.id %>
-    <%= f.hidden_field :customer_id, value: current_customer.id %>
-    <%= f.submit "送信", class: "btn"%>
+      <p>レビュー投稿</p>
+      <div id="star">
+        <%= f.label :rate, "評価" %>
+        <%= f.hidden_field :rate, id: :review_star %>
+      </div>
+      <script>
+        $('#star').raty({
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'review[rate]',
+          half: true,
+        });
+      </script>
+      <div>
+        <%= f.label :content, "コメント" %>
+        <%= f.text_area :content, class: "form-control", rows: 5, placeholder: "コメントはここに" %>
+      </div>
+      <%= f.hidden_field :shop_id, value: @shop.id %>
+      <%= f.hidden_field :customer_id, value: current_customer.id %>
+      <%= f.submit "送信", class: "btn"%>
     <% end %>
     <a class="js-modal-close btn" href="">閉じる</a>
   </div>

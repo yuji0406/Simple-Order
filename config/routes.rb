@@ -27,8 +27,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'shops/search' => 'shops#search'
     resources :shops, only:[:index,:show]
-    resources :rooms, only:[:index,:show,:create]
-    resources :messages, only:[:create]
+    resources :rooms, only:[:index,:show,:create] do
+      resources :messages, only:[:create]
+    end
     resources :reviews, only:[:create,:destroy]
     resources :favorites, only:[:index,:create,:destroy]
     get 'orders/complete'

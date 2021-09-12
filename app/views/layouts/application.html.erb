@@ -19,7 +19,7 @@
         </div>
         <div class="right-navbar">
           <% if customer_signed_in? %>
-          <ul>
+          <ul class="navbar">
             <li>ログイン中：<%= current_customer.store_name %>様</li>
             <li><%= link_to "マイページ", mypages_path %></li>
             <li><%= link_to "商品一覧", items_path %></li>
@@ -31,7 +31,7 @@
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
           </ul>
           <% elsif shop_signed_in? %>
-          <ul>
+          <ul class="navbar">
             <li>ログイン中：<%= current_shop.shop_name %>様</li>
             <li><%= link_to "マイページ", shops_mypages_path %></li>
             <li><%= link_to "商品一覧", shops_items_path %></li>
