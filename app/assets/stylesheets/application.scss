@@ -16,13 +16,23 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,200&family=Poppins&display=swap');
-
+ @font-face{
+  font-family: 'OradanoGSRR';
+  src: font-url('/assets/OradanoGSRR.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+ }
+ @font-face{
+  font-family: 'XANO-mincho';
+  src: font-url('/assets/XANO-mincho.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+ }
 
 $base_color: #f5f5f5;
-$main_color: #a4c1d7;
+$main_color: #eb6101;
 // $accent_color:
-$text_color: #373737;
+$text_color: rgba(221,220,214,0.7);
 *{
   box-sizing: border-box;
   margin: 0;
@@ -30,16 +40,23 @@ $text_color: #373737;
 }
 body{
  background-color: $base_color;
- font-family: 'Libre Franklin', sans-serif;
- font-family: 'Poppins', sans-serif;
+ font-family: 'OradanoGSRR', serif;
+
 }
 ul{
  margin: 0;
 }
-
+p{
+ word-break: break-all;
+ margin: 0;
+}
+ .page-title{
+  text-align: center;
+ }
+// header⬇︎
 .site-logo{
- width: 180px;
- height: 35px;
+ width: 145px;
+ height: 60px;
 }
 
 header{
@@ -47,24 +64,48 @@ header{
   margin-bottom: 20px;
   background-color: $main_color;
 }
+.login-user{
+ color: #ffffff;
+}
 .navbar{
  text-align: center;
  li{
   border-left: 1px solid #828282;
   list-style: none;
   padding: 10px;
-  color: $text_color;
+
   span{
     color: $text_color;
   }
-  i{
-   color: $text_color;
+  span:hover{
+   color: #ffffff;
   }
+   i{
+    color: $text_color;
+   }
+   i:hover{
+    color: #ffffff;
+   }
  }
 }
-p{
- word-break: break-all;
+// headerここまで
+// 業者側ログイン 新規登録⬇︎
+.form-box{
+ background-color: #fff;
+ box-shadow: 0 0 5px #fff, 0 0 5px #ccc, 0 0 1px #aaa;
+ padding: 20px;
 }
+ .sign-btn{
+  width: 30%;
+ }
+.nav{
+ font-size: 20px;
+ margin: 15px 0;
+}
+.shop-link{
+ margin-bottom: 20px;
+}
+// 業者ログイン　新規登録ここまで
 .modal{
  display: none;
  height: 100vh;

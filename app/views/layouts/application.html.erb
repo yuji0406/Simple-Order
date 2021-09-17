@@ -15,98 +15,111 @@
       <div class="navbar">
         <div>
           <%= link_to root_path do %>
-          <%= image_tag 'logo.png',class: 'site-logo', size:"100x75" %>
+          <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
           <% end %>
         </div>
-        <div class="right-navbar">
-          <% if customer_signed_in? %>
-          <ul class="navbar">
-            <li>ログイン中：<br>
-            <%= current_customer.store_name %>様</li>
-            <%= link_to mypages_path, class: "js-hover" do %>
-              <li>
-                  <span>MyPage</span><br>
-                  <span>マイページ</span>
-              </li>
-            <% end %>
-            <%= link_to items_path, class: "js-hover" do %>
-              <li>
-                  <span>Items</span><br>
-                  <span>商品一覧</span>
-              </li>
-            <% end %>
-            <%= link_to shops_path, class: "js-hover" do %>
-              <li>
-                  <span>Shops</span><br>
-                  <span>業者一覧</span>
-              </li>
-            <% end %>
-            <%= link_to rooms_path, class: "js-hover" do %>
-              <li>
-                  <span>Messages</span><br>
-                  <span>メッセージ一覧</span>
-              </li>
-            <% end %>
-            <%= link_to favorites_path, class: "js-hover" do %>
-              <li>
-                  <span>Favorites</span><br>
-                  <span>お気に入り</span>
-              </li>
-            <% end %>
-            <%= link_to orders_path, class: "js-hover" do %>
-              <li>
-                  <span>Orders</span><br>
-                  <span>注文一覧</span>
+        <% if customer_signed_in? %>
+          <p class="login-user">ログイン中：<br>
+                <%= current_customer.store_name %>様
+          </p>
+          <div class="right-navbar">
+            <ul class="navbar">
+              <%= link_to mypages_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>MyPage<br>
+                    マイページ
+                    </span>
+                </li>
+              <% end %>
+              <%= link_to items_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Items<br>
+                    商品一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_path, class: "js-hover" do %>
+                <li class="header-link">
+                    <span>Shops<br>
+                      業者一覧
+                    </span>
+                </li>
+              <% end %>
+              <%= link_to rooms_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Messages<br>
+                    メッセージ一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to favorites_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Favorites<br>
+                    お気に入り
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to orders_path, class: "js-hover" do %>
+              <li class="header-link">
+                <span>Orders<br>
+                  注文一覧
+                  </span>
               </li>
             <% end %>
             <%= link_to cart_items_path, class: "js-hover" do %>
-              <li>
-                  <i class="fas fa-shopping-cart"></i>
+              <li class="header-link">
+                <i class="fas fa-shopping-cart"></i>
               </li>
             <% end %>
             <%= link_to destroy_customer_session_path, method: :delete, class: "js-hover" do %>
-               <li>
-                  <i class="fas fa-sign-out-alt">SignOut</i>
+               <li class="header-link">
+                <i class="fas fa-sign-out-alt">SignOut</i>
               </li>
             <% end %>
           </ul>
           <% elsif shop_signed_in? %>
+          <p class="login-user">ログイン中：<br>
+            <%= current_shop.shop_name %>様
+          </p>
           <ul class="navbar">
-            <li>ログイン中：<br>
-            <%= current_shop.shop_name %>様</li>
             <%= link_to shops_mypages_path, class: "js-hover" do %>
-              <li>
-                <span>MyPage</span><br>
-                <span>マイページ</span>
+              <li class="header-link">
+                <span>MyPage<br>
+                  マイページ
+                </span>
               </li>
             <% end %>
             <%= link_to shops_items_path, class: "js-hover" do %>
-              <li>
-                <span>Items</span><br>
-                <span>商品一覧</span>
+              <li class="header-link">
+                <span>Items<br>
+                  商品一覧
+                </span>
               </li>
             <% end %>
             <%= link_to shops_customers_path, class: "js-hover" do %>
-              <li>
-                <span>Customers</span><br>
-                <span>顧客一覧</span>
+              <li class="header-link">
+                <span>Customers<br>
+                  顧客一覧
+                </span>
               </li>
             <% end %>
             <%= link_to rooms_path, class: "js-hover" do %>
-              <li>
-                <span>Messages</span><br>
-                <span>メッセージ一覧</span>
+              <li class="header-link">
+                <span>Messages<br>
+                  メッセージ一覧
+                </span>
               </li>
             <% end %>
             <%= link_to shops_orders_path, class: "js-hover" do %>
-              <li>
-                <span>Orders</span><br>
-                <span>注文一覧</span>
+              <li class="header-link">
+                <span>Orders<br>
+                  注文一覧
+                </span>
               </li>
             <% end %>
             <%= link_to destroy_shop_session_path, method: :delete, class: "js-hover" do %>
-              <li>
-                <i class="fas fa-sign-out-alt">SignOut</i>
+              <li class="header-link">
+                <i class="fas fa-sign-out-alt"><span>Sign Out</span></i>
               </li>
             <% end %>
           </ul>

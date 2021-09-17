@@ -31,27 +31,3 @@ $(document).on('turbolinks:load', function () {
     return false;
   });
 });
-
-$(document).on('turbolinks:load', function () {
-  $(".js-hover").hover(
-    function () {
-      $(this).css({
-        backgroundColor: "#e6e6e6",
-        opacity: 0.5
-      });
-    },
-    function () {
-      $(this).css({
-        backgroundColor: "",
-        opacity: 1
-      });
-    }
-  );
-});
-
-$
-$('.js-hover').on("mouseout",function () {
-  $(this).css({
-    "backgroundColor": ""
-  });
-});

@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    models:
+      shop: 業者
+      order: 注文
+      item: 商品
+      customer: 店舗
+    attributes:
+      shop:
+        shop_name: 会社名
+        manager: 担当者氏名
+        shop_genre: 業種
+        address: 住所
+        postal_code: 郵便番号
+        phone_number: 電話番号
+        email: メールアドレス
+      order:
+        total_price: 合計金額
+        payment: 支払い方法
+        delivery_on: 納品日
+        order_postage: 送料
+      item:
+        item_name: 商品名
+        item_price: 税抜価格
+        item_genre: 商品ジャンル
+        item_introduction: 商品説明
+      customer:
+        store_name: 店舗名
+        store_manager: 責任者氏名
+        address: 住所
+        postal_code: 郵便番号
+        phone_number: 電話番号
+        email: メールアドレス
+

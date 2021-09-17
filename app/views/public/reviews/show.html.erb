@@ -5,6 +5,9 @@
     <label>レビュー</label>
     <p><%= @review.content %></p>
   </div>
+  <div class="text-right">
+    <%= @review.created_at.to_s(:datetime) %>
+  </div>
 </div>
 <script>
     $('.read-only-star').empty();
