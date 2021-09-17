@@ -1,0 +1,20 @@
+<div class="container-xl">
+  <h3><%= @review.customer.store_name %>さんのレビュー</h3>
+  <div class= "read-only-star" data-score="<%= @review.rate %>">評価：</div>
+  <div class="content">
+    <label>レビュー</label>
+    <p><%= @review.content %></p>
+  </div>
+</div>
+<script>
+    $('.read-only-star').empty();
+     $('.read-only-star').raty({
+    readOnly: true,
+    half: true,
+    size: 36,
+    starOff: "<%= asset_path('star-off.png') %>",
+    starOn: "<%= asset_path('star-on.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= @review.rate %>"
+  });
+  </script>

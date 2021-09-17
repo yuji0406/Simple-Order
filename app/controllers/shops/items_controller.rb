@@ -1,4 +1,4 @@
-class Shops::ItemsController < ApplicationController
+class Shops::ItemsController < ShopsController
   before_action :set_item,only:[:show,:edit,:update]
 
   def index
@@ -14,10 +14,10 @@ class Shops::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    item.shop_id = current_shop.id
-    if item.save
-      redirect_to shops_item_path(item.id)
+    @item = Item.new(item_params)
+    @item.shop_id = current_shop.id
+    if @item.save
+      redirect_to shops_item_path(@item.id)
     else
       render :new
     end

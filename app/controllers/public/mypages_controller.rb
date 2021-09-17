@@ -1,4 +1,4 @@
-class Public::MypagesController < ApplicationController
+class Public::MypagesController < PublicController
   def show
   end
 
@@ -6,8 +6,12 @@ class Public::MypagesController < ApplicationController
   end
 
   def update
-    current_customer.update(customer_params)
-    redirect_to mypages_path
+    @current_customer = current_customer
+    if @current_customer.update(customer_params)
+    redirect_to mypages_path, notice: "会員情報を変更しました。"
+    else
+    render :edit
+    end
   end
 
   private

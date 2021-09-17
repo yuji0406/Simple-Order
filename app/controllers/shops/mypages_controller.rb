@@ -1,13 +1,18 @@
-class Shops::MypagesController < ApplicationController
+class Shops::MypagesController < ShopsController
   def show
   end
 
   def edit
+    @shop = current_shop
   end
 
   def update
-    current_shop.update(shop_params)
-    redirect_to action: "show"
+    @shop = current_shop
+    if @shop.update(shop_params)
+      redirect_to action: "show"
+    else
+      render :edit
+    end
   end
 
   private

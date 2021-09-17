@@ -1,4 +1,4 @@
-class Public::ShopsController < ApplicationController
+class Public::ShopsController < PublicController
   def index
     @genres = Shop.distinct.pluck(:shop_genre)
     if params[:shop_genre]
@@ -17,5 +17,11 @@ class Public::ShopsController < ApplicationController
   end
 
   def search
+    if params[:keyward].present?
+      @shops = Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{params[:keyward]}%", "%#{params[:keyward]}%")
+    else
+      @shops = Shopo.none
+    end
+    @genres = Shop.distinct.pluck(:shop_genre)
   end
 end

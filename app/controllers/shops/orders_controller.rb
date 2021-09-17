@@ -1,4 +1,4 @@
-class Shops::OrdersController < ApplicationController
+class Shops::OrdersController < ShopsController
   before_action :set_order,only:[:show,:update]
   def show
     @order_items = OrderItem.where(order_id: @order.id)

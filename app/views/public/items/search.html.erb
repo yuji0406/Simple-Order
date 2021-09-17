@@ -1,26 +1,22 @@
 <div class="container">
+  <h3><%= "「#{params[:keyward]}」" %>を含む商品一覧</h3>
   <div class="d-flex">
     <div class="sarch-box w-25">
       <%= form_with url: items_search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyward %>
-      <%= f.submit :seach %>
+        <%= f.text_field :keyward %>
+        <%= f.submit :seach %>
       <% end %>
-      <!--<p>検索</p>-->
       <h3>ジャンル</h3>
       <% if params[:shop_id] %>
-      <%= link_to "全て", items_path(shop_id: params[:shop_id]) %>
-      <br>
-      <% @genres.each do |genre| %>
-        <%= link_to genre, items_path(item_genre: genre, shop_id: params[:shop_id]) %>
-        <br>
-      <% end %>
+        <%= link_to "全て", items_path(shop_id: params[:shop_id]) %><br>
+        <% @genres.each do |genre| %>
+          <%= link_to genre, items_path(item_genre: genre, shop_id: params[:shop_id]) %><br>
+        <% end %>
       <% else %>
-      <%= link_to "全て", items_path %>
-      <br>
-      <% @genres.each do |genre| %>
-        <%= link_to genre, items_path(item_genre: genre) %>
-        <br>
-      <% end %>
+        <%= link_to "全て", items_path %><br>
+        <% @genres.each do |genre| %>
+          <%= link_to genre, items_path(item_genre: genre) %><br>
+        <% end %>
       <% end %>
     </div>
     <div class="items-wrapper w-75 row d-flex flex-wrap">

@@ -1,4 +1,4 @@
-class Shops::CustomersController < ApplicationController
+class Shops::CustomersController < ShopsController
   def index
     @order = Order.where(shop_id: current_shop.id)
     @customer = []

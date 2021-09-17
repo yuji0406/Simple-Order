@@ -1,6 +1,5 @@
-class Public::MessagesController < ApplicationController
+class Public::MessagesController < PublicController
   def create
-    # byebug
     room = Room.find(params[:room_id])
     message = Message.new(message_params)
     message.room_id = room.id
@@ -10,9 +9,9 @@ class Public::MessagesController < ApplicationController
       message.is_customer = false
     end
     if message.save
-      redirect_to room_path(room.id)
+      redirect_to room_path(room.id), notice: "メッセージを送信しました。"
     else
-      redirect_to room_path(room.id)
+      redirect_to room_path(room.id), alert: "メッセージを入力して下さい。"
     end
   end
 

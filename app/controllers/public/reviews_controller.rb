@@ -1,14 +1,21 @@
-class Public::ReviewsController < ApplicationController
+class Public::ReviewsController < PublicController
   def create
     review = Review.new(review_params)
     if review.save
-    redirect_to shop_path(review.shop.id)
+    redirect_to shop_path(review.shop.id), notice: "口コミを投稿しました。"
     else
-    render "public/shops/show"
+    redirect_to shop_path(review.shop.id), alert: "星の評価は必須です。"
     end
   end
 
   def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to shop_path(review.shop.id), notice: "口コミを削除しました。"
+  end
+  
+  def show
+    @review = Review.find(params[:id])
   end
 
   private

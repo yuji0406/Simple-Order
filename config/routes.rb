@@ -30,12 +30,12 @@ Rails.application.routes.draw do
     resources :rooms, only:[:index,:show,:create] do
       resources :messages, only:[:create]
     end
-    resources :reviews, only:[:create,:destroy]
+    resources :reviews, only:[:create,:destroy,:show]
     resources :favorites, only:[:index,:create,:destroy]
     get 'orders/complete'
     resources :orders, only:[:new,:create,:index,:show]
+     delete 'cart_items/empty'
     resources :cart_items, only:[:index,:update,:destroy,:create]
-      delete 'cart_items/empty'
     resource :mypages, only:[:show,:edit,:update]
     get 'items/search' => 'items#search'
     resources :items, only:[:show,:index]

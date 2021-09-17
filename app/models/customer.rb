@@ -10,4 +10,10 @@ class Customer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  validates :store_name, presence: true
+  validates :store_manager, presence: true
+  validates :address, presence: true
+  validates :postal_code, presence: true
+  validates :phone_number, presence: true
+  
 end

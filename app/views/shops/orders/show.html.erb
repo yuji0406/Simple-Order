@@ -58,7 +58,7 @@
       <%= order_item.item.item_name %>|
       <%= "単価：#{order_item.price}" %>|
       <%= "数量：#{order_item.amount}" %>|
-      <%= "小計：#{order_item.price*order_item_amount}円" %>
+      <%= "小計：#{order_item.price*order_item.amount}円" %>
     </div>
     <% end %>
   </div>

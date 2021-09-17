@@ -1,17 +1,18 @@
 <div class="container mt-3">
   <h3 class="d-inline-block bg-light">新規会員登録</h3>
-  <%= form_with model:@shop,url: shop_registration_path,local: true do |f| %>
+  <%= form_with model: @shop, url: shop_registration_path,local: true do |f| %>
+  <%= render "shops/shared/error_messages", resource: resource %>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "会社名",class:"label-form"%>
+      <%= f.label "会社名", class:"label-form"%>
     </div>
     <div class="col-4">
-      <%= f.text_field :shop_name,placeholder:"例：神田物産",class:"form-control"%>
+      <%= f.text_field :shop_name, placeholder: "例：神田物産",class:"form-control"%>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "担当者氏名",class:"label-form"%>
+      <%= f.label "担当者氏名", class:"label-form"%>
     </div>
     <div class="col-4">
       <%= f.text_field :manager,placeholder:"担当者名",class:"form-control"%>
@@ -19,7 +20,7 @@
   </div>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "ジャンル",class:"label-form"%>
+      <%= f.label "ジャンル",class: "label-form"%>
     </div>
     <div class="col-4">
       <%= f.select :shop_genre, Shop.shop_genres.keys.to_a %>
@@ -27,42 +28,42 @@
   </div>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "郵便番号（ハイフンなし）",class:"label-form"%>
+      <%= f.label "郵便番号（ハイフンなし）", class: "label-form"%>
     </div>
     <div class="col-4">
-      <%= f.text_field :postal_code,placeholder:"0000000",class:"form-control"%>
+      <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control"%>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "住所",class:"label-form"%>
+      <%= f.label "住所", class: "label-form"%>
     </div>
     <div class="col-8">
-      <%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町０−０",class:"form-control"%>
+      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町０−０", class: "form-control"%>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "電話番号（ハイフンなし）",class:"label-form"%>
+      <%= f.label "電話番号（ハイフンなし）", class: "label-form"%>
     </div>
     <div class="col-4">
-      <%= f.text_field :phone_number,placeholder:"00000000000",class:"form-control"%>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-4">
-      <%= f.label "メールアドレス",class:"label-form"%>
-    </div>
-    <div class="col-4">
-      <%= f.email_field :email,placeholder:"example@email.com",class:"form-control"%>
+      <%= f.text_field :phone_number,placeholder:"00000000000", class: "form-control"%>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-4">
-      <%= f.label "パスワード（６文字以上）",class:"label-form"%>
+      <%= f.label "メールアドレス", class: "label-form"%>
     </div>
     <div class="col-4">
-      <%= f.password_field :password,class:"form-control"%>
+      <%= f.email_field :email, placeholder: "example@email.com", class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-4">
+      <%= f.label "パスワード（６文字以上）", class: "label-form"%>
+    </div>
+    <div class="col-4">
+      <%= f.password_field :password, class: "form-control"%>
     </div>
   </div>
   <div class="form-group row">
@@ -70,13 +71,13 @@
       <%= f.label "パスワード（確認用）",class:"label-form"%>
     </div>
     <div class="col-4">
-      <%= f.password_field :password_confirmation,class:"form-control"%>
+      <%= f.password_field :password_confirmation, class: "form-control"%>
     </div>
   </div>
   <div class="actions row my-4">
     <div class="col-4"></div>
     <div class="col-3">
-      <%= f.submit "登録する",class:"btn-block btn btn-success" %>
+      <%= f.submit "登録する", class: "btn-block btn btn-success" %>
     </div>
   </div>
   <% end %>

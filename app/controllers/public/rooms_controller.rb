@@ -1,11 +1,12 @@
 class Public::RoomsController < ApplicationController
   def index
     if customer_signed_in?
-    @rooms = current_customer.rooms
+      @rooms = current_customer.rooms
     elsif shop_signed_in?
-    @rooms = current_shop.rooms
+      @rooms = current_shop.rooms
+    else
+      redirect_to root_path
     end
-
   end
 
   def show

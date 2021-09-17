@@ -67,18 +67,25 @@
       <tr>
         <th>店舗名</th>
         <th>評価</th>
-        <th>口コミ</th>
+        <th>レビュー</th>
+        <th></th>
       </tr>
       <% @reviews.each do |review| %>
-        <tr>
+        <tr id="js-hover">
           <td><%= review.customer.store_name %></td>
-          <td><%= review.rate %></td>
-          <td><%= review.content %></td>
+          <td class= "read-only-star" data-score="<%= review.rate %>"></td>
+          <td><%= link_to review.content, review_path(review.id)  %></td>
+          <% if review.customer_id == current_customer.id %>
+            <td><%= link_to "削除", review_path(review.id), method: :delete, class: "btn" %></td>
+          <% else %>
+            <td></td>
+          <% end %>
         </tr>
       <% end %>
     </table>
   </div>
 </div>
+<!--モダールウインドウ-->
 <div class="modal js-modal">
   <div class="modal-bg js-modal-close"></div>
   <div class="modal-content">
@@ -88,16 +95,6 @@
         <%= f.label :rate, "評価" %>
         <%= f.hidden_field :rate, id: :review_star %>
       </div>
-      <script>
-        $('#star').raty({
-          size: 36,
-          starOff: '<%= asset_path('star-off.png') %>',
-          starOn: '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          scoreName: 'review[rate]',
-          half: true,
-        });
-      </script>
       <div>
         <%= f.label :content, "コメント" %>
         <%= f.text_area :content, class: "form-control", rows: 5, placeholder: "コメントはここに" %>
@@ -109,3 +106,27 @@
     <a class="js-modal-close btn" href="">閉じる</a>
   </div>
 </div>
+<!--モダールウインドウここまで-->
+<script>
+      $('#star').empty();
+        $('#star').raty({
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'review[rate]',
+          half: true,
+        });
+      $('.read-only-star').empty();
+        $('.read-only-star').raty({
+          readOnly: true,
+          half: true,
+          size: 36,
+          starOff: "<%= asset_path('star-off.png') %>",
+          starOn: "<%= asset_path('star-on.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          score: function () {
+            return $(this).attr('data-score');
+          }
+        });
+      </script>

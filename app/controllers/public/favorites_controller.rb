@@ -1,4 +1,4 @@
-class Public::FavoritesController < ApplicationController
+class Public::FavoritesController < PublicController
   def index
     @favorites = Favorite.where(customer_id: current_customer.id)
   end
@@ -6,13 +6,13 @@ class Public::FavoritesController < ApplicationController
   def create
     favorite = Favorite.new(favorite_params)
     favorite.save
-    redirect_to favorites_path
+    redirect_to favorites_path, notice: "お気に入りに登録しました。"
   end
 
   def destroy
     favorite = Favorite.find(params[:id])
     favorite.destroy
-    redirect_to favorites_path
+    redirect_to favorites_path, alert: "お気に入りから削除しました。"
   end
 
   private

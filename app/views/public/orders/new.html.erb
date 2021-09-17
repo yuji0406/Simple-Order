@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container-xl">
+  <%= render 'layouts/errors', model: @order %>
   <div class="d-flex">
     <%= form_with model: @order, url: orders_path, method: :post, class: "w-100 d-flex", local: true do |f| %>
     <div class="order-contet w-75">
@@ -41,7 +42,7 @@
       <table class="mx-auto">
         <tr>
           <th>小計金額:</th>
-          <td><%= params[:sum_price] %></td>
+          <td><%= @sum_price %></td>
         </tr>
         <tr>
           <th>送料：</th>
@@ -49,13 +50,13 @@
         </tr>
         <tr>
           <th>合計金額：</th>
-          <td><%= params[:total_price] %></td>
+          <td><%= @total_price %></td>
         </tr>
       </table>
       <%= f.hidden_field :customer_id, value: current_customer.id %>
       <%= f.hidden_field :shop_id, value: @shop.id %>
       <%= f.hidden_field :order_postage, value: @postage %>
-      <%= f.hidden_field :total_price, value: params[:total_price] %>
+      <%= f.hidden_field :total_price, value: @total_price %>
       <%= f.submit "注文を確定する", class: "btn btn-warning" %>
     </div>
     <% end %>
