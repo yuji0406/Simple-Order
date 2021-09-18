@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_233042) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "store_name", null: false
-    t.string "store_manager", null:key => "value" false
+    t.string "store_manager", null: false
     t.string "address", null: false
     t.string "postal_code", null: false
     t.string "phone_number", null: false

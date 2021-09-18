@@ -3,11 +3,12 @@ class Public::MypagesController < PublicController
   end
 
   def edit
+    @customer = current_customer
   end
 
   def update
-    @current_customer = current_customer
-    if @current_customer.update(customer_params)
+    @customer = current_customer
+    if @customer.update(customer_params)
     redirect_to mypages_path, notice: "会員情報を変更しました。"
     else
     render :edit

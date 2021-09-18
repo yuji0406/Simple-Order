@@ -1,63 +1,76 @@
-<div class="container">
-  <h3 class="page-title">マイページ</h3>
-  <div class="d-flex row mypage-content text-center">
-    <div class="col-12">
-      <%= attachment_image_tag current_shop, :shop_image, fallback:"no_image.jpeg", class: "w-75" %>
+<div class="container-xl">
+  <div class="col-md-12 form-box mx-auto text-center row">
+    <h3 class="col-12 page-title">マイページ</h3>
+    <div class="col-md-6">
+      <%= attachment_image_tag current_shop, :shop_image, fallback: "no_image.jpeg", class: "shop_mypege_image" %>
     </div>
-    <div class="col-6">
-      <label>会社名</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.shop_name %>
-    </div>
-    <div class="col-6">
-      <label>担当者氏名</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.manager %>
-    </div>
-    <div class="col-6">
-      <label>ジャンル</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.shop_genre %>
-    </div>
-    <div class="col-6">
-      <label>郵便番号</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.postal_code %>
-    </div>
-    <div class="col-6">
-      <label>住所</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.address%>
-    </div>
-    <div class="col-6">
-      <label>電話番号</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.phone_number%>
-    </div>
-    <div class="col-6">
-      <label>メールアドレス</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.email%>
-    </div>
-    <div class="col-6">
-      <label>会社紹介文</label>
-    </div>
-    <div class="col-6">
-      <%= current_shop.introduction%>
-    </div>
-    <div class="button-group row">
-      <div class="col-4">
-        <%= link_to "内容を編集する", edit_shops_mypages_path, class: "btn btn-success" %>
+    <div class="col-md-6">
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">会社名</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.shop_name %>
+        </div>
       </div>
-      <div class="col-4">
-        <%= link_to "商品を登録する", new_shops_item_path, class: "btn btn-warning" %>
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">担当者氏名</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.manager %>
+        </div>
+      </div>
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">ジャンル</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.shop_genre %>
+        </div>
+      </div>
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">郵便番号</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.postal_code %>
+        </div>
+      </div>
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">住所</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.address%>
+        </div>
+      </div>
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">電話番号</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.phone_number%>
+        </div>
+      </div>
+      <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">メールアドレス</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.email%>
+        </div>
+      </div>
+       <div class="info-group row">
+        <div class="col-md-6">
+          <label class="info-label">会社紹介文</label>
+        </div>
+        <div class="col-md-6">
+          <%= current_shop.introduction%>
+        </div>
+      </div>
+      <div>
+        <%= link_to "内容を編集する", edit_shops_mypages_path, class: "btn sign-btn" %>
       </div>
     </div>
   </div>
