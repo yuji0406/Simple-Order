@@ -171,11 +171,6 @@ header{
    display: flex;
  }
 }
-// @media screen and (max-width: 1199px) {
-//  .right-navbar{
-//   display: none;
-//  }
-// }
 // headerここまで
 
 // ログイン 新規登録⬇︎
@@ -224,7 +219,19 @@ header{
 .shop-info{
  color: gray;
 }
-
+// indexページここまで
+// showページ⬇︎
+.item-form{
+ margin-bottom: 20px;
+ label{
+  margin: 0;
+ }
+}
+.button-group{
+ p{
+ margin: 20px 0;
+ }
+}
 // モダールウインドウ⬇︎
 .modal{
  display: none;

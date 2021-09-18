@@ -1,26 +1,57 @@
-<div class="container-xl">
-  <%= render 'layouts/errors', model: @cart_item %>
-  <div class="d-flex w-100">
-    <div class="item-image w-50">
-      <%= attachment_image_tag @item, :item_image, class: "w-100", fallback: "no_image.jpeg"%>
-    </div>
-    <div class="item-info w-25 text-center">
-      <h3><%= @item.item_name %></h3>
-      <p><%= @item.tax_price %>円（税込）</p>
-      <%= link_to @item.shop.shop_name, shop_path(@item.shop_id) %>
-      <p>商品説明</p>
-      <p><%= @item.item_introduction %></p>
-    </div>
-    <div class="w-25 cart_button text-center">
-      <%= form_with model: @cart_item, local: true do |f| %>
-      <%= f.label "数量" %>
-      <%= f.number_field :amount, min: 1, max: 100 %>
-      <br>
-      <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.hidden_field :customer_id, value: current_customer.id %>
-      <%= f.hidden_field :shop_id, value: @item.shop.id%>
-      <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      <% end %>
+<div class="container-fluid">
+  <div class="form-box text-center">
+    <h3 class="page-title"><%= @item.item_name%></h3>
+    <div class="row">
+      <div class="col-md-4">
+        <%= attachment_image_tag @item, :item_image, fallback: "no_image.jpeg", class: "shop-mypage-image" %>
+      </div>
+      <div class="col-md-4">
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">販売元</label>
+          </div>
+          <div class="col-md-6">
+            <%= link_to @item.shop.shop_name, shop_path(@item.shop_id), class: "link" %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">価格</label>
+          </div>
+          <div class="col-md-6">
+            <%= "#{@item.tax_price}円（税込）" %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">ジャンル</label>
+          </div>
+          <div class="col-md-6">
+            <%= @item.item_genre %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">商品説明</label>
+          </div>
+          <div class="col-md-6">
+            <%= @item.item_introduction %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <%= form_with model: @cart_item, local: true, class: "" do |f| %>
+        <div class="row item-form">
+          <%= f.label "数量", class: "label-form col-6" %>
+          <%= f.number_field :amount, min: 1, max: 100, class: "form-control col-3" %>
+        </div>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.hidden_field :shop_id, value: @item.shop.id%>
+          <%= f.submit "カートに入れる", class: "btn text-center" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+

@@ -1,68 +1,101 @@
 <div class="container-xl">
-  <div class="d-flex">
-    <div class="w-50 shop-image">
-      <%= attachment_image_tag @shop, :shop_image, fallback: "no_image.jpeg" %>
-    </div>
-    <div class="w-25 shop-wrapper">
-      <h4 class="text-center"><%= @shop.shop_name %></h4>
-      <div class="shop-info">
-        <table class="mx-auto">
-          <tbody align="center">
-            <tr>
-              <th>担当者：</th>
-              <td><%= @shop.manager %></td>
-            </tr>
-            <tr>
-              <th>所在地：</th>
-              <td><%= @shop.address %></td>
-            </tr>
-            <tr>
-              <th>TEL：</th>
-              <td><%= @shop.phone_number %></td>
-            </tr>
-            <tr>
-              <th>email：</th>
-              <td><%= @shop.email %></td>
-            </tr>
-            <tr>
-              <th>ジャンル：</th>
-              <td><%= @shop.shop_genre %></td>
-            </tr>
-            <tr>
-              <th>会社紹介：</th>
-              <td><%= @shop.introduction %></td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="form-box text-center">
+    <h3 class="page-title"><%= @shop.shop_name %></h3>
+    <div class="row">
+      <div class="col-md-4">
+        <%= attachment_image_tag @shop, :shop_image, fallback: "no_image.jpeg", class: "shop-mypage-image" %>
+      </div>
+      <div class="col-md-4">
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">会社名</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.shop_name %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">担当者氏名</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.manager %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">ジャンル</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.shop_genre %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">郵便番号</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.postal_code %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">住所</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.address%>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">電話番号</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.phone_number%>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">メールアドレス</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.email%>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-6">
+            <label class="info-label">会社紹介文</label>
+          </div>
+          <div class="col-md-6">
+            <%= @shop.introduction%>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 button-group">
+        <p class="link">
+          <%= link_to "この業者の商品を見る", items_path(shop_id: @shop.id), class: "btn" %>
+        </p>
+        <p class="link">
+          <button id="js-review-btn">この業者を評価する</button>
+        </p>
+        <p class="link">
+          <% if @room %>
+            <%= link_to "チャットルームへ移動", room_path(@room), class: "btn" %>
+          <% else %>
+            <%= form_with model: Room.new, local: true do |f| %>
+            <%= f.hidden_field :shop_id, value: @shop.id %>
+            <%= f.submit "この業者にチャットで連絡", class: "btn" %>
+            <% end %>
+          <% end %>
+        </p>
+        <% unless Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
+          <p class="link">
+            <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn"%>
+          </p>
+        <% end %>
       </div>
     </div>
-    <div class="w-25 link-group">
-      <p class="mx-4">
-        <%= link_to "この業者の商品を見る", items_path(shop_id: @shop.id), class: "btn" %>
-      </p>
-      <p class="mx-4">
-        <button id="js-review-btn">この業者を評価する</button>
-      </p>
-      <p class="mx-4">
-        <!--このショップとのチャットルームがあれば-->
-        <% if @room %>
-          <%= link_to "チャットルームへ移動", room_path(@room), class: "btn" %>
-        <% else %>
-          <%= form_with model: Room.new, local: true do |f| %>
-          <%= f.hidden_field :shop_id, value: @shop.id %>
-          <%= f.submit "この業者にチャットで連絡", class: "btn" %>
-          <% end %>
-        <% end %>
-      </p>
-
-      <% unless Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
-        <p class="mx-4">
-          <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn btn-success"%>
-        </p>
-      <% end %>
-    </div>
-  </div>
-  <div class="w-75 review mx-auto">
+    <div class="col-md-10 mx-auto">
     <table class="table">
       <tr>
         <th>店舗名</th>
@@ -130,3 +163,7 @@
           }
         });
       </script>
+      </div>
+    </div>
+  </div>
+</div>
