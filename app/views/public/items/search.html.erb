@@ -1,45 +1,55 @@
-<div class="container">
-  <h3><%= "「#{params[:keyward]}」" %>を含む商品一覧</h3>
-  <div class="d-flex">
-    <div class="sarch-box w-25">
-      <%= form_with url: items_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyward %>
-        <%= f.submit :seach %>
-      <% end %>
-      <h3>ジャンル</h3>
-      <% if params[:shop_id] %>
-        <%= link_to "全て", items_path(shop_id: params[:shop_id]) %><br>
-        <% @genres.each do |genre| %>
-          <%= link_to genre, items_path(item_genre: genre, shop_id: params[:shop_id]) %><br>
+<div class="container-fluid">
+  <div class="form-box">
+    <h3 class="page-title"><%= "「#{params[:keyward]}」" %>を含む商品一覧</h3>
+    <div class="row">
+      <div class="sarch-box col-md-3">
+        <% unless params[:shop_id] %>
+          <%= form_with url: items_search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyward %>
+            <%= f.submit "検索", class: "btn" %>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= link_to "全て", items_path %><br>
-        <% @genres.each do |genre| %>
-          <%= link_to genre, items_path(item_genre: genre) %><br>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="items-wrapper w-75 row d-flex flex-wrap">
-      <% @items.each do |item| %>
-      <div class="item-box col-4 my-2">
-        <%= link_to item_path(item.id), {class: "d-flex w-100"} do %>
-        <div class="w-50 item-image">
-          <%= attachment_image_tag item, :item_image, class:"w-100",fallback: "no_image.jpeg" %>
-        </div>
-        <div class="item-info w-50">
-          <p class="text-center">
-            <%= item.item_name %>
-          </p>
-          <p class="text-center">
-            <%= item.tax_price %>（税込）
-          </p>
-          <p class="text-center">
-            <%= item.item_introduction.truncate(15) %>
-          </p>
-        </div>
+        <p>ジャンルから探す</p>
+        <% if params[:shop_id] %>
+          <%= link_to "全て", items_path(shop_id: params[:shop_id]), class: "link genre-search-link" %>
+          <br>
+          <% @genres.each do |genre| %>
+            <%= link_to genre, items_path(item_genre: genre, shop_id: params[:shop_id]), class: "link genre-search-link" %>
+            <br>
+          <% end %>
+        <% else %>
+          <%= link_to "全て", items_path, class: "link genre-search-link" %>
+          <br>
+          <% @genres.each do |genre| %>
+            <%= link_to genre, items_path(item_genre: genre), class: "link genre-search-link" %>
+            <br>
+          <% end %>
         <% end %>
       </div>
-      <% end %>
+      <div class="col-lg-9 row">
+        <% @items.each do |item| %>
+          <div class="shop-contents col-md-4 col-sm-6">
+            <%= link_to item_path(item.id), class: "row" do %>
+              <div class="col-6">
+                <%= attachment_image_tag item, :item_image, class:"w-100",fallback: "no_image.jpeg", class: "shop-index-image" %>
+              </div>
+              <div class="shop-info col-6 text-center">
+                <p>
+                  <%= item.item_name %>
+                </p>
+                <p>
+                  <%= item.tax_price %>（税込）
+                </p>
+                <p>
+                  <%= item.item_introduction.truncate(15) %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+

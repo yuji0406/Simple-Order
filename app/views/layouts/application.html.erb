@@ -13,22 +13,20 @@
   <body>
     <header class="shadow-sm">
       <div class="navbar">
-        <div>
-          <%= link_to root_path do %>
+        <%= link_to root_path do %>
           <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
-          <% end %>
-        </div>
+        <% end %>
         <% if customer_signed_in? %>
-          <p class="login-user">ログイン中：<br>
-                <%= current_customer.store_name %>様
-          </p>
-          <div class="right-navbar">
+          <div class="right-navbar navbar">
             <ul class="navbar">
+              <li class="login-user">ログイン中：<br>
+                  <%= current_customer.store_name %>様
+              </li>
               <%= link_to mypages_path, class: "js-hover" do %>
                 <li class="header-link">
                   <span>MyPage<br>
                     マイページ
-                    </span>
+                  </span>
                 </li>
               <% end %>
               <%= link_to items_path, class: "js-hover" do %>
@@ -77,54 +75,63 @@
               </li>
             <% end %>
           </ul>
-          <% elsif shop_signed_in? %>
-          <p class="login-user">ログイン中：<br>
-            <%= current_shop.shop_name %>様
-          </p>
-          <ul class="navbar">
-            <%= link_to shops_mypages_path, class: "js-hover" do %>
-              <li class="header-link">
-                <span>MyPage<br>
-                  マイページ
-                </span>
-              </li>
-            <% end %>
-            <%= link_to shops_items_path, class: "js-hover" do %>
-              <li class="header-link">
-                <span>Items<br>
-                  商品一覧
-                </span>
-              </li>
-            <% end %>
-            <%= link_to shops_customers_path, class: "js-hover" do %>
-              <li class="header-link">
-                <span>Customers<br>
-                  顧客一覧
-                </span>
-              </li>
-            <% end %>
-            <%= link_to rooms_path, class: "js-hover" do %>
-              <li class="header-link">
-                <span>Messages<br>
-                  メッセージ一覧
-                </span>
-              </li>
-            <% end %>
-            <%= link_to shops_orders_path, class: "js-hover" do %>
-              <li class="header-link">
-                <span>Orders<br>
-                  注文一覧
-                </span>
-              </li>
-            <% end %>
-            <%= link_to destroy_shop_session_path, method: :delete, class: "js-hover" do %>
-              <li class="header-link">
-                <i class="fas fa-sign-out-alt"><span>Sign Out</span></i>
-              </li>
-            <% end %>
-          </ul>
-         <% end %>
         </div>
+        <% elsif shop_signed_in? %>
+          <div class="right-navbar">
+            <ul class="navbar">
+              <li class="login-user">ログイン中：<br>
+                <%= current_shop.shop_name %>様
+              </li>
+              <%= link_to shops_mypages_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>MyPage<br>
+                    マイページ
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_items_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Items<br>
+                    商品一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_customers_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Customers<br>
+                    顧客一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to rooms_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Messages<br>
+                    メッセージ一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_orders_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Orders<br>
+                    注文一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to destroy_shop_session_path, method: :delete, class: "js-hover" do %>
+                <li class="header-link">
+                  <i class="fas fa-sign-out-alt"><span>Sign Out</span></i>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
       </div>
     </header>
     <p class= "notice alert-success"><%= notice %></p>

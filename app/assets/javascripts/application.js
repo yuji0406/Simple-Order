@@ -38,8 +38,36 @@ $(document).on('turbolinks:load', function () {
   },function () {
   $(this).find('span,i').css({
     color: ""
+    });
   });
+
+  $(function () {
+    $('.menu-trigger').on('click', function(event) {
+      $(this).toggleClass('active');
+      $('.right-navbar').fadeToggle();
+      $('.right-navbar').toggleClass('active')
+      $('.right-navbar').find('ul').toggleClass('navbar');
+      event.preventDefault();
+    });
   });
+  
+   $(".shop-contents").hover(function () {
+    $(this).find(".shop-info").css({
+      color: "white"
+    });
+    $(this).css({
+      "background-color": "rgb(235,97,1)"
+    });
+  },function () {
+    $(this).find(".shop-info").css({
+      color: ""
+    });
+    $(this).css({
+      "background-color": ""
+    });
+  });
+
+
 });
 
 

@@ -1,6 +1,10 @@
 <div class="container-fluid">
   <div class="form-box">
-  <h3 class="page-title">業者一覧</h3>
+      <% if params[:shop_genre] %>
+      <h3 class="page-title"><%= params[:shop_genre] %>業者一覧</h3>
+    <% else %>
+      <h3 class="page-title">業者一覧</h3>
+    <% end %>
     <div class="row">
       <div class="search-box col-md-3">
         <%= form_with url: shops_search_path, method: :get, local: true do |f| %>
@@ -9,10 +13,11 @@
         <% end %>
         <div class="genre-search">
           <p>ジャンルから探す</p>
-          <%= link_to "全て", shops_path, class: "link genre-search-link" %><br>
-          <% @genres.each do |genre| %>
-          <%= link_to genre, shops_path(shop_genre: genre), class: "link genre-search-link" %>
+          <%= link_to "全て", shops_path, class: "link genre-search-link" %>
           <br>
+          <% @genres.each do |genre| %>
+            <%= link_to genre, shops_path(shop_genre: genre), class: "link genre-search-link" %>
+            <br>
           <% end %>
         </div>
          <div class="ranking">
@@ -44,21 +49,3 @@
     </div>
   </div>
 </div>
-<script>
-  $(".shop-contents").hover(function () {
-    console.log("test");
-    $(this).find(".shop-info").css({
-      color: "white"
-    });
-    $(this).css({
-      "background-color": "rgb(235,97,1)"
-    });
-  },function () {
-    $(this).find(".shop-info").css({
-      color: ""
-    });
-    $(this).css({
-      "background-color": ""
-    });
-  });
-</script>
