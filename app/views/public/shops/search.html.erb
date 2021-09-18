@@ -1,34 +1,38 @@
-<div class="container">
-<h3 class="text-center"><%= "「#{params[:keyward]}」" %>を含む業者一覧</h3>
-  <div class="d-flex">
-    <div class="search-box w-25">
-      <%= form_with url: shops_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyward %>
-        <%= f.submit :検索 %>
-      <% end %>
-      <div class="genre-search">
-        <p>ジャンルから探す</p>
-        <% @genres.each do |genre| %>
-          <%= link_to genre, shops_path(shop_genre: genre) %><br>
+<div class="container-fluid">
+  <div class="form_box">
+  <h3 class="page-title"><%= "「#{params[:keyward]}」" %>を含む業者一覧</h3>
+    <div class="row">
+      <div class="search-box col-md-3">
+        <%= form_with url: shops_search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyward %>
+          <%= f.submit "検索", class: "btn" %>
         <% end %>
-      </div>
-    </div>
-    <div class="shops w-75 d-flex flex-wrap">
-      <% @shops.each do |shop| %>
-        <div class="shop-contents w-50 d-flex">
-          <%= link_to shop_path(shop.id) do %>
-            <div class="shop-image w-50">
-              <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg",class:"w-100" %>
-              <p><%= shop.shop_name %></p>
-            </div>
-            <div class="shop-info w-50">
-              <%= shop.shop_genre %>
-              <p>会社概要</p>
-              <%= shop.introduction %>
-            </div>
+        <div class="genre-search">
+          <p>ジャンルから探す</p>
+          <%= link_to "全て", shops_path, class: "link genre-search-link" %><br>
+          <% @genres.each do |genre| %>
+            <%= link_to genre, shops_path(shop_genre: genre), class: "link genre-search-link" %>
+            <br>
           <% end %>
         </div>
-      <% end %>
+      </div>
+      <div class="col-lg-9 row">
+        <% @shops.each do |shop| %>
+          <div class="shop-contents col-md-4 col-sm-6">
+            <%= link_to shop_path(shop.id), class: "row" do %>
+              <div class="col-6">
+                <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg",class:"shop-index-image" %>
+              </div>
+              <div class="shop-info col-6 text-center">
+                <p><%= shop.shop_name %></p>
+                <%= shop.shop_genre %>
+                <p>会社概要</p>
+                <%= shop.introduction %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

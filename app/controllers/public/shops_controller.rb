@@ -20,7 +20,7 @@ class Public::ShopsController < PublicController
     if params[:keyward].present?
       @shops = Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{params[:keyward]}%", "%#{params[:keyward]}%")
     else
-      @shops = Shopo.none
+      @shops = Shop.none
     end
     @genres = Shop.distinct.pluck(:shop_genre)
   end

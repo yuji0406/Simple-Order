@@ -30,4 +30,18 @@ $(document).on('turbolinks:load', function () {
     $('.js-modal').fadeOut();
     return false;
   });
+
+  $('.js-hover').hover(function (){
+    $(this).find('span,i').css({
+      color: "white"
+    });
+  },function () {
+  $(this).find('span,i').css({
+    color: ""
+  });
+  });
 });
+
+
+
+
