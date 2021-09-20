@@ -134,7 +134,11 @@
         </a>
       </div>
     </header>
-    <p class= "notice alert-success"><%= notice %></p>
-    <p class= "alert-danger"><%= alert %></p>
+    <% if notice %>
+      <p class= "alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class= "alert-danger alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
 </html>

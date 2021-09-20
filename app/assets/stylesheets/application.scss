@@ -62,6 +62,12 @@ p{
   list-style: none;
   }
  }
+ .alert{
+  height: 44px;
+  text-align: center;
+  font-size: large;
+  line-height: 22px;
+ }
  .main-color{
   background-color: $main_color;
  }
@@ -195,7 +201,7 @@ header{
 // マイページ⬇︎
 
 .info-group{
- margin: 10px;
+ margin: 20px 0;
 }
 label{
  font-weight: bold;
@@ -246,6 +252,11 @@ label{
  p{
  margin: 20px 0;
  }
+}
+// 注文情報入力画面⬇︎
+.order-box{
+ border: 1px solid $main_color;
+ padding: 20px;
 }
 // モダールウインドウ⬇︎
 .modal{
