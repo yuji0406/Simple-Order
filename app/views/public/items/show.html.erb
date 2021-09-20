@@ -2,44 +2,44 @@
   <div class="form-box text-center">
     <h3 class="page-title"><%= @item.item_name%></h3>
     <div class="row">
-      <div class="col-md-4">
-        <%= attachment_image_tag @item, :item_image, fallback: "no_image.jpeg", class: "shop-mypage-image" %>
+      <div class="col-lg-4">
+        <%= attachment_image_tag @item, :item_image, fallback: "no_image.jpeg", class: "lg-image" %>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-4">
         <div class="info-group row">
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <label class="info-label">販売元</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <%= link_to @item.shop.shop_name, shop_path(@item.shop_id), class: "link" %>
           </div>
         </div>
         <div class="info-group row">
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <label class="info-label">価格</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <%= "#{@item.tax_price}円（税込）" %>
           </div>
         </div>
         <div class="info-group row">
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <label class="info-label">ジャンル</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <%= @item.item_genre %>
           </div>
         </div>
         <div class="info-group row">
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <label class="info-label">商品説明</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <%= @item.item_introduction %>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-4">
         <%= form_with model: @cart_item, local: true, class: "" do |f| %>
         <div class="row item-form">
           <%= f.label "数量", class: "label-form col-6" %>

@@ -1,71 +1,68 @@
-<div class="container-xl">
-  <div class="d-flex flex-wrap">
-    <% @shops.each do |shop| %>
-      <div class="w-100 d-flex">
-        <div class="w-25 buy-shop d-flex flex-wrap">
-          <div class="w-50 shop-image">
-            <%= attachment_image_tag shop[1].first.shop, :shop_image, class: "w-100", fallback: "no_image.jpeg" %>
-          </div>
-          <div class="w-50">
-            <%= shop[1].first.shop.shop_name %>
-          </div>
-          <%= link_to "この業者の商品を空にする", cart_items_empty_path(shop_id: shop[1].first.shop.id), method: :delete, class: "btn" %>
+<div class="container-fluid">
+  <div class="form-box">
+    <h3 class="page-title">カート</h3>
+    <div class="row">
+      <% @shops.each do |shop| %>
+        <div class="col-lg-3 col-md-4">
+          <%= link_to shop_path(shop[1].first.shop.id) do %>
+            <div class="hover-opacity">
+              <%= attachment_image_tag shop[1].first.shop, :shop_image, class: "sm-image", fallback: "no_image.jpeg" %>
+              <%= shop[1].first.shop.shop_name %>
+            </div>
+          <% end %>
         </div>
-        <% @sum_price = 0 %>
-
-        <div class="flex-wrap d-flex w-75">
+        <div class="col-lg-6 col-md-8 border-left border-right">
+          <% @sum_price = 0 %>
           <% shop[1].each do |cart_item| %>
-            <div class="w-100 d-flex cart-items">
-              <div class="item-image w-25">
-                <%= attachment_image_tag cart_item.item, :item_image, class: "w-100", fallback: "no_image.jpeg" %>
+            <div class="row cart-item ">
+              <div class="col-sm-3 text-center">
+                <%= attachment_image_tag cart_item.item, :item_image, class: "sm-image", fallback: "no_image.jpeg" %>
               </div>
-              <div class="w-75 d-flex item-info">
-                <div class="w-50">
-                  <p><%= cart_item.item.item_name %></p>
-                  <p><%= cart_item.item.tax_price %>（税込）</p>
-                </div>
-                <div class="w-50">
-                  <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
-                    <%= f.label "数量" %>
+              <div class="col-sm-4 text-center">
+                <p><%= cart_item.item.item_name %></p>
+                <p><%= cart_item.item.tax_price %>円(税込)</p>
+              </div>
+              <div class="col-sm-5 text-right">
+                 <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
+                    <%= f.label "数量:" %>
                     <%= f.number_field :amount, min: 1, max:100 %>
-                    <%= f.submit "変更", class: "btn btn-success" %>
+                    <%= f.submit "変更", class: "btn" %>
                   <% end %>
-                  <label>小計</label>
+                  <label>小計:</label>
                   <%= cart_item.item.tax_price*cart_item.amount %>
-                  <%= link_to "削除", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger"%>
-                </div>
+                  <%= link_to "削除", cart_item_path(cart_item.id), method: :delete, class: "btn"%>
               </div>
             </div>
             <% @sum_price += cart_item.item.tax_price*cart_item.amount %>
           <% end %>
         </div>
-      <div class="w-25 prices">
-        <table>
-          <tr>
-            <th>小計金額:</th>
-            <td><%= @sum_price %></td>
-          </tr>
-          <tr>
+        <div class="col-lg-3 text-right">
+          <div class="prices">
+            <label>小計金額：</label>
+            <%= @sum_price %>
+          </div>
+          <div class="prices">
+            <label>送料：</label>
             <% if @sum_price >= 3000 %>
-            <% @postage = 0 %>
+              <% @postage = 0 %>
             <% else %>
-            <% @postage = 400 %>
+              <% @postage = 400 %>
             <% end %>
-            <th>送料：</th>
-            <td><%= @postage %></td>
-          </tr>
-          <tr>
-            <th>合計金額：</th>
-            <td><%= @sum_price + @postage %></td>
-          </tr>
-        </table>
-        <div class="buttons">
-          <%= link_to "レジに進む", new_order_path(shop_id: shop[1].first.shop.id,total_price: @sum_price + @postage, sum_price: @sum_price), class: "btn btn-primary" %>
-          <%= link_to "買い物を続ける", items_path, class: "btn btn-warning" %>
+            <%= @postage %>
+          </div>
+          <div class="prices">
+            <label>合計金額：</label>
+            <%= @sum_price %>
+          </div>
+          <div class="buttons text-center">
+            <p><%= link_to "レジに進む", new_order_path(shop_id: shop[1].first.shop.id,total_price: @sum_price + @postage, sum_price: @sum_price), class: "btn" %></p>
+            <p><%= link_to "買い物を続ける", items_path, class: "btn" %></p>
+          </div>
         </div>
-      </div>
-
+      <% end %>
+    </div>
   </div>
-  <% end %>
 </div>
-</div>
+
+
+ 

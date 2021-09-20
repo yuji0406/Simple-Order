@@ -34,7 +34,7 @@
           <div class="shop-contents col-md-4 col-sm-6">
             <%= link_to shop_path(shop.id), class: "row" do %>
               <div class="col-6">
-                <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg", class:"shop-index-image" %>
+                <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg", class:"sm-image" %>
               </div>
               <div class="shop-info col-6 text-center">
                 <p><%= shop.shop_name %></p>
