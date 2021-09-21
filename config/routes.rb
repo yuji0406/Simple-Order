@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :shops do
+    get 'orders/search' => 'orders#search'
     resources :orders, only:[:show,:index,:update]
     resources :customers, only:[:index,:show]
     resource :mypages, only:[:show,:edit,:update]

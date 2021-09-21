@@ -5,10 +5,19 @@ class Shops::OrdersController < ShopsController
   end
 
   def index
-    if params[:customer_id]
-      @orders = Order.where(customer_id: params[:customer_id], shop_id: current_shop.id)
+    if params[:delivery_status]
+      @orders = Order.where(delivery_status: params[:delivery_status], shop_id: current_shop.id).order(created_at: 'DESC')
     else
-    @orders = Order.where(shop_id: current_shop.id)
+      @orders = Order.where(shop_id: current_shop.id)
+    end
+  end
+
+  def search
+    if params[:keyward].present?
+      customer = Customer.find_by('store_name LIKE ?', "%#{params[:keyward]}%")
+      @orders = customer.orders.where(shop_id: current_shop.id).order(created_at: 'DESC')
+    else
+      @orders = Order.none
     end
   end
 
