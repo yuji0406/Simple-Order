@@ -1,69 +1,96 @@
-<div class="container">
-  <h2><%= "#{@order.shop.shop_name}：#{@order.created_at}" %>の注文</h2>
-  <div class="w-100 order-info d-flex">
-    <div class="w-50">
-      <p>お届け先情報</p>
-      <table>
-        <tr>
-          <th>店舗名</th>
-          <td><%= current_customer.store_name %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td><%= current_customer.address %></td>
-        </tr>
-        <tr>
-          <th>郵便番号</th>
-          <td><%= current_customer.postal_code %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= current_customer.phone_number %></td>
-        </tr>
-      </table>
-    </div>
-    <div class="w-25">
-      <label>お支払い方法</label><br>
-      <%= @order.payment %>
-      <label>納品日</label><br>
-      <%= @order.delivery_on %>
-      <label>配送状況</label><br>
-      <%= @order.delivery_status %>
-    </div>
-    <div class="w-25 prices text-center">
-      <table class="mx-auto">
-        <tr>
-          <th>小計金額:</th>
-          <td><%= @order.total_price - @order.order_postage %></td>
-        </tr>
-        <tr>
-          <th>送料：</th>
-          <td><%= @order.order_postage %></td>
-        </tr>
-        <tr>
-          <th>合計金額：</th>
-          <td><%= @order.total_price %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="order-items">
-    <% @order.order_items.each do |order_item| %>
-    <div class="w-100 order-item text-center d-flex my-4">
-      <div class="item_image">
-        <%= attachment_image_tag order_item.item, :item_image, class: "w-50", fallback:"no_image.jpeg" %>
+<div class="container-fluid">
+  <div class="form-box col-10 mx-auto">
+    <h3 class="page-title"><%= "#{@order.shop.shop_name}:#{@order.created_at.to_s(:datetime)}" %>のご注文情報</h3>
+    <div class="order-box row">
+      <div class="col-md-6 col-lg-6">
+        <p>お届け先情報</p>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label>店舗名：</label>
+          </div>
+          <div class="col-md-8">
+            <p><%= current_customer.store_name %></p>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label>郵便番号：</label>
+          </div>
+          <div class="col-md-8">
+            <p><%= current_customer.postal_code %></p>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label>住所：</label>
+          </div>
+          <div class="col-md-8">
+            <p><%= current_customer.address %></p>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label>電話番号：</label>
+          </div>
+          <div class="col-md-8">
+            <p><%= current_customer.phone_number %></p>
+          </div>
+        </div>
       </div>
-      <div class="item-info d-flex">
-        <label>商品名：</label>
-        <%= link_to order_item.item.item_name, item_path(order_item.item.id) %>
-        <label>単価：</label>
-        <%= "#{order_item.price}円" %>
-        <label>数量：</label>
-        <%= order_item.amount %>
-        <label>小計：</label>
-        <%= "#{order_item.price*order_item.amount}円" %>
+      <div class="col-md-6 col-lg-3">
+        <div class="info-group">
+          <label>お支払い方法</label><br>
+          <%= @order.payment %>
+        </div>
+        <div class="info-group">
+          <label>納品日</label><br>
+          <%= @order.delivery_on.to_s(:datetime) %>
+        </div>
+        <div class="info-group">
+          <label>配送状況</label><br>
+          <%= @order.delivery_status %>
+        </div>
+      </div>
+      <div class="col-lg-3 text-right">
+        <div class="prices">
+          <label>小計金額：</label>
+          <%= "#{@order.total_price - @order.order_postage}円" %>
+        </div>
+        <div class="prices">
+          <label>送料：</label>
+          <%= "#{@order.order_postage}円" %>
+        </div>
+        <div class="prices">
+          <label>合計金額：</label>
+          <%= "#{@order.total_price}円"%>
+        </div>
       </div>
     </div>
-    <% end %>
+
+    <div class="cart-item-boxs border-bottom">
+      <% @order.order_items.each do |order_item| %>
+        <%= link_to item_path(order_item.item.id), class: "item-link" do %>
+          <div class="row cart-item hover-opacity align-items-center">
+            <div class="col-sm-3 col-6 text-center">
+              <%= attachment_image_tag order_item.item, :item_image, class: "sm-image", fallback: "no_image.jpeg" %>
+            </div>
+            <div class="col-sm-4 col-6 text-center">
+              <p><%= order_item.item.item_name %></p>
+              <p><%= order_item.item.tax_price %>円(税込)</p>
+            </div>
+            <div class="col-sm-5 text-right">
+              <div class="info-group">
+                <label>数量</label>
+                <%= order_item.amount %>
+              </div>
+              <div class="info-group">
+                <label>小計:</label>
+                <%= "#{order_item.item.tax_price*order_item.amount}円" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

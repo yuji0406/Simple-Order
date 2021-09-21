@@ -154,14 +154,10 @@ header{
   right: 0;
   background: $main_color;
   color: #fff;
-  width: 25%;
+  width: 100%;
   min-height: 100%;
   display: none;
   z-index: 9;
- }
- .right-navbar li{
-  text-align: center;
-  margin-bottom: 20px;
  }
  .right-navbar a{
   color: #fff;
@@ -226,6 +222,7 @@ label{
  color: gray;
 }
 .hover-opacity:hover{
+ color: black;
  background-color: #e0e0e0;
  opacity: 0.7;
 }
@@ -240,6 +237,20 @@ label{
  .prices{
   font-size: large;
  }
+ .order-item{
+  background-color: $base_color;
+ }
+ .order-shop{
+  margin-bottom: 20px;
+ }
+ .order-item-info{
+  position: relative;
+  span{
+   position: absolute;
+   bottom: 5px;
+   right: 5px;
+  }
+ }
 // indexページここまで
 // showページ⬇︎
 .item-form{
@@ -253,6 +264,11 @@ label{
  margin: 20px 0;
  }
 }
+.item-link{
+ cursor: pointer;
+ color: black;
+}
+
 // 注文情報入力画面⬇︎
 .order-box{
  border: 1px solid $main_color;

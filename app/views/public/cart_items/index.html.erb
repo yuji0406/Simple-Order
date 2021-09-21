@@ -31,7 +31,7 @@
                     <% end %>
                     <label>小計:</label>
                     <%= "#{cart_item.item.tax_price*cart_item.amount}円" %>
-                    <%= link_to "削除", cart_item_path(cart_item.id), method: :delete, class: "btn"%>
+                    <%= link_to "削除", cart_item_path(cart_item.id), method: :delete, class: "btn", data: {confirm: "#{cart_item.item.item_name}をカートから削除しますか？"} %>
                 </div>
               </div>
               <% @sum_price += cart_item.item.tax_price*cart_item.amount %>
@@ -58,6 +58,7 @@
             <div class="buttons text-center">
               <p><%= link_to "レジに進む", new_order_path(shop_id: shop[1].first.shop.id,total_price: @sum_price + @postage, sum_price: @sum_price), class: "btn" %></p>
               <p><%= link_to "買い物を続ける", items_path, class: "btn" %></p>
+              <p><%= link_to "この業者の商品を空にする", cart_items_empty_path(shop_id: shop[1].first.shop.id), method: :delete, class: "btn", data: {confirm: "#{shop[1].first.shop.shop_name}の商品をカートから全て削除しますか？"} %></p>
             </div>
           </div>
         </div>

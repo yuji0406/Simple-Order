@@ -16,13 +16,13 @@ class Public::CartItemsController < PublicController
   def empty
     cart_items = CartItem.where(customer_id: current_customer.id, shop_id: params[:shop_id])
     cart_items.destroy_all
-    redirect_to cart_items_path
+    redirect_to cart_items_path, notice = "商品を削除しました。"
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
-    redirect_to cart_items_path
+    redirect_to cart_items_path, notice = "商品を削除しました。"
   end
 
   def create

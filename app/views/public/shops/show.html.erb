@@ -88,7 +88,11 @@
             <% end %>
           <% end %>
         </p>
-        <% unless Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
+        <% if Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
+          <p class="link">
+            <%= link_to "この業者をお気に入りから削除する", favorite_path(shop_id: @shop.id), method: :delete, class: "btn", data: {confirm: "お気に入りから削除しますか？"} %>
+          </p>
+        <% else %>
           <p class="link">
             <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn"%>
           </p>

@@ -10,7 +10,7 @@ class Public::FavoritesController < PublicController
   end
 
   def destroy
-    favorite = Favorite.find(params[:id])
+    favorite = Favorite.find_by(customer_id: current_customer, shop_id: params[:shop_id])
     favorite.destroy
     redirect_to favorites_path, alert: "お気に入りから削除しました。"
   end
