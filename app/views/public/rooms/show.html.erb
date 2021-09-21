@@ -1,37 +1,57 @@
-<div class="container">
-  <% if customer_signed_in? %>
-    <p><%= @shop.shop_name %>とのチャットルーム</p>
-    <div class="message-room">
-      <% @messages.each do |message| %>
-        <% if message.is_customer %>
-          <div class="right-message">
-            <%= message.content %>
-          </div>
-        <% else %>
-          <div class="left-message">
-            <% message.content %>
-          </div>
+<div class="container-xl">
+  <div class="form-box col-lg-10 mx-auto">
+    <% if customer_signed_in? %>
+      <h3 class="page-title"><%= @shop.shop_name %>とのチャットルーム</h3>
+      <div class="message-room">
+        <% @messages.each do |message| %>
+          <% if message.is_customer %>
+            <div class="text-right my-3">
+              <span><%= current_customer.store_name %></span>
+              <div class="right-message">
+                <%= message.content %>
+                <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+              </div>
+            </div>
+          <% else %>
+            <div class="text-left my-3">
+              <div class="left-message">
+                <%= message.content %>
+                <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+              </div>
+              <span><%= @shop.shop_name %></span>
+            </div>
+          <% end %>
         <% end %>
+      </div>
+    <% elsif shop_signed_in? %>
+      <h3 class="page-title"><%= @customer.store_name %>とのチャットルーム</h3>
+      <div class="message-room">
+        <% @messages.each do |message| %>
+          <% if message.is_customer %>
+          <div class="text-left my-3">
+            <div class="left-message">
+              <%= message.content %>
+              <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+            </div>
+            <span><%= @customer.store_name %></span>
+          </div>
+          <% else %>
+          <div class="text-right my-3">
+            <span><%= current_shop.shop_name %></span>
+            <div class="right-message">
+              <%= message.content %>
+              <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="mt-4">
+      <%= form_with model: [@room, @message], url: room_messages_path(@room.id), class: "row justify-content-center", local: true do |f| %>
+        <%= f.text_field :content, class: "form-control col-9" %>
+        <%= f.submit "送信", class: "btn col-2" %>
       <% end %>
     </div>
-  <% elsif shop_signed_in? %>
-    <p><%= @customer.store_name %>とのチャットルーム</p>
-    <div class="message-room">
-      <% @messages.each do |message| %>
-        <% if message.is_customer %>
-          <div class="left-message">
-            <%= message.content %>
-          </div>
-        <% else %>
-          <div class="right-message">
-            <%= message.content %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-  <%= form_with model: [@room, @message], url: room_messages_path(@room.id), local: true do |f| %>
-    <%= f.text_field :content %>
-    <%= f.submit "送信", class: "btn" %>
-  <% end %>
+  </div>
 </div>

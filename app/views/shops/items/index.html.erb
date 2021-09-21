@@ -17,7 +17,7 @@
       <div class="col-lg-9 row">
         <% @items.each do |item| %>
           <div class="shop-contents col-md-4 col-sm-6">
-            <%= link_to item_path(item.id), class: "row" do %>
+            <%= link_to shops_item_path(item.id), class: "row" do %>
               <div class="col-6">
                 <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
               </div>

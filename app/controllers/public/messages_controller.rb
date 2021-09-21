@@ -1,4 +1,4 @@
-class Public::MessagesController < PublicController
+class Public::MessagesController < ApplicationController
   def create
     room = Room.find(params[:room_id])
     message = Message.new(message_params)

@@ -67,7 +67,7 @@
             <label class="info-label">会社紹介文</label>
           </div>
           <div class="col-lg-6">
-            <%= @shop.introduction%>
+            <%= @shop.introduction %>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@
         <tr id="js-hover">
           <td><%= review.customer.store_name %></td>
           <td class= "read-only-star" data-score="<%= review.rate %>"></td>
-          <td><%= link_to review.content, review_path(review.id)  %></td>
+          <td><%= link_to review.content.truncate(15), review_path(review.id)  %></td>
           <% if review.customer_id == current_customer.id %>
             <td><%= link_to "削除", review_path(review.id), method: :delete, class: "btn" %></td>
           <% else %>

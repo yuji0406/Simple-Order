@@ -40,7 +40,7 @@
                 <p><%= shop.shop_name %></p>
                 <%= shop.shop_genre %>
                 <p>会社概要</p>
-                <%= shop.introduction %>
+                <%= shop.introduction.truncate(15) %>
               </div>
             <% end %>
           </div>

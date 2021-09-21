@@ -1,17 +1,25 @@
-<div class="container">
-  <h2>メッセージ一覧</h2>
-  <div class="rooms">
-    <% @rooms.each do |room| %>
-      <%= link_to room_path(room.id) do %>
-        <div class="room-box">
-          <% if customer_signed_in? %>
-            <%= room.shop.shop_name %>
-          <% elsif shop_signed_in? %>
-            <%= room.customer.store_name %>
-          <% end %>
-          <%#= room.messages.first.content %>
-        </div>
+<div class="container-xl">
+  <div class="form-box col-md-8 mx-auto">
+    <h3 class="page-title">メッセージ一覧</h3>
+    <div class="rooms">
+      <% @rooms.each do |room| %>
+        <%= link_to room_path(room.id) do %>
+          <div class="room-box row hover-opacity border-bottom">
+            <% if customer_signed_in? %>
+              <div class="col-6">
+                @<%= room.shop.shop_name %>
+              </div>
+            <% elsif shop_signed_in? %>
+              <div class="col-6">
+                @<%= room.customer.store_name %>
+              </div>
+            <% end %>
+            <div class="col-6">
+              <%= room.messages.last.content.truncate(15) %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

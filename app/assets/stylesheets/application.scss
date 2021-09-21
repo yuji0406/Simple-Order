@@ -264,6 +264,10 @@ label{
    right: 5px;
   }
  }
+ .room-box{
+  padding: 20px 0;
+  margin-bottom: 10px;
+ }
 // indexページここまで
 // showページ⬇︎
 .item-form{
@@ -282,6 +286,12 @@ label{
  color: black;
 }
 
+.datetime{
+ position: absolute;
+ bottom: 5px;
+ right: 5px;
+ font-size: 15px;
+ }
 // 注文情報入力画面⬇︎
 .order-box{
  border: 1px solid $main_color;
@@ -315,9 +325,53 @@ label{
 // .js-hover-links{
 //  background-color: ;
 // }
-.left-message{
- text-align: left;
+
+.right-message {
+     position: relative;
+     display: inline-block;
+     min-width: 200px;
+     max-width: 50%;
+     text-align: center;
+     color:#FFF;
+     padding: 25px;
+     background-color: $main_color;
+     border-radius: 5px;
+     font-size: 14px;
+
 }
-.right-message{
- text-align: right;
+.right-message:before {
+     content: '';
+     position: absolute;
+     display: block;
+     z-index: 1;
+     border-style: solid;
+     border-color: transparent $main_color;
+     border-width: 10px 0 10px 10px;
+     top: 50%;
+     right: -10px;
+     margin-top: -10px;
+}
+.left-message {
+     position: relative;
+     display: inline-block;
+     min-width: 200px;
+     max-width: 50%;
+     text-align: center;
+     color: #fff;
+     padding: 25px;
+     background-color: darkgray;
+     border-radius: 5px;
+     font-size: 14px;
+}
+.left-message:before {
+     content: '';
+     position: absolute;
+     display: block;
+     z-index: 1;
+     border-style: solid;
+     border-color: transparent darkgray;
+     border-width: 10px 10px 10px 0;
+     top: 50%;
+     left: -10px;
+     margin-top: -10px;
 }
