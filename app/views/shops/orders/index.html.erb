@@ -2,7 +2,7 @@
   <div class="form-box">
     <h3 class="page-title">注文履歴一覧</h3>
     <div class="row">
-      <div class="sarch-box col-md-3">
+      <div class="search-box col-md-3">
         <p>店舗名検索</p>
           <%= form_with url: shops_orders_search_path, method: :get, local: true do |f| %>
             <%= f.text_field :keyward %>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :orders, only:[:show,:index,:update]
     resources :customers, only:[:index,:show]
     resource :mypages, only:[:show,:edit,:update]
+    get 'items/search' => 'items#search'
     resources :items, except:[:destroy]
     resources :reviews, only:[:show]
     get 'homes' => 'homes#top'

@@ -71,6 +71,15 @@ p{
  .main-color{
   background-color: $main_color;
  }
+ .fa-images{
+  font-size: 20px;
+  cursor: pointer;
+  background-color: $main_color;
+  border-radius: 20px;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+ }
 // header⬇︎
 .site-logo{
  width: 145px;
@@ -195,7 +204,11 @@ header{
 // ログイン　新規登録ここまで
 
 // マイページ⬇︎
-
+.search-box{
+ p{
+  margin: 10px 0;
+ }
+}
 .info-group{
  margin: 20px 0;
 }
