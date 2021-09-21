@@ -1,12 +1,15 @@
 <div class="container-xl">
-  <h3><%= @review.customer.store_name %>さんのレビュー</h3>
-  <div class= "read-only-star" data-score="<%= @review.rate %>">評価：</div>
-  <div class="content">
-    <label>レビュー</label>
-    <p><%= @review.content %></p>
-  </div>
-  <div class="text-right">
-    <%= @review.created_at.to_s(:datetime) %>
+  <div class="form-box col-md-8 mx-auto">
+    <h3 class="page-title"><%= @review.customer.store_name %>様のレビュー</h3>
+    <div class= "read-only-star" data-score="<%= @review.rate %>">評価：</div>
+    <div class="content">
+      <label>レビュー</label>
+      <p><%= @review.content %></p>
+    </div>
+    <div class="text-right">
+      <%= "To #{@review.shop.shop_name}: " %>
+      <%= @review.created_at.to_s(:datetime) %>
+    </div>
   </div>
 </div>
 <script>

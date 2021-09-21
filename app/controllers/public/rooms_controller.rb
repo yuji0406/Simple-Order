@@ -1,4 +1,5 @@
 class Public::RoomsController < ApplicationController
+
   def index
     if customer_signed_in?
       @rooms = current_customer.rooms

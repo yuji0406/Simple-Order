@@ -1,4 +1,4 @@
-class Public::ReviewsController < PublicController
+class Public::ReviewsController < ApplicationController
   def create
     review = Review.new(review_params)
     if review.save
@@ -13,9 +13,15 @@ class Public::ReviewsController < PublicController
     review.destroy
     redirect_to shop_path(review.shop.id), notice: "口コミを削除しました。"
   end
-  
+
   def show
-    @review = Review.find(params[:id])
+    if customer_signed_in?
+      @review = Review.find(params[:id])
+    elsif shop_signed_in?
+      @review = Review.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   private

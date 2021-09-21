@@ -1,15 +1,16 @@
 class Shops::CustomersController < ShopsController
   def index
-    @order = Order.where(shop_id: current_shop.id)
-    @customer = []
-    @order.each do |order|
-      @customer << order.customer
+    orders = Order.where(shop_id: current_shop.id)
+    ordered_customers = []
+    orders.each do |order|
+      ordered_customers << order.customer
     end
-    @customers = @customer.uniq
+    @customers = ordered_customers.uniq
   end
+
 
   def show
     @customer = Customer.find(params[:id])
-    @reviews = Review.where(customer_id: params[:id])
+    @reviews = Review.where(customer_id: params[:id], shop_id: current_shop.id)
   end
 end

@@ -12,7 +12,8 @@ class Shops::ItemsController < ShopsController
 
   def search
     if params[:keyward].present?
-      @items = Item.where('item_name LIKE ?', "%#{params[:keyward]}%").order(created_at: 'DESC')
+      items = Item.where('item_name LIKE ?', "%#{params[:keyward]}%",)
+      @items = items.where(shop_id: current_shop.id).order(created_at: 'DESC')
     else
       @items = Item.none
     end

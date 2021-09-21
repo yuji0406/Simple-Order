@@ -1,47 +1,87 @@
-<div class="container">
-  <div class="d-flex">
-    <div class="w-75 customer-info">
-      <h3 class="customer-name">
-        <%= @customer.store_name %>様
-      </h3>
-      <div class="customer-contens">
-        <label>店舗名</label>
-        <%= @customer.store_name %>
+<div class="container-fluid">
+  <div class="form-box">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 class="page-title"><%= "#{@customer.store_name}様のプロフィール"%></h3>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label class="info-label">店舗名</label>
+          </div>
+          <div class="col-md-8">
+            <%= @customer.store_name %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label class="info-label">責任者氏名</label>
+          </div>
+          <div class="col-md-8">
+            <%= @customer.store_manager %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label class="info-label">郵便番号</label>
+          </div>
+          <div class="col-md-8">
+            <%= @customer.postal_code %>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label class="info-label">住所</label>
+          </div>
+          <div class="col-md-8">
+            <%= @customer.address%>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label class="info-label">電話番号</label>
+          </div>
+          <div class="col-md-8">
+            <%= @customer.phone_number%>
+          </div>
+        </div>
+        <div class="info-group row">
+          <div class="col-md-4">
+            <label class="info-label">メールアドレス</label>
+          </div>
+          <div class="col-md-8">
+            <%= @customer.email%>
+          </div>
+        </div>
+        <div>
+          <% link_to "注文一覧を見る", shops_orders_path(customer_id: params[:id]), class: "btn btn-warning" %>
+          <% link_to "メッセージを送る", rooms_path, class: "btn btn-primary" %>
+        </div>
       </div>
-      <div class="customer-contens">
-        <label>責任者氏名</label>
-        <%= @customer.store_manager %>
+      <div class="col-lg-6">
+        <h3 class="page-title"><%= "#{@customer.store_name}様のレビュー"%></h3>
+        <table class="table">
+          <% @reviews.each do |review| %>
+            <tr>
+              <td class="read-only-star" data-score="<%= review.rate %>"></td>
+              <td><%= review.created_at.to_s(:datetime) %></td>
+              <td><%= link_to review.content.truncate(10), review_path(review.id) %></td>
+            </tr>
+          <% end %>
+        </table>
       </div>
-      <div class="customer-contens">
-        <label>郵便番号</label>
-        <%= @customer.postal_code %>
-      </div>
-      <div class="customer-contens">
-        <label>住所</label>
-        <%= @customer.address %>
-      </div>
-      <div class="customer-contens">
-        <label>電話番号</label>
-        <%= @customer.phone_number %>
-      </div>
-      <div class="customer-contens">
-        <label>メールアドレス</label>
-        <%= @customer.email %>
-      </div>
-      <% link_to "注文一覧を見る", shops_orders_path(customer_id: params[:id]), class: "btn btn-warning" %>
-      <% link_to "メッセージを送る", rooms_path, class: "btn btn-primary" %>
-    </div>
-    <div class="w-25 review-info">
-      <h3 class="text-align-center">レビュー</h3>
-      <table class="table">
-        <% @reviews.each do |review| %>
-        <tr>
-          <td><%= review.rate %></td>
-          <td><%= review.created_at %></td>
-          <td><%= link_to review.content.truncate(10), shops_review_path(review.id) %></td>
-        </tr>
-        <% end %>
-      </table>
     </div>
   </div>
 </div>
+<script>
+  $('.read-only-star').empty();
+    $('.read-only-star').raty({
+      readOnly: true,
+      half: true,
+      size: 36,
+      starOff: "<%= asset_path('star-off.png') %>",
+      starOn: "<%= asset_path('star-on.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      score: function () {
+        return $(this).attr('data-score');
+      }
+    });
+</script>

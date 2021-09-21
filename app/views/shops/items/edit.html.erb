@@ -11,7 +11,7 @@
           <div class="form-group row">
             <div class="col">
             <label>
-              <i class="fas fa-images">画像を選択する</i>
+              <i class="fas fa-images">商品画像を選択する</i>
               <%= f.attachment_field :item_image, style: "display: none;" %>
             </label>
             </div>
@@ -55,11 +55,11 @@
             <div class="col">
               <div>
                 <%= f.radio_button :sale_status, :true, checked: true %>
-                <%= f.label "在庫あり", class: "d-inline-block" %>
+                <%= f.label :sale_status, "在庫あり", class: "d-inline-block" %>
               </div>
               <div>
                 <%= f.radio_button :sale_status, :false %>
-                <%= f.label "品切れ", class: "d-inline-block" %>
+                <%= f.label :sale_status, "品切れ", class: "d-inline-block" %>
               </div>
             </div>
           </div>
