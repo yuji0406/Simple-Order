@@ -1,9 +1,65 @@
-<h1>Public::Homes#top</h1>
-
-<%= link_to "新規登録", new_customer_registration_path %>
-<%= link_to "ログイン", new_customer_session_path %>
-
-<p>Find me in app/views/public/homes/top.html.erb</p>
-
-
-<p>jQuery稼働テスト（未稼働）</p>
+<div class="top">
+  <div class="top-image">
+    <%#= image_tag "top2.jpg", class: "top-image" %>
+    <div class="top-view-box">
+      <div class="top-view-text">
+        <p class="app-title">Simple-Order</p>
+        <p class="app-sub-title">発注を楽に、簡単に</p>
+        <p>Simple-Orderへようこそ。早速始めましょう。</p>
+        <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
+        <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
+      </div>
+    </div>
+    <div class="scrolldown"><span>Scroll</span></div>
+  </div>
+  <div class="sections">
+    <section class="greeting">
+      <h2 class="section-title">Simple-Orderとは？</h2>
+      <div class="introduction">
+        <p>複数の業者への発注を一括で管理することができるサービスです。</p>
+        <p>毎日の発注業務を効率化し時間を有効活用しましょう。</p>
+        <p>スマートフォン、タブレットにも対応しております。</p>
+      </div>
+    </section>
+    <section class="how-to-guide">
+      <h2 class="section-title">How To Use<br>使い方</h2>
+      <div class="row">
+        <div class="introduction col-md-6">
+          <h3 class="step">STEP.1</h3>
+          <h4 class="section-sub-title">Sign Up<br>登録する</h4>
+          <p>まずはアカウントを作成しましょう。<br>
+          店舗様の情報をご入力ください。
+          </p>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag 'sign_up.jpg', class: "how-to-image" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= image_tag 'select.jpg', class: "how-to-image" %>
+        </div>
+        <div class="col-md-6 introduction">
+          <h3 class="section-sub-title">STEP.1</h3>
+          <h4>Sign Up<br>登録する</h4>
+          <p>まず店舗様の情報を入力していただきます。<br>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="introduction col-md-6">
+          <h3 class="section-sub-title">STEP.1</h3>
+          <h4>Sign Up<br>登録する</h4>
+          <p>まず店舗様の情報を入力していただきます。<br>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag 'order.jpg', class: "how-to-image" %>
+        </div>
+      </div>
+    </section>
+    <section class="function">
+      <h2 class="section-title">Function<br>機能紹介</h2>
+    </section>
+  </div>
+</div>

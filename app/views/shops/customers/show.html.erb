@@ -58,19 +58,26 @@
       </div>
       <div class="col-lg-6">
         <h3 class="page-title"><%= "#{@customer.store_name}様のレビュー"%></h3>
-        <table class="table">
+        <div class="reviews">
           <% @reviews.each do |review| %>
-            <tr>
-              <td class="read-only-star" data-score="<%= review.rate %>"></td>
-              <td><%= review.created_at.to_s(:datetime) %></td>
-              <td><%= link_to review.content.truncate(10), review_path(review.id) %></td>
-            </tr>
-          <% end %>
-        </table>
+            <div class="row info-group">
+              <div class="col-lg-5">
+                <div id="star" class="read-only-star" data-score="<%= review.rate%>"></div>
+              </div>
+              <div class="col-lg-4">
+                <%= review.created_at.to_s(:datetime) %>
+              </div>
+              <div class="col-lg-3">
+                <%= link_to review.content.truncate(10), review_path(review.id) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <script>
   $('.read-only-star').empty();
     $('.read-only-star').raty({

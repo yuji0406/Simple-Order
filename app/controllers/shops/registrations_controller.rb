@@ -40,12 +40,12 @@ class Shops::RegistrationsController < Devise::RegistrationsController
   # end
 
    protected
-   
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name,:manager,:introduction,:shop_genre,:postage,:address,:postal_code,:phone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name,:manager,:shop_genre,:postage,:address,:postal_code,:phone_number])
   end
-  
- 
+
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

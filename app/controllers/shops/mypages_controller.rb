@@ -9,7 +9,7 @@ class Shops::MypagesController < ShopsController
   def update
     @shop = current_shop
     if @shop.update(shop_params)
-      redirect_to action: "show"
+      redirect_to shops_mypages_path, notice: "会員情報を変更しました。"
     else
       render :edit
     end

@@ -2,12 +2,11 @@ class Shops::ItemsController < ShopsController
   before_action :set_item,only:[:show,:edit,:update]
 
   def index
-    if params[:genre]
-      @items = Item.where(item_genre: params[:genre], shop_id: current_shop.id).order(created_at: 'DESC')
+    if params[:item_genre]
+      @items = Item.where(item_genre: params[:item_genre], shop_id: current_shop.id).order(created_at: 'DESC')
     else
       @items = Item.where(shop_id: current_shop.id).order(created_at: 'DESC')
     end
-    @genres = Item.distinct.pluck(:item_genre)
   end
 
   def search
@@ -17,7 +16,6 @@ class Shops::ItemsController < ShopsController
     else
       @items = Item.none
     end
-    @genres = Item.distinct.pluck(:item_genre)
   end
 
   def new

@@ -14,7 +14,6 @@ class Public::ItemsController < PublicController
     else
       @items = Item.all.order(created_at: 'DESC')
     end
-      @genres = Item.distinct.pluck(:item_genre)
   end
 
   def search
@@ -23,6 +22,5 @@ class Public::ItemsController < PublicController
     else
       @items = Item.none
     end
-    @genres = Item.distinct.pluck(:item_genre)
   end
 end

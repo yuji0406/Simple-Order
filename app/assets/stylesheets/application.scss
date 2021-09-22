@@ -40,7 +40,7 @@ $text_color: rgba(221,220,214,0.7);
 }
 body{
  background-color: $base_color;
- font-family: 'OradanoGSRR', serif;
+ font-family: monospace, serif;
 }
 ul{
  margin: 0;
@@ -51,6 +51,7 @@ p{
 }
 .page-title{
  text-align: center;
+ font-size: 1.5em;
 }
 .errors{
  text-align: center;
@@ -79,6 +80,16 @@ p{
   color: #fff;
   padding: 10px 20px;
   margin-top: 20px;
+ }
+ .btn{
+   padding: 5px 15px;
+   color: #fff;
+   background-color: $main_color;
+   border-radius: 20px;
+ }
+ .btn:hover{
+   color: $main_color;
+   background-color: #fff;
  }
 // header⬇︎
 .site-logo{
@@ -174,6 +185,7 @@ header{
   font-weight: bold;
  }
 }
+// ハンバーガーメニューここまで
 @media screen and (min-width: 1200px) {
  #hm-icon{
   display: none;
@@ -184,6 +196,206 @@ header{
 }
 // headerここまで
 
+// トップページ⬇︎
+// モバイル用レイアウト⬇︎
+@media screen and (max-width: 767px){
+  .top-image{
+    background-image: image-url("top-mobile.jpg");
+    background-position: 50%;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+    .scrolldown{
+      position:absolute;
+      bottom:1%;
+      right:50%;
+      animation: arrowmove 1s ease-in-out infinite;
+      span{
+        position: absolute;
+        left:-20px;
+        bottom:10px;
+        color: #eee;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        -ms-writing-mode: tb-rl;
+          -webkit-writing-mode: vertical-rl;
+          writing-mode: vertical-rl;
+      }
+    }
+    @keyframes arrowmove{
+      0%{bottom:1%;}
+      50%{bottom:3%;}
+     100%{bottom:1%;}
+     }
+    .scrolldown:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: -6px;
+      width: 1px;
+      height: 20px;
+      background: #eee;
+      transform: skewX(-31deg);
+    }
+    .scrolldown:after{
+      content:"";
+      position: absolute;
+      bottom:0;
+      right:0;
+      width:1px;
+      height: 50px;
+      background:#eee;
+    }
+    .top-view-box{
+      position: absolute;
+      padding: 20px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      .top-view-text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        P{
+          font-family: monospace;
+        }
+        .app-title{
+          font-size: 3em;
+        }
+        .app-sub-title{
+          font-size: 1.5em;
+        }
+        .btn{
+          margin: 15px;
+        }
+      }
+    }
+  }
+}
+// モバイル用レイアウトここまで
+
+// パソコン、タブレット用レイアウト⬇︎
+@media screen and (min-width: 767px){
+  .top-image{
+    background-image: image-url("top2.jpg");
+    background-position: 50%;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+    .scrolldown{
+      position:absolute;
+      bottom:1%;
+      right:50%;
+      animation: arrowmove 1s ease-in-out infinite;
+      span{
+        position: absolute;
+        left:-20px;
+        bottom:10px;
+        color: #eee;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        -ms-writing-mode: tb-rl;
+          -webkit-writing-mode: vertical-rl;
+          writing-mode: vertical-rl;
+      }
+    }
+    @keyframes arrowmove{
+      0%{bottom:1%;}
+      50%{bottom:3%;}
+     100%{bottom:1%;}
+     }
+    .scrolldown:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: -6px;
+      width: 1px;
+      height: 20px;
+      background: #eee;
+      transform: skewX(-31deg);
+    }
+    .scrolldown:after{
+      content:"";
+      position: absolute;
+      bottom:0;
+      right:0;
+      width:1px;
+      height: 50px;
+      background:#eee;
+    }
+    .top-view-box{
+      position: absolute;
+      padding: 20px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 100%;
+      height: 100%;
+      background-color: rgba(148,148,148,0.4);
+      .top-view-text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        P{
+          font-family: monospace;
+        }
+        .app-title{
+          font-size: 4em;
+        }
+        .app-sub-title{
+          font-size: 2em;
+        }
+        .btn{
+          margin: 20px;
+        }
+      }
+    }
+  }
+  .sections{
+    width: 90%;
+    margin: 0 auto;
+    color: #5f5f5f;
+  }
+  section{
+    margin: 2rem 0;
+    padding: 2rem 0;
+    .row{
+      margin-top: 2rem;
+    }
+    .section-title{
+      font-size: 3em;
+      text-align: center;
+    }
+    .introduction{
+      margin-top: 3rem;
+      text-align: center;
+      p{
+      font-size: 1.5em;
+      }
+    }
+  }
+  .how-to-image{
+    height: 100%;
+    width: 100%;
+  }
+}
+// パソコン、タブレット用レイアウトここまで
+// topページここまで
+
+
 // ログイン 新規登録⬇︎
 .form-box{
  background-color: #fff;
@@ -191,9 +403,6 @@ header{
  padding: 20px;
  margin-top: 20px;
 }
- // .sign-btn{
- //  width: 30%;
- // }
 .nav{
  font-size: 20px;
  margin: 15px 0;
@@ -210,7 +419,9 @@ header{
  }
 }
 .info-group{
- margin: 20px 0;
+ margin: 10px 0;
+ padding: 10px 0;
+ border-bottom: 1px solid lightgray;
 }
 label{
  font-weight: bold;
@@ -268,10 +479,28 @@ label{
   padding: 20px 0;
   margin-bottom: 10px;
  }
+ .sold-out{
+   width: 96%;
+   height: 100%;
+   line-height: 100px;
+   background-color: rgba(0,0,0,0.8);
+   color: white;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 11;
+   text-align: center;
+ }
+ .sold-out-box{padding: 10px;
+   margin-bottom: 20px;
+ }
+ .sold-out:hover{
+   opacity: 0.5;
+ }
 // indexページここまで
 // showページ⬇︎
 .item-form{
- margin-bottom: 20px;
+ margin: 20px 0;
  label{
   margin: 0;
  }
@@ -292,11 +521,37 @@ label{
  right: 5px;
  font-size: 15px;
  }
-// 注文情報入力画面⬇︎
+ .review-group{
+   padding: 20px 0;
+ }
 .order-box{
  border: 1px solid $main_color;
  padding: 20px;
 }
+.vh-100{
+  height: 100vh;
+  position: relative;
+  p{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 2em;
+  }
+}
+.sold-out-message{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: red;
+  font-size: 1.5em;
+  width: 100%;
+
+}
+// showページここまで
+
 // モダールウインドウ⬇︎
 .modal{
  display: none;
@@ -314,18 +569,22 @@ label{
 .modal-content{
  background: #fff;
  left: 50%;
- padding: 40px;
+ padding: 20px;
  position: absolute;
  top: 50%;
  transform: translate(-50%,-50%);
  width: 60%;
 }
+@media screen and (max-width: 500px) {
+  #star{
+    img{
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
 // モダールウインドウここまで
-// jQuery用クラス⬇︎
-// .js-hover-links{
-//  background-color: ;
-// }
-
+// 吹き出し用⬇︎
 .right-message {
      position: relative;
      display: inline-block;
@@ -375,3 +634,4 @@ label{
      left: -10px;
      margin-top: -10px;
 }
+// 吹き出しここまで

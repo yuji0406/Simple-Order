@@ -6,50 +6,72 @@
       <h3 class="page-title">商品一覧</h3>
     <% end %>
     <div class="row">
-      <div class="search-box col-md-3">
-        <% unless params[:shop_id] %>
-          <%= form_with url: items_search_path, method: :get, local: true do |f| %>
-            <%= f.text_field :keyward %>
+      <div class="search-box col-lg-3">
+        <div>
+          <% unless params[:shop_id] %>
+            <%= form_with url: items_search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :keyward %>
+              <%= f.submit "検索", class: "btn" %>
+            <% end %>
+          <% end %>
+          <button class="btn sale-only-btn">品切れ中を非表示</button>
+          <button class="btn all-item-btn" style="display: none;">品切れ中も表示</button>
+        </div>
+        <div>
+          <p>ジャンルから探す</p>
+          <p><%= link_to "全て", items_path(shop_id: params[:shop_id]) %></p>
+          <%= form_with url: items_path, method: :get, local: true do |f| %>
+            <%= f.select :item_genre, Item.item_genres.keys.to_a %>
+            <% if params[:shop_id] %>
+              <%= f.hidden_field :shop_id, value: params[:shop_id] %>
+            <% end %>
             <%= f.submit "検索", class: "btn" %>
           <% end %>
-        <% end %>
-        <p>ジャンルから探す</p>
-        <% if params[:shop_id] %>
-          <%= link_to "全て", items_path(shop_id: params[:shop_id]), class: "link genre-search-link" %>
-          <br>
-          <% @genres.each do |genre| %>
-            <%= link_to genre, items_path(item_genre: genre, shop_id: params[:shop_id]), class: "link genre-search-link" %>
-            <br>
-          <% end %>
-        <% else %>
-          <%= link_to "全て", items_path, class: "link genre-search-link" %>
-          <br>
-          <% @genres.each do |genre| %>
-            <%= link_to genre, items_path(item_genre: genre), class: "link genre-search-link" %>
-            <br>
-          <% end %>
-        <% end %>
+        </div>
       </div>
+
       <div class="col-lg-9 row">
         <% @items.each do |item| %>
-          <div class="shop-contents col-md-4 col-sm-6">
-            <%= link_to item_path(item.id), class: "row" do %>
-              <div class="col-6">
-                <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
-              </div>
-              <div class="shop-info col-6 text-center">
-                <p>
-                  <%= item.item_name %>
-                </p>
-                <p>
-                  <%= item.tax_price %>（税込）
-                </p>
-                <p>
-                  <%= item.item_introduction.truncate(15) %>
-                </p>
-              </div>
-            <% end %>
-          </div>
+          <% if item.sale_status %>
+            <div class="shop-contents col-md-4 col-sm-6">
+              <%= link_to item_path(item.id), class: "row" do %>
+                <div class="col-6">
+                  <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
+                </div>
+                <div class="shop-info col-6 text-center">
+                  <p>
+                    <%= item.item_name %>
+                  </p>
+                  <p>
+                    <%= item.tax_price %>（税込）
+                  </p>
+                  <p>
+                    <%= item.item_introduction.truncate(15) %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="col-md-4 col-sm-6 sold-out-box">
+              <%= link_to item_path(item.id), class: "row" do %>
+                <div class="sold-out">品切れ</div>
+                <div class="col-6">
+                  <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
+                </div>
+                <div class="shop-info col-6 text-center">
+                  <p>
+                    <%= item.item_name %>
+                  </p>
+                  <p>
+                    <%= item.tax_price %>（税込）
+                  </p>
+                  <p>
+                    <%= item.item_introduction.truncate(15) %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

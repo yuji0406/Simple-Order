@@ -10,8 +10,9 @@
         <% end %>
         <p>ジャンルから探す</p>
         <p><%= link_to "全て", shops_items_path %></p>
-        <% @genres.each do |item_genre| %>
-          <p><%= link_to item_genre, shops_items_path(genre: item_genre) %></p>
+        <%= form_with url: shops_items_path, method: :get, local: true do |f| %>
+          <%= f.select :item_genre, Item.item_genres.keys.to_a %>
+          <%= f.submit "検索", class: "btn" %>
         <% end %>
       </div>
       <div class="col-lg-9 row">

@@ -13,11 +13,10 @@
         <% end %>
         <div class="genre-search">
           <p>ジャンルから探す</p>
-          <%= link_to "全て", shops_path, class: "link genre-search-link" %>
-          <br>
-          <% @genres.each do |genre| %>
-            <%= link_to genre, shops_path(shop_genre: genre), class: "link genre-search-link" %>
-            <br>
+          <p><%= link_to "全て", shops_items_path %></p>
+          <%= form_with url: shops_path, method: :get, local: true do |f| %>
+            <%= f.select :shop_genre, Shop.shop_genres.keys.to_a %>
+            <%= f.submit "検索", class: "btn" %>
           <% end %>
         </div>
          <div class="ranking">
@@ -40,7 +39,9 @@
                 <p><%= shop.shop_name %></p>
                 <%= shop.shop_genre %>
                 <p>会社概要</p>
-                <%= shop.introduction.truncate(15) %>
+                <% if shop.introduction %>
+                  <%= shop.introduction.truncate(15) %>
+                <% end %>
               </div>
             <% end %>
           </div>

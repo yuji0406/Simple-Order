@@ -48,9 +48,9 @@
       </div>
     <% end %>
     <div class="mt-4">
-      <%= form_with model: [@room, @message], url: room_messages_path(@room.id), class: "row justify-content-center", local: true do |f| %>
-        <%= f.text_field :content, class: "form-control col-9" %>
-        <%= f.submit "送信", class: "btn col-2" %>
+      <%= form_with model: [@room, @message], url: room_messages_path(@room.id), class: "row justify-content-center align-items-center", local: true do |f| %>
+        <%= f.text_field :content, class: "form-control col-9 mb-3" %>
+        <%= f.submit "送信", class: "btn col-md-2 mb-3" %>
       <% end %>
     </div>
   </div>

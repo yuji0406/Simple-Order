@@ -1,6 +1,5 @@
 class Public::ShopsController < PublicController
   def index
-    @genres = Shop.distinct.pluck(:shop_genre)
     if params[:shop_genre]
       @shops = Shop.where(shop_genre: params[:shop_genre])
     else
@@ -22,6 +21,5 @@ class Public::ShopsController < PublicController
     else
       @shops = Shop.none
     end
-    @genres = Shop.distinct.pluck(:shop_genre)
   end
 end

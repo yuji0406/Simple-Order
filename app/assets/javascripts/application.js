@@ -50,7 +50,7 @@ $(document).on('turbolinks:load', function () {
       event.preventDefault();
     });
   });
-  
+
    $(".shop-contents").hover(function () {
     $(this).find(".shop-info").css({
       color: "white"
@@ -67,6 +67,17 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
+  $(".sale-only-btn").on('click', function () {
+    $(".sold-out-box").hide();
+    $(this).hide();
+    $('.all-item-btn').show();
+  });
+
+  $(".all-item-btn").on('click', function () {
+    $(".sold-out-box").show();
+    $(this).hide();
+    $('.sale-only-btn').show();
+  });
 
 });
 
