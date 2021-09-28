@@ -67,6 +67,9 @@
           <label>合計金額：</label>
           <%= "#{@order.total_price}円"%>
         </div>
+        <div class="back-btn">
+          <%= link_to "戻る", shops_orders_path, class: "btn" %>
+        </div>
       </div>
     </div>
 

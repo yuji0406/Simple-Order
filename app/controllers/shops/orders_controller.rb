@@ -10,7 +10,7 @@ class Shops::OrdersController < ShopsController
     elsif params[:customer_id]
       @orders = Order.where(customer_id: params[:customer_id], shop_id: current_shop.id).order(created_at: 'DESC')
     else
-      @orders = Order.where(shop_id: current_shop.id)
+      @orders = Order.where(shop_id: current_shop.id).order(created_at: 'DESC')
     end
   end
 
@@ -28,7 +28,7 @@ class Shops::OrdersController < ShopsController
 
   def update
     @order.update(order_params)
-    redirect_to shops_order_path(@order.id)
+    redirect_to shops_order_path(@order.id), notice: "配送ステータスを更新しました。"
   end
 
   private

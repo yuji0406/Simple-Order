@@ -1,5 +1,125 @@
-<h1>Public::Shops#top</h1>
-
-<%= link_to "新規登録", new_shop_registration_path %>
-<%= link_to "ログイン", new_shop_session_path %>
-
+<div class="top">
+  <div class="top-image">
+    <%#= image_tag "top2.jpg", class: "top-image" %>
+    <div class="top-view-box">
+      <div class="top-view-text">
+        <p class="app-title">Simple-Order</p>
+        <p class="app-sub-title">受注管理を楽に、簡単に</p>
+        <p>Simple-Orderへようこそ。早速始めましょう。</p>
+        <% unless customer_signed_in? %>
+          <%= link_to "新規登録", new_shop_registration_path, class: "btn" %>
+          <%= link_to "ログイン", new_shop_session_path, class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="scrolldown"><span>Scroll</span></div>
+  </div>
+  <div class="about">
+    <div class="sections">
+      <section class="greeting">
+        <h2 class="section-title">Simple-Orderとは？</h2>
+        <div class="greeting-image">
+          <div class="greeting-image-back">
+            <div class="introduction_sec_1">
+              <p>飲食店からの受注を一括管理できるサービスです。</p>
+              <p>また新規の顧客獲得にもつながります。</p>
+              <p>スマートフォン、タブレットにも対応しております。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="how-to-guide">
+        <h2 class="section-title">How To Use<br>使い方</h2>
+        <div class="row sec-2">
+          <div class="introduction-sec-2 col-md-6">
+            <div class="text-sec-2">
+              <h3 class="step">STEP.1</h3>
+              <h4 class="section-sub-title">Sign Up<br>登録する</h4>
+              <p>まずはアカウントを作成しましょう。<br>
+              御社の情報をご入力ください。
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-sec-2">
+            <%= image_tag 'sign_up.jpg', class: "how-to-image" %>
+          </div>
+        </div>
+        <div class="row sec-2">
+          <div class="col-md-6 image-sec-2">
+            <%= image_tag 'select.jpg', class: "how-to-image" %>
+          </div>
+          <div class="col-md-6 introduction-sec-2">
+            <div class="text-sec-2">
+              <h3 class="step">STEP.2</h3>
+              <h4 class="section-sub-title">Ready<br>準備する</h4>
+              <p>マイページから御社の商品を登録しましょう<br>
+              また紹介文を充実させることで飲食店様へのアピールもできます
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row sec-2">
+          <div class="introduction-sec-2 col-md-6">
+            <div class="text-sec-2">
+              <h3 class="step">STEP.3</h3>
+              <h4 class="section-sub-title">Open<br>開店する</h4>
+              <p>写真や紹介文の登録はお済みでしょうか？<br>
+              いよいよ開店です！
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-sec-2">
+            <%= image_tag 'order.jpg', class: "how-to-image" %>
+          </div>
+        </div>
+      </section>
+      <section class="function">
+        <h2 class="section-title">Function<br>機能紹介</h2>
+        <div class="introduction-sec-3">
+          <p>Simple-Orderでは便利な３つの機能があります。</p>
+        </div>
+        <div class="sec-3">
+          <div class="function-wrapper">
+            <div class="function-box">
+              <h3 class="function-title"><i class="fas fa-search">検索機能</i></h3>
+              <div class="function-image search">
+                <div class="function-image-back"></div>
+                <div class="function-introduction">
+                  <p>配送状況による注文の検索できるので出荷もれのリスクを減らすことができます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="function-wrapper">
+            <div class="function-box">
+              <h3 class="function-title"><i class="fas fa-envelope">DM機能</i></h3>
+              <div class="function-image dm">
+                <div class="function-image-back"></div>
+                <div class="function-introduction">
+                  <p>飲食店様とメッセージのやり取りができます。このアプリケーションひとつで受注管理から連絡まで完結します。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="function-wrapper">
+            <div class="function-box">
+              <h3 class="function-title"><i class="fas fa-star">レビュー機能</i></h3>
+              <div class="function-image review">
+                <div class="function-image-back"></div>
+                <div class="function-introduction">
+                  <p>飲食店様からのレビューを見ることができます。改善点や強みが明確になります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="end">
+        <h2 class="section-title">まずは新規登録から！</h2>
+        <div class="end-btn">
+          <%= link_to "さっそく始める!", new_shop_registration_path, class: "btn end-btn" %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

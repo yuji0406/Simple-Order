@@ -6,60 +6,120 @@
         <p class="app-title">Simple-Order</p>
         <p class="app-sub-title">発注を楽に、簡単に</p>
         <p>Simple-Orderへようこそ。早速始めましょう。</p>
-        <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
-        <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
+        <% unless customer_signed_in? %>
+          <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
+          <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
+        <% end %>
       </div>
     </div>
     <div class="scrolldown"><span>Scroll</span></div>
   </div>
-  <div class="sections">
-    <section class="greeting">
-      <h2 class="section-title">Simple-Orderとは？</h2>
-      <div class="introduction">
-        <p>複数の業者への発注を一括で管理することができるサービスです。</p>
-        <p>毎日の発注業務を効率化し時間を有効活用しましょう。</p>
-        <p>スマートフォン、タブレットにも対応しております。</p>
-      </div>
-    </section>
-    <section class="how-to-guide">
-      <h2 class="section-title">How To Use<br>使い方</h2>
-      <div class="row">
-        <div class="introduction col-md-6">
-          <h3 class="step">STEP.1</h3>
-          <h4 class="section-sub-title">Sign Up<br>登録する</h4>
-          <p>まずはアカウントを作成しましょう。<br>
-          店舗様の情報をご入力ください。
-          </p>
+  <div class="about">
+    <div class="sections">
+      <section class="greeting">
+        <h2 class="section-title">Simple-Orderとは？</h2>
+        <div class="greeting-image">
+          <div class="greeting-image-back">
+            <div class="introduction_sec_1">
+              <p>食材発注を一括で管理することができる飲食店向けのサービスです。</p>
+              <p>毎日の発注業務を効率化し時間を有効活用しましょう。</p>
+              <p>スマートフォン、タブレットにも対応しております。</p>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-          <%= image_tag 'sign_up.jpg', class: "how-to-image" %>
+      </section>
+      <section class="how-to-guide">
+        <h2 class="section-title">How To Use<br>使い方</h2>
+        <div class="row sec-2">
+          <div class="introduction-sec-2 col-md-6">
+            <div class="text-sec-2">
+              <h3 class="step">STEP.1</h3>
+              <h4 class="section-sub-title">Sign Up<br>登録する</h4>
+              <p>まずはアカウントを作成しましょう。<br>
+              店舗様の情報をご入力ください。
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-sec-2">
+            <%= image_tag 'sign_up.jpg', class: "how-to-image" %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <%= image_tag 'select.jpg', class: "how-to-image" %>
+        <div class="row sec-2">
+          <div class="col-md-6 image-sec-2">
+            <%= image_tag 'select.jpg', class: "how-to-image" %>
+          </div>
+          <div class="col-md-6 introduction-sec-2">
+            <div class="text-sec-2">
+              <h3 class="step">STEP.2</h3>
+              <h4 class="section-sub-title">Select<br>選ぶ</h4>
+              <p>商品の詳細ページからカートに入れましょう。<br>
+              きっと希望の商品が見つかります。
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 introduction">
-          <h3 class="section-sub-title">STEP.1</h3>
-          <h4>Sign Up<br>登録する</h4>
-          <p>まず店舗様の情報を入力していただきます。<br>
-          </p>
+        <div class="row sec-2">
+          <div class="introduction-sec-2 col-md-6">
+            <div class="text-sec-2">
+              <h3 class="step">STEP.3</h3>
+              <h4 class="section-sub-title">Order<br>注文する</h4>
+              <p>希望の納品日とお支払い方法を選択して購入できます。<br>
+              業者ごとにお会計できるので管理も楽になります。
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-sec-2">
+            <%= image_tag 'order.jpg', class: "how-to-image" %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="introduction col-md-6">
-          <h3 class="section-sub-title">STEP.1</h3>
-          <h4>Sign Up<br>登録する</h4>
-          <p>まず店舗様の情報を入力していただきます。<br>
-          </p>
+      </section>
+      <section class="function">
+        <h2 class="section-title">Function<br>機能紹介</h2>
+        <div class="introduction-sec-3">
+          <p>Simple-Orderでは便利な３つの機能があります。</p>
         </div>
-        <div class="col-md-6">
-          <%= image_tag 'order.jpg', class: "how-to-image" %>
+        <div class="sec-3">
+          <div class="function-wrapper">
+            <div class="function-box">
+              <h3 class="function-title"><i class="fas fa-search">検索機能</i></h3>
+              <div class="function-image search">
+                <div class="function-image-back"></div>
+                <div class="function-introduction">
+                  <p>業者、商品からジャンル検索とキーワード検索ができます。希望の商品を素早く見つけることができます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="function-wrapper">
+            <div class="function-box">
+              <h3 class="function-title"><i class="fas fa-envelope">DM機能</i></h3>
+              <div class="function-image dm">
+                <div class="function-image-back"></div>
+                <div class="function-introduction">
+                  <p>業者とメッセージのやり取りができます。このアプリケーションひとつで発注から連絡まで完結します。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="function-wrapper">
+            <div class="function-box">
+              <h3 class="function-title"><i class="fas fa-star">レビュー機能</i></h3>
+              <div class="function-image review">
+                <div class="function-image-back"></div>
+                <div class="function-introduction">
+                  <p>業者ごとの口コミを投稿、閲覧することができます。食材購入前の参考になります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="function">
-      <h2 class="section-title">Function<br>機能紹介</h2>
-    </section>
+      </section>
+      <section class="end">
+        <h2 class="section-title">まずは新規登録から！</h2>
+        <div class="end-btn">
+          <%= link_to "さっそく始める!", new_customer_registration_path, class: "btn end-btn" %>
+        </div>
+      </section>
+    </div>
   </div>
 </div>

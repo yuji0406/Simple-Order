@@ -12,7 +12,7 @@
 
   <body>
     <% if customer_signed_in? %>
-      <header class="shadow-sm">
+      <header class="header">
         <div class="navbar">
           <%= link_to root_path do %>
             <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
@@ -86,7 +86,7 @@
         </div>
       </header>
       <% elsif shop_signed_in? %>
-        <header class="shadow-sm">
+        <header class="header">
           <div class="navbar">
             <%= link_to root_path do %>
               <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
@@ -147,6 +147,14 @@
             </div>
           </div>
         </header>
+      <% else %>
+        <header class="header">
+          <div class="navbar">
+            <%= link_to root_path do %>
+              <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
+            <% end %>
+          </div>
+        </header>
       <% end %>
     <% if notice %>
       <p class= "alert alert-success"><%= notice %></p>
@@ -155,5 +163,8 @@
       <p class= "alert-danger alert"><%= alert %></p>
     <% end %>
     <%= yield %>
-  </body>  
+    <div id="page-top">
+      <a href="#"><i class="fas fa-chevron-circle-up"></i></a>
+    </div>
+  </body>
 </html>
