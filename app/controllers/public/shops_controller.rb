@@ -1,9 +1,9 @@
 class Public::ShopsController < PublicController
   def index
     if params[:shop_genre]
-      @shops = Shop.where(shop_genre: params[:shop_genre])
+      @shops = Shop.where(shop_genre: params[:shop_genre]).order(created_at: 'DESC')
     else
-      @shops = Shop.all
+      @shops = Shop.all.order(created_at: 'DESC')
     end
     @rank_shops = Shop.find(Favorite.group(:shop_id).order('count(shop_id) desc').limit(3).pluck(:shop_id))
   end
@@ -17,7 +17,7 @@ class Public::ShopsController < PublicController
 
   def search
     if params[:keyward].present?
-      @shops = Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{params[:keyward]}%", "%#{params[:keyward]}%")
+      @shops = Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{params[:keyward]}%", "%#{params[:keyward]}%").order(created_at: 'DESC')
     else
       @shops = Shop.none
     end

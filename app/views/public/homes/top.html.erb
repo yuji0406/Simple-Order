@@ -6,10 +6,13 @@
         <p class="app-title">Simple-Order</p>
         <p class="app-sub-title">発注を楽に、簡単に</p>
         <p>Simple-Orderへようこそ。早速始めましょう。</p>
-        <% unless customer_signed_in? %>
+        <% unless customer_signed_in? || shop_signed_in? %>
           <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
           <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
         <% end %>
+        <div>
+          <%= link_to "業者の方はこちらから", shops_homes_path, class: "btn" %>
+        </div>
       </div>
     </div>
     <div class="scrolldown"><span>Scroll</span></div>
@@ -45,10 +48,7 @@
           </div>
         </div>
         <div class="row sec-2">
-          <div class="col-md-6 image-sec-2">
-            <%= image_tag 'select.jpg', class: "how-to-image" %>
-          </div>
-          <div class="col-md-6 introduction-sec-2">
+          <div class="col-md-6 introduction-sec-2 order-md-2">
             <div class="text-sec-2">
               <h3 class="step">STEP.2</h3>
               <h4 class="section-sub-title">Select<br>選ぶ</h4>
@@ -56,6 +56,9 @@
               きっと希望の商品が見つかります。
               </p>
             </div>
+          </div>
+          <div class="col-md-6 image-sec-2 order-md-1">
+            <%= image_tag 'select.jpg', class: "how-to-image" %>
           </div>
         </div>
         <div class="row sec-2">

@@ -14,9 +14,11 @@
                 @<%= room.customer.store_name %>
               </div>
             <% end %>
-            <div class="col-6">
-              <%= room.messages.last.content.truncate(15) %>
-            </div>
+            <% if room.messages.present? %>
+              <div class="col-6">
+                <%= room.messages.last.content.truncate(15) %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>

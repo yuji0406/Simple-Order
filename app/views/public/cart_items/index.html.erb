@@ -55,6 +55,9 @@
               <label>合計金額：</label>
               <%= "#{@sum_price + @postage}円"%>
             </div>
+            <% if @sum_price < 3000 %>
+              <p class="postage-info">あと<%= 3000 - @sum_price %>円で送料無料！</p>
+            <% end %>
             <div class="buttons text-center">
               <p><%= link_to "レジに進む", new_order_path(shop_id: shop[1].first.shop.id,total_price: @sum_price + @postage, sum_price: @sum_price), class: "btn" %></p>
               <p><%= link_to "買い物を続ける", items_path, class: "btn" %></p>

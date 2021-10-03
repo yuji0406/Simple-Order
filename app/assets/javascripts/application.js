@@ -79,6 +79,16 @@ $(document).on('turbolinks:load', function () {
     $('.sale-only-btn').show();
   });
 
+  $('#page-top').hover(function () {
+    $(this).find("i").css({
+      opacity: "1"
+    });
+  },function() {
+      $(this).find("i").css({
+      opacity: ""
+      });
+    });
+
   $(function() {
     $('#page-top a').on('click', function(event) {
       $('body,html').animate({

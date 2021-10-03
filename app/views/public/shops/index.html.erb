@@ -13,7 +13,7 @@
         <% end %>
         <div class="genre-search">
           <p>ジャンルから探す</p>
-          <p><%= link_to "全て", shops_items_path %></p>
+          <p><%= link_to "全て", shops_path %></p>
           <%= form_with url: shops_path, method: :get, local: true do |f| %>
             <%= f.select :shop_genre, Shop.shop_genres.keys.to_a %>
             <%= f.submit "検索", class: "btn" %>
@@ -28,25 +28,31 @@
             <% end %>
          </div>
       </div>
-      <div class="col-lg-9 row">
-        <% @shops.each do |shop| %>
-          <div class="shop-contents col-md-4 col-sm-6">
-            <%= link_to shop_path(shop.id), class: "row" do %>
-              <div class="col-6">
-                <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg", class:"sm-image" %>
-              </div>
-              <div class="shop-info col-6 text-center">
-                <p><%= shop.shop_name %></p>
-                <%= shop.shop_genre %>
-                <p>会社概要</p>
-                <% if shop.introduction %>
-                  <%= shop.introduction.truncate(15) %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <% if @shops.empty? %>
+        <div class="vh-100 col-md-9">
+          <p>該当の業者がありません</p>
+        </div>
+      <% else %>
+        <div class="col-lg-9 row">
+          <% @shops.each do |shop| %>
+            <div class="shop-contents col-md-4 col-sm-6">
+              <%= link_to shop_path(shop.id), class: "row" do %>
+                <div class="col-6">
+                  <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg", class:"sm-image" %>
+                </div>
+                <div class="shop-info col-6 text-center">
+                  <p><%= shop.shop_name %></p>
+                  <%= shop.shop_genre %>
+                  <p>会社概要</p>
+                  <% if shop.introduction %>
+                    <%= shop.introduction.truncate(10) %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

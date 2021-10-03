@@ -40,7 +40,7 @@ class Public::OrdersController < PublicController
   end
 
   def index
-    @orders = Order.where(customer_id: current_customer.id)
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: 'DESC')
   end
 
   def show

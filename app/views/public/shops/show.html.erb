@@ -62,11 +62,11 @@
             <%= @shop.email%>
           </div>
         </div>
-        <div class="info-group row">
-          <div class="col-md-6">
+        <div class="info-group introduction">
+          <div class="introduction-label">
             <label class="info-label">会社紹介文</label>
           </div>
-          <div class="col-md-6">
+          <div class="introduction-text">
             <%= @shop.introduction %>
           </div>
         </div>
@@ -77,25 +77,25 @@
             <%= link_to "この業者の商品を見る", items_path(shop_id: @shop.id), class: "btn" %>
           </p>
           <p class="link">
-            <button id="js-review-btn" class="btn">この業者を評価する</button>
+            <button id="js-review-btn" class="btn yellow-btn">この業者を評価する</button>
           </p>
           <p class="link">
             <% if @room %>
-              <%= link_to "チャットルームへ移動", room_path(@room), class: "btn" %>
+              <%= link_to "チャットルームへ移動", room_path(@room), class: "btn green-btn" %>
             <% else %>
               <%= form_with model: Room.new, local: true do |f| %>
                 <%= f.hidden_field :shop_id, value: @shop.id %>
-                <%= f.submit "この業者にチャットで連絡", class: "btn" %>
+                <%= f.submit "この業者にチャットで連絡", class: "btn green-btn" %>
               <% end %>
             <% end %>
           </p>
           <% if Favorite.find_by(customer_id: current_customer.id, shop_id: @shop.id) %>
             <p class="link">
-              <%= link_to "この業者をお気に入りから削除する", favorite_path(shop_id: @shop.id), method: :delete, class: "btn", data: {confirm: "お気に入りから削除しますか？"} %>
+              <%= link_to "この業者をお気に入りから削除する", favorite_path(shop_id: @shop.id), method: :delete, class: "btn red-btn", data: {confirm: "お気に入りから削除しますか？"} %>
             </p>
           <% else %>
             <p class="link">
-              <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn"%>
+              <%= link_to "この業者をお気に入り登録する", favorites_path(customer_id: current_customer.id, shop_id: @shop.id), method: :post, class: "btn blue-btn"%>
             </p>
           <% end %>
         </div>

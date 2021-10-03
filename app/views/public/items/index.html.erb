@@ -9,9 +9,9 @@
       <div class="search-box col-lg-3">
         <div>
           <% unless params[:shop_id] %>
-            <%= form_with url: items_search_path, method: :get, local: true do |f| %>
-              <%= f.text_field :keyward %>
-              <%= f.submit "検索", class: "btn" %>
+            <%= form_with url: items_search_path, method: :get, class: "row mb-2", local: true do |f| %>
+              <%= f.text_field :keyward, class: "col-9 form-control" %>
+              <%= f.submit "検索", class: "btn col-3" %>
             <% end %>
           <% end %>
           <button class="btn sale-only-btn">品切れ中を非表示</button>
@@ -29,51 +29,56 @@
           <% end %>
         </div>
       </div>
-
-      <div class="col-lg-9 row">
-        <% @items.each do |item| %>
-          <% if item.sale_status %>
-            <div class="shop-contents col-md-4 col-sm-6">
-              <%= link_to item_path(item.id), class: "row" do %>
-                <div class="col-6">
-                  <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
-                </div>
-                <div class="shop-info col-6 text-center">
-                  <p>
-                    <%= item.item_name %>
-                  </p>
-                  <p>
-                    <%= item.tax_price %>（税込）
-                  </p>
-                  <p>
-                    <%= item.item_introduction.truncate(15) %>
-                  </p>
-                </div>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="col-md-4 col-sm-6 sold-out-box">
-              <%= link_to item_path(item.id), class: "row" do %>
-                <div class="sold-out">品切れ</div>
-                <div class="col-6">
-                  <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
-                </div>
-                <div class="shop-info col-6 text-center">
-                  <p>
-                    <%= item.item_name %>
-                  </p>
-                  <p>
-                    <%= item.tax_price %>（税込）
-                  </p>
-                  <p>
-                    <%= item.item_introduction.truncate(15) %>
-                  </p>
-                </div>
-              <% end %>
-            </div>
+      <% if @items.empty? %>
+        <div class="vh-100 col-lg-9">
+          <p>該当の商品がありません</p>
+        </div>
+      <% else %>
+        <div class="col-lg-9 row">
+          <% @items.each do |item| %>
+            <% if item.sale_status %>
+              <div class="shop-contents col-md-4 col-sm-6">
+                <%= link_to item_path(item.id), class: "row" do %>
+                  <div class="col-6">
+                    <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
+                  </div>
+                  <div class="shop-info col-6 text-center">
+                    <p>
+                      <%= item.item_name %>
+                    </p>
+                    <p>
+                      <%= item.tax_price %>（税込）
+                    </p>
+                    <p>
+                      <%= item.item_introduction.truncate(10) %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="col-md-4 col-sm-6 sold-out-box">
+                <%= link_to item_path(item.id), class: "row" do %>
+                  <div class="sold-out">品切れ</div>
+                  <div class="col-6">
+                    <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
+                  </div>
+                  <div class="shop-info col-6 text-center">
+                    <p>
+                      <%= item.item_name %>
+                    </p>
+                    <p>
+                      <%= item.tax_price %>（税込）
+                    </p>
+                    <p>
+                      <%= item.item_introduction.truncate(10) %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
