@@ -1,5 +1,6 @@
-class Item < ApplicationRecord
+# frozen_string_literal: true
 
+class Item < ApplicationRecord
   attachment :item_image
 
   def tax
@@ -7,7 +8,7 @@ class Item < ApplicationRecord
   end
 
   def tax_price
-    (self.item_price*tax).floor
+    (item_price * tax).floor
   end
 
   belongs_to :shop
@@ -20,14 +21,14 @@ class Item < ApplicationRecord
   validates :item_genre, presence: true
   validates :item_introduction, presence: true
 
-  enum item_genre:[
-    "食肉",
-    "食肉加工品",
-    "魚介",
-    "魚介加工品",
-    "青果",
-    "野菜",
-    "調味料",
-    "その他"
-    ]
+  enum item_genre: %w[
+    食肉
+    食肉加工品
+    魚介
+    魚介加工品
+    青果
+    野菜
+    調味料
+    その他
+  ]
 end

@@ -1,2 +1,6 @@
-module Public::MessagesHelper
+# frozen_string_literal: true
+
+module Public
+  module MessagesHelper
+  end
 end

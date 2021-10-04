@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SimpleOrder</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if shop_signed_in? %>
+      <header class="header">
+        <div class="navbar">
+          <%= link_to shops_homes_path, class: "logo-opacity" do %>
+            <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
+          <% end %>
+          <div class="right-navbar">
+            <ul class="row navlists">
+              <li class="login-user">ログイン中：<br>
+                <%= current_shop.shop_name %>様
+              </li>
+              <%= link_to shops_mypages_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>MyPage<br>
+                    マイページ
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_items_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Items<br>
+                    商品一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_customers_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Customers<br>
+                    顧客一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to rooms_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Messages<br>
+                    メッセージ一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to shops_orders_path, class: "js-hover" do %>
+                <li class="header-link">
+                  <span>Orders<br>
+                    注文一覧
+                  </span>
+                </li>
+              <% end %>
+              <%= link_to destroy_shop_session_path, method: :delete, class: "js-hover" do %>
+                <li class="header-link">
+                  <i class="fas fa-sign-out-alt"><span>Sign Out</span></i>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div id="hm-icon">
+            <a class="menu-trigger" href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </header>
+    <% else %>
+      <header class="header">
+        <div class="navbar">
+          <%= link_to shops_homes_path, class: "logo-opacity" do %>
+            <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
+          <% end %>
+          <div class="right-navbar">
+            <ul class="row navlists">
+              <%= link_to new_shop_session_path, class: "js-hover" do %>
+                <li class="header-link"><span>ログイン</span></li>
+              <% end %>
+              <%= link_to new_shop_registration_path, class: "js-hover" do %>
+                <li class="header-link"><span>新規登録</span></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </header>
+    <% end %>
+    <% if notice %>
+      <p class= "alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class= "alert-danger alert"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+    <div id="page-top">
+      <a href="#"><i class="fas fa-chevron-circle-up"></i></a>
+    </div>
+  </body>
+</html>

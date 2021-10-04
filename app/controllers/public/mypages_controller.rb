@@ -1,30 +1,33 @@
-class Public::MypagesController < PublicController
-  def show
-  end
+# frozen_string_literal: true
 
-  def edit
-    @customer = current_customer
-  end
+module Public
+  class MypagesController < PublicController
+    def show; end
 
-  def update
-    @customer = current_customer
-    if @customer.update(customer_params)
-    redirect_to mypages_path, notice: "会員情報を変更しました。"
-    else
-    render :edit
+    def edit
+      @customer = current_customer
     end
-  end
 
-  private
+    def update
+      @customer = current_customer
+      if @customer.update(customer_params)
+        redirect_to mypages_path, notice: '会員情報を変更しました。'
+      else
+        render :edit
+      end
+    end
 
-  def customer_params
-    params.require(:customer).permit(
-      :store_name,
-      :store_manager,
-      :postal_code,
-      :address,
-      :phone_number,
-      :email
+    private
+
+    def customer_params
+      params.require(:customer).permit(
+        :store_name,
+        :store_manager,
+        :postal_code,
+        :address,
+        :phone_number,
+        :email
       )
+    end
   end
 end

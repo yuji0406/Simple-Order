@@ -4,13 +4,9 @@
       <div class="top-view-text">
         <p class="app-title eachTextAnime">Simple-Order</p>
         <p class="app-sub-title fade-in delay-time1s">発注を楽に、簡単に</p>
-        <p class="fade-in delay-time2s">Simple-Orderへようこそ。早速始めましょう。</p>
-        <% unless customer_signed_in? || shop_signed_in? %>
-          <%= link_to "新規登録", new_customer_registration_path, class: "btn fade-in delay-time3s" %>
-          <%= link_to "ログイン", new_customer_session_path, class: "btn fade-in delay-time3s" %>
-        <% end %>
+        <p class="fade-in delay-time15s">Simple-Orderへようこそ。早速始めましょう。</p>
         <div>
-          <%= link_to "業者の方はこちらから", shops_homes_path, class: "btn fade-in delay-time3s" %>
+          <%= link_to "業者の方はこちらから", shops_homes_path, class: "btn fade-in delay-time2s" %>
         </div>
       </div>
     </div>

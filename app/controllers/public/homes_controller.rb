@@ -1,4 +1,7 @@
-class Public::HomesController < PublicController
-  def top
+# frozen_string_literal: true
+
+module Public
+  class HomesController < PublicController
+    def top; end
   end
 end

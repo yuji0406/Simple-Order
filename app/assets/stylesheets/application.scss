@@ -24,10 +24,16 @@
  }
  @font-face{
   font-family: 'XANO-mincho';
-  src: font-url('/assets/XANO-mincho.ttf') format("truetype");
+  src: font-url('XANO-mincho.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
  }
+ @font-face {
+  font-family: 'Butler-Black';
+  src: asset-url('Butler_Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 $base_color: #dcdccf5c;
 $main_color: rgb(235,97,1);
@@ -40,7 +46,7 @@ $text_color: rgba(221,220,214,0.7);
 }
 body{
  background-color: $base_color;
- font-family: monospace, serif;
+ font-family: 'XANO-mincho', monospace, serif;
 }
 ul{
  margin: 0;
@@ -142,6 +148,7 @@ p{
 // header⬇︎
 .navbar{
   padding: 0 5px;
+  height: 100%;
 }
 .site-logo{
  width: 145px;
@@ -295,6 +302,9 @@ p{
     width: 250px;
     height: 250px;
   }
+  .top{
+    font-family: 'Butler-Black';
+  }
   .top-image{
     background-image: image-url("top-mobile.jpg");
     background-position: 50%;
@@ -364,7 +374,7 @@ p{
           font-family: monospace;
         }
         .app-title{
-          font-size: 3em;
+          font-size: 2.5em;
         }
         .app-sub-title{
           font-size: 1.5em;
@@ -384,6 +394,7 @@ p{
     display: inline-block;
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 0.5rem;
+    font-family: 'XANO-mincho', monospace, serif;
   }
   section{
     margin: 1rem 0;
@@ -459,6 +470,7 @@ p{
   .introduction-sec-3{
     margin: 20px 0;
     font-size: 25px;
+    font-family: 'XANO-mincho', monospace, serif;
   }
   .sec-3{
     width: 80%;
@@ -596,7 +608,8 @@ p{
           font-family: monospace;
         }
         .app-title{
-          font-size: 4em;
+          font-size: 6em;
+          font-family: 'Butler-Black';
         }
         .app-sub-title{
           font-size: 2em;
@@ -615,6 +628,8 @@ p{
     display: inline-block;
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 1rem;
+    font-family: 'Butler-Black';
+    
   }
   section{
     margin: 2rem 0;
@@ -651,6 +666,9 @@ p{
   }
   .shop-top-image.top-image{
     background-image: image-url("shop_top.jpg");
+  }
+  .how-to-guide{
+    font-family: 'Butler-Black', 'XANO-mincho', monospace ,serif;
   }
   .row.sec-2{
     margin: 40px 0;
@@ -749,7 +767,7 @@ p{
 // アニメーション⬇︎
   .fade-in{
   animation-name:fadeInAnime;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
   animation-fill-mode:forwards;
   opacity:0;
   }
@@ -768,11 +786,11 @@ p{
   .delay-time1s{
     animation-delay: 1s;
   }
+  .delay-time15s{
+    animation-delay: 1.5s;
+  }
   .delay-time2s{
   animation-delay: 2s;
-  }
-  .delay-time3s{
-    animation-delay: 3s;
   }
   .eachTextAnime span{
     opacity: 0;
@@ -926,15 +944,15 @@ label{
 // showページ⬇︎
 .item-form{
  margin: 20px 0;
- label{
-  margin: 0;
- }
+  label{
+    margin: 0;
+  }
 }
 .button-group{
   margin: 20px 0;
- p{
- margin: 20px 0;
- }
+  p{
+  margin: 20px 0;
+  }
 }
 .item-link{
  cursor: pointer;
@@ -985,13 +1003,9 @@ label{
   font-size: 1.4em;
 }
 .back-btn{
-  position: absolute;
   bottom: 20px;
   width: 100%;
   text-align: center;
-  .btn{
-    margin: 10px 25px;
-  }
 }
 // showページここまで
 

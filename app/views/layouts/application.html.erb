@@ -88,7 +88,7 @@
       <% elsif shop_signed_in? %>
         <header class="header">
           <div class="navbar">
-            <%= link_to root_path, class: "logo-opacity" do %>
+            <%= link_to shops_homes_path, class: "logo-opacity" do %>
               <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
             <% end %>
             <div class="right-navbar">
@@ -153,6 +153,16 @@
             <%= link_to root_path, class: "logo-opacity" do %>
               <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
             <% end %>
+            <div class="right-navbar">
+              <ul class="row navlists">
+                <%= link_to new_customer_session_path, class: "js-hover" do %>
+                  <li class="header-link"><span>ログイン</span></li>
+                <% end %>
+                <%= link_to new_customer_registration_path, class: "js-hover" do %>
+                  <li class="header-link"><span>新規登録</span></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </header>
       <% end %>

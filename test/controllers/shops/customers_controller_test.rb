@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
-class Shops::CustomersControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get shops_customers_index_url
-    assert_response :success
-  end
+module Shops
+  class CustomersControllerTest < ActionDispatch::IntegrationTest
+    test 'should get index' do
+      get shops_customers_index_url
+      assert_response :success
+    end
 
-  test "should get show" do
-    get shops_customers_show_url
-    assert_response :success
+    test 'should get show' do
+      get shops_customers_show_url
+      assert_response :success
+    end
   end
-
 end

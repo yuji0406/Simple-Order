@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnToNullFromItem < ActiveRecord::Migration[5.2]
   def up
     change_column_null :items, :sale_status, true
