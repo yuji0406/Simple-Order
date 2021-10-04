@@ -48,9 +48,9 @@
         </div>
         <div class="info-group">
           <label>配送状況</label><br>
-          <%= form_with model: @order, url: shops_order_path, local: true do |f| %>
-            <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a %>
-            <%= f.submit "変更", class: "btn" %>
+          <%= form_with model: @order, url: shops_order_path, local: true, class: "row" do |f| %>
+            <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a, {}, class: "delivery-status-pulldown" %>
+            <%= f.submit "変更", class: "btn ml-auto" %>
           <% end %>
         </div>
       </div>

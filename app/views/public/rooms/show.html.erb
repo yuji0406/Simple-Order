@@ -6,19 +6,19 @@
         <% @messages.each do |message| %>
           <% if message.is_customer %>
             <div class="text-right my-3">
-              <span><%= current_customer.store_name %></span>
+              <p><%= current_customer.store_name %></p>
               <div class="right-message">
-                <%= message.content %>
-                <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+                <p><%= message.content %></p>
               </div>
+              <p class="datetime"><%= message.created_at.to_s(:datetime) %></p>
             </div>
           <% else %>
             <div class="text-left my-3">
+              <p><%= @shop.shop_name %></p>
               <div class="left-message">
-                <%= message.content %>
-                <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+                <p><%= message.content %></p>
               </div>
-              <span><%= @shop.shop_name %></span>
+              <p class="datetime"><%= message.created_at.to_s(:datetime) %></p>
             </div>
           <% end %>
         <% end %>
@@ -29,19 +29,19 @@
         <% @messages.each do |message| %>
           <% if message.is_customer %>
           <div class="text-left my-3">
+            <p><%= @customer.store_name %></p>
             <div class="left-message">
-              <%= message.content %>
-              <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+              <p><%= message.content %></p>
             </div>
-            <span><%= @customer.store_name %></span>
+            <p class="datetime"><%= message.created_at.to_s(:datetime) %></p>
           </div>
           <% else %>
           <div class="text-right my-3">
-            <span><%= current_shop.shop_name %></span>
+            <p><%= current_shop.shop_name %></p>
             <div class="right-message">
-              <%= message.content %>
-              <span class="datetime"><%= message.created_at.to_s(:datetime) %></span>
+              <p><%= message.content %></p>
             </div>
+            <p class="datetime"><%= message.created_at.to_s(:datetime) %></p>
           </div>
           <% end %>
         <% end %>

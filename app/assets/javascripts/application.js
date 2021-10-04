@@ -35,18 +35,25 @@ $(document).on('turbolinks:load', function () {
     $(this).find('span,i').css({
       color: "white"
     });
+    $(this).css({
+      "background-color": "rgb(235,97,1)",
+      opacity: "1"
+    });
   },function () {
   $(this).find('span,i').css({
     color: ""
+    });
+  $(this).css({
+    "background-color": "",
+    opacity: ""
     });
   });
 
   $(function () {
     $('.menu-trigger').on('click', function(event) {
+      $('.right-navbar').find('ul').toggleClass('active');
       $(this).toggleClass('active');
-      $('.right-navbar').fadeToggle();
       $('.right-navbar').toggleClass('active')
-      $('.right-navbar').find('ul').toggleClass('navbar');
       event.preventDefault();
     });
   });
@@ -97,6 +104,76 @@ $(document).on('turbolinks:load', function () {
       event.preventDefault();
     });
   });
+// トップページアニメーション用⬇︎
+  function EachTextAnimeControl() {
+    $('.eachTextAnime').each(function () {
+      var elemPos = $(this).offset().top - 50;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll >= elemPos - windowHeight) {
+        $(this).addClass("appeartext");
+      } else {
+        $(this).removeClass("appeartext");
+      }
+    });
+  }
+  $(window).on('load', function () {
+  var element = $(".eachTextAnime");
+  element.each(function () {
+    var text = $(this).text();
+    var textbox = "";
+    text.split('').forEach(function (t, i) {
+      if (t !== " ") {
+        if (i < 10) {
+          textbox += '<span style="animation-delay:.' + i + 's;">' + t + '</span>';
+        } else {
+          var n = i / 10;
+          textbox += '<span style="animation-delay:' + n + 's;">' + t + '</span>';
+        }
+      } else {
+        textbox += t;
+      }
+    });
+    $(this).html(textbox);
+  });
+
+  EachTextAnimeControl();
+  });
+
+  function fadeAnime(){
+  $('.fadeUpTrigger').each(function(){
+    var elemPos = $(this).offset().top;
+    var scroll = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    if (scroll >= elemPos - windowHeight){
+    $(this).addClass('fadeUp');
+    }else{
+    $(this).removeClass('fadeUp');
+    }
+    });
+  }
+  $(window).scroll(function (){
+    fadeAnime();
+  });
+
+
+  function FixedAnime() {
+  var headerH = $('.header').outerHeight(true);
+  var scroll = $(window).scrollTop();
+  if (scroll >= headerH){
+      $('.header').addClass('fixed');
+    }else{
+      $('.header').removeClass('fixed');
+    }
+  }
+
+  $(window).scroll(function () {
+  FixedAnime();
+  });
+
+
+// トップページ用アニメーションここまで
+
 });
 
 

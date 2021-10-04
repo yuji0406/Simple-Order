@@ -12,5 +12,6 @@ class Shops::CustomersController < ShopsController
   def show
     @customer = Customer.find(params[:id])
     @reviews = Review.where(customer_id: params[:id], shop_id: current_shop.id)
+    @room = Room.find_by(shop_id: current_shop.id, customer_id: params[:id])
   end
 end

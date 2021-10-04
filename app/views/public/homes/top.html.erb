@@ -1,17 +1,16 @@
 <div class="top">
-  <div class="top-image">
-    <%#= image_tag "top2.jpg", class: "top-image" %>
+  <div class="top-image fade-in">
     <div class="top-view-box">
       <div class="top-view-text">
-        <p class="app-title">Simple-Order</p>
-        <p class="app-sub-title">発注を楽に、簡単に</p>
-        <p>Simple-Orderへようこそ。早速始めましょう。</p>
+        <p class="app-title eachTextAnime">Simple-Order</p>
+        <p class="app-sub-title fade-in delay-time1s">発注を楽に、簡単に</p>
+        <p class="fade-in delay-time2s">Simple-Orderへようこそ。早速始めましょう。</p>
         <% unless customer_signed_in? || shop_signed_in? %>
-          <%= link_to "新規登録", new_customer_registration_path, class: "btn" %>
-          <%= link_to "ログイン", new_customer_session_path, class: "btn" %>
+          <%= link_to "新規登録", new_customer_registration_path, class: "btn fade-in delay-time3s" %>
+          <%= link_to "ログイン", new_customer_session_path, class: "btn fade-in delay-time3s" %>
         <% end %>
         <div>
-          <%= link_to "業者の方はこちらから", shops_homes_path, class: "btn" %>
+          <%= link_to "業者の方はこちらから", shops_homes_path, class: "btn fade-in delay-time3s" %>
         </div>
       </div>
     </div>
@@ -20,8 +19,8 @@
   <div class="about">
     <div class="sections">
       <section class="greeting">
-        <h2 class="section-title">Simple-Orderとは？</h2>
-        <div class="greeting-image">
+        <h2 class="section-title fadeUpTrigger">Simple-Orderとは？</h2>
+        <div class="greeting-image fadeUpTrigger">
           <div class="greeting-image-back">
             <div class="introduction_sec_1">
               <p>食材発注を一括で管理することができる飲食店向けのサービスです。</p>
@@ -32,9 +31,9 @@
         </div>
       </section>
       <section class="how-to-guide">
-        <h2 class="section-title">How To Use<br>使い方</h2>
+        <h2 class="section-title fadeUpTrigger">How To Use<br>使い方</h2>
         <div class="row sec-2">
-          <div class="introduction-sec-2 col-md-6">
+          <div class="introduction-sec-2 col-md-6 fadeUpTrigger">
             <div class="text-sec-2">
               <h3 class="step">STEP.1</h3>
               <h4 class="section-sub-title">Sign Up<br>登録する</h4>
@@ -43,11 +42,11 @@
               </p>
             </div>
           </div>
-          <div class="col-md-6 image-sec-2">
+          <div class="col-md-6 image-sec-2 fadeUpTrigger delay-time05s">
             <%= image_tag 'sign_up.jpg', class: "how-to-image" %>
           </div>
         </div>
-        <div class="row sec-2">
+        <div class="row sec-2 fadeUpTrigger">
           <div class="col-md-6 introduction-sec-2 order-md-2">
             <div class="text-sec-2">
               <h3 class="step">STEP.2</h3>
@@ -57,11 +56,11 @@
               </p>
             </div>
           </div>
-          <div class="col-md-6 image-sec-2 order-md-1">
+          <div class="col-md-6 image-sec-2 order-md-1 fadeUpTrigger delay-time05s">
             <%= image_tag 'select.jpg', class: "how-to-image" %>
           </div>
         </div>
-        <div class="row sec-2">
+        <div class="row sec-2 fadeUpTrigger">
           <div class="introduction-sec-2 col-md-6">
             <div class="text-sec-2">
               <h3 class="step">STEP.3</h3>
@@ -71,18 +70,18 @@
               </p>
             </div>
           </div>
-          <div class="col-md-6 image-sec-2">
+          <div class="col-md-6 image-sec-2 fadeUpTrigger delay-time05s">
             <%= image_tag 'order.jpg', class: "how-to-image" %>
           </div>
         </div>
       </section>
       <section class="function">
-        <h2 class="section-title">Function<br>機能紹介</h2>
-        <div class="introduction-sec-3">
+        <h2 class="section-title fadeUpTrigger">Function<br>機能紹介</h2>
+        <div class="introduction-sec-3 fadeUpTrigger">
           <p>Simple-Orderでは便利な３つの機能があります。</p>
         </div>
         <div class="sec-3">
-          <div class="function-wrapper">
+          <div class="function-wrapper fadeUpTrigger">
             <div class="function-box">
               <h3 class="function-title"><i class="fas fa-search">検索機能</i></h3>
               <div class="function-image search">
@@ -93,7 +92,7 @@
               </div>
             </div>
           </div>
-          <div class="function-wrapper">
+          <div class="function-wrapper fadeUpTrigger delay-time05s">
             <div class="function-box">
               <h3 class="function-title"><i class="fas fa-envelope">DM機能</i></h3>
               <div class="function-image dm">
@@ -104,7 +103,7 @@
               </div>
             </div>
           </div>
-          <div class="function-wrapper">
+          <div class="function-wrapper fadeUpTrigger delay-time1s">
             <div class="function-box">
               <h3 class="function-title"><i class="fas fa-star">レビュー機能</i></h3>
               <div class="function-image review">
@@ -117,7 +116,7 @@
           </div>
         </div>
       </section>
-      <section class="end">
+      <section class="end fadeUpTrigger">
         <h2 class="section-title">まずは新規登録から！</h2>
         <div class="end-btn">
           <%= link_to "さっそく始める!", new_customer_registration_path, class: "btn end-btn" %>

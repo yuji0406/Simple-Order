@@ -3,9 +3,9 @@
   <h3 class="page-title"><%= "「#{params[:keyward]}」" %>を含む業者一覧</h3>
     <div class="row">
       <div class="search-box col-md-3">
-        <%= form_with url: shops_search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyward %>
-          <%= f.submit "検索", class: "btn" %>
+        <%= form_with url: shops_search_path, method: :get, class: "row mb-2", local: true do |f| %>
+          <%= f.text_field :keyward, class: "col-9 form-control" %>
+          <%= f.submit "検索", class: "btn", class: "col-3" %>
         <% end %>
         <div class="genre-search">
            <p>ジャンルから探す</p>

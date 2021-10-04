@@ -52,26 +52,37 @@
           </div>
         </div>
         <div>
-          <% link_to "注文一覧を見る", shops_orders_path(customer_id: params[:id]), class: "btn btn-warning" %>
-          <% link_to "メッセージを送る", rooms_path, class: "btn btn-primary" %>
+          <%= link_to "注文一覧を見る", shops_orders_path(customer_id: params[:id]), class: "btn btn-warning m-2" %>
+          <% if @room %>
+            <p class="m-2"><%= link_to "チャットルームへ移動", room_path(@room), class: "btn green-btn" %></p>
+          <% else %>
+            <%= form_with model: Room.new, local: true, class: "m-2" do |f| %>
+              <%= f.hidden_field :customer_id, value: params[:id] %>
+              <%= f.submit "メッセージを送る", class: "btn green-btn" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="col-lg-6">
         <h3 class="page-title"><%= "#{@customer.store_name}様のレビュー"%></h3>
         <div class="reviews">
-          <% @reviews.each do |review| %>
-            <div class="row info-group">
-              <div class="col-lg-5">
-                <div id="star" class="read-only-star" data-score="<%= review.rate%>"></div>
+          <% if @reviews.present? %>
+            <% @reviews.each do |review| %>
+              <div class="row info-group">
+                <div class="col-lg-5">
+                  <div id="star" class="read-only-star" data-score="<%= review.rate%>"></div>
+                </div>
+                <div class="col-lg-4">
+                  <%= review.created_at.to_s(:datetime) %>
+                </div>
+                <div class="col-lg-3">
+                  <%= link_to review.content.truncate(10), review_path(review.id) %>
+                </div>
               </div>
-              <div class="col-lg-4">
-                <%= review.created_at.to_s(:datetime) %>
-              </div>
-              <div class="col-lg-3">
-                <%= link_to review.content.truncate(10), review_path(review.id) %>
-              <% end %>
-            </div>
-          </div>
+            <% end %>
+          <% else %>
+              <p class="no-review">まだレビューがありません</p>
+          <% end %>
         </div>
       </div>
     </div>
