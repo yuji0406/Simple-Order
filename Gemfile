@@ -73,3 +73,8 @@ gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'rubocop', '~> 1.22', require: false
 gem 'rubocop-rails', require: false
+gem 'dotenv-rails'
+
+group :production do
+  gem 'mysql2'
+end
