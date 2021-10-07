@@ -34,7 +34,7 @@
                     <%= item.item_name %>
                   </p>
                   <p>
-                    <%= item.tax_price %>（税込）
+                    <%= item.tax_price.to_s(:delimited) %>円（税込）
                   </p>
                   <% if item.sale_status %>
                     <p class="text-success">在庫あり</p>
@@ -48,6 +48,9 @@
               <% end %>
             </div>
           <% end %>
+          <div class="col-12 d-flex justify-content-center">
+            <%= paginate @items %>
+          </div>
         </div>
       <% end %>
     </div>

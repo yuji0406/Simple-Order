@@ -30,7 +30,7 @@
                   </div>
                   <div class="col-8 text-center order-item-info">
                     <p><%= order.order_items.first.item.item_name %></p>
-                    <p><%= order.order_items.first.item.tax_price %>円(税込)</p>
+                    <p><%= order.order_items.first.item.tax_price.to_s(:delimited) %>円(税込)</p>
                     <span>など...</span>
                   </div>
                 </div>
@@ -43,6 +43,9 @@
               </div>
             </div>
           <% end %>
+          <div class="col-12 d-flex justify-content-center mt-3">
+            <%= paginate @orders %>
+          </div>
         </div>
       <% else %>
         <div class="col-lg-9">

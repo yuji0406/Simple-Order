@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-sm-4 col-6 text-center">
                   <p><%= cart_item.item.item_name %></p>
-                  <p><%= cart_item.item.tax_price %>円(税込)</p>
+                  <p><%= cart_item.item.tax_price.to_s(:delimited) %>円(税込)</p>
                 </div>
                 <div class="col-sm-5 text-right">
                    <%= form_with model: cart_item, url: cart_item_path(cart_item.id), class: "my-2", local: true do |f| %>
@@ -40,7 +40,7 @@
           <div class="col-lg-3 text-right">
             <div class="prices">
               <label>小計金額：</label>
-              <%= "#{@sum_price}円" %>
+              <%= "#{@sum_price.to_s(:delimited)}円（税込）" %>
             </div>
             <div class="prices">
               <label>送料：</label>
@@ -53,7 +53,7 @@
             </div>
             <div class="prices">
               <label>合計金額：</label>
-              <%= "#{@sum_price + @postage}円"%>
+              <%= "#{(@sum_price + @postage).to_s(:delimited)}円（税込）"%>
             </div>
             <% if @sum_price < 3000 %>
               <p class="postage-info">あと<%= 3000 - @sum_price %>円で送料無料！</p>

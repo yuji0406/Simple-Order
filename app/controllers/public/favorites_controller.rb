@@ -3,7 +3,7 @@
 module Public
   class FavoritesController < PublicController
     def index
-      @favorites = Favorite.where(customer_id: current_customer.id)
+      @favorites = Favorite.where(customer_id: current_customer.id).page(params[:page]).per(15).order(created_at: 'DESC')
     end
 
     def create

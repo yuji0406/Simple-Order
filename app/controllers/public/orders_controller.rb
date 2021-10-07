@@ -42,7 +42,7 @@ module Public
     end
 
     def index
-      @orders = Order.where(customer_id: current_customer.id).order(created_at: 'DESC')
+      @orders = Order.where(customer_id: current_customer.id).page(params[:page]).per(10).order(created_at: 'DESC')
     end
 
     def show

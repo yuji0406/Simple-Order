@@ -47,6 +47,7 @@ $text_color: rgba(221,220,214,0.7);
 body{
  background-color: $base_color;
  font-family: 'XANO-mincho', monospace, serif;
+ padding-top: 70px;
 }
 ul{
  margin: 0;
@@ -191,6 +192,8 @@ p{
  min-width: 100%;
  top: 0;
  height: 68px;
+ position: absolute;
+ z-index: 12;
 }
 .header.fixed{
   position: fixed;
@@ -629,7 +632,7 @@ p{
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 1rem;
     font-family: 'Butler-Black';
-    
+
   }
   section{
     margin: 2rem 0;

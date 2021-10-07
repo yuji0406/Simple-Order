@@ -57,15 +57,15 @@
       <div class="col-lg-3 text-right">
         <div class="prices">
           <label>小計金額：</label>
-          <%= "#{@order.total_price - @order.order_postage}円" %>
+          <%= "#{(@order.total_price - @order.order_postage).to_s(:delimited)}円" %>
         </div>
         <div class="prices">
           <label>送料：</label>
-          <%= "#{@order.order_postage}円" %>
+          <%= "#{@order.order_postage.to_s(:delimited)}円" %>
         </div>
         <div class="prices">
           <label>合計金額：</label>
-          <%= "#{@order.total_price}円"%>
+          <%= "#{@order.total_price.to_s(:delimited)}円"%>
         </div>
         <div class="back-btn">
           <%= link_to "戻る", shops_orders_path, class: "btn" %>
@@ -75,14 +75,14 @@
 
     <div class="cart-item-boxs border-bottom">
       <% @order.order_items.each do |order_item| %>
-        <%= link_to item_path(order_item.item.id), class: "item-link" do %>
+        <%= link_to shops_item_path(order_item.item.id), class: "item-link" do %>
           <div class="row cart-item hover-opacity align-items-center">
             <div class="col-sm-3 col-6 text-center">
               <%= attachment_image_tag order_item.item, :item_image, class: "sm-image", fallback: "no_image.jpeg" %>
             </div>
             <div class="col-sm-4 col-6 text-center">
               <p><%= order_item.item.item_name %></p>
-              <p><%= order_item.item.tax_price %>円(税込)</p>
+              <p><%= order_item.price.to_s(:delimited) %>円(税込)</p>
             </div>
             <div class="col-sm-5 text-right">
               <div class="info-group">
@@ -91,7 +91,7 @@
               </div>
               <div class="info-group">
                 <label>小計:</label>
-                <%= "#{order_item.item.tax_price*order_item.amount}円" %>
+                <%= "#{(order_item.price * order_item.amount).to_s(:delimited)}円" %>
               </div>
             </div>
           </div>

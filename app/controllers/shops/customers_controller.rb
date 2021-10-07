@@ -13,7 +13,7 @@ module Shops
 
     def show
       @customer = Customer.find(params[:id])
-      @reviews = Review.where(customer_id: params[:id], shop_id: current_shop.id)
+      @reviews = Review.where(customer_id: params[:id], shop_id: current_shop.id).page(params[:page]).per(10).order(created_at: 'DESC')
       @room = Room.find_by(shop_id: current_shop.id, customer_id: params[:id])
     end
   end

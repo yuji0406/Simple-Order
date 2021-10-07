@@ -80,6 +80,9 @@
                 </div>
               </div>
             <% end %>
+            <div class="col-12 d-flex justify-content-center">
+            <%= paginate @reviews %>
+          </div>
           <% else %>
               <p class="no-review">まだレビューがありません</p>
           <% end %>

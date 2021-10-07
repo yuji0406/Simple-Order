@@ -6,16 +6,16 @@ module Shops
 
     def index
       @items = if params[:item_genre]
-                 Item.where(item_genre: params[:item_genre], shop_id: current_shop.id).order(created_at: 'DESC')
+                 Item.where(item_genre: params[:item_genre], shop_id: current_shop.id).page(params[:page]).per(15).order(created_at: 'DESC')
                else
-                 Item.where(shop_id: current_shop.id).order(created_at: 'DESC')
+                 Item.where(shop_id: current_shop.id).page(params[:page]).per(15).order(created_at: 'DESC')
                end
     end
 
     def search
       if params[:keyward].present?
         items = Item.where('item_name LIKE ?', "%#{params[:keyward]}%")
-        @items = items.where(shop_id: current_shop.id).order(created_at: 'DESC')
+        @items = items.where(shop_id: current_shop.id).page(params[:page]).per(15).order(created_at: 'DESC')
       else
         @items = Item.none
       end

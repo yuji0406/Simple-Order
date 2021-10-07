@@ -19,7 +19,7 @@
             <label class="info-label">価格</label>
           </div>
           <div class="col-lg-6">
-            <%= "#{@item.tax_price}円（税込）" %>
+            <%= "#{@item.tax_price.to_s(:delimited)}円（税込）" %>
           </div>
         </div>
         <div class="info-group row">

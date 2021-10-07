@@ -10,18 +10,18 @@ module Shops
     def index
       @orders = if params[:delivery_status]
                   Order.where(delivery_status: params[:delivery_status],
-                              shop_id: current_shop.id).order(created_at: 'DESC')
+                              shop_id: current_shop.id).page(params[:page]).per(10).order(created_at: 'DESC')
                 elsif params[:customer_id]
-                  Order.where(customer_id: params[:customer_id], shop_id: current_shop.id).order(created_at: 'DESC')
+                  Order.where(customer_id: params[:customer_id], shop_id: current_shop.id).page(params[:page]).per(10).order(created_at: 'DESC')
                 else
-                  Order.where(shop_id: current_shop.id).order(created_at: 'DESC')
+                  Order.where(shop_id: current_shop.id).page(params[:page]).per(10).order(created_at: 'DESC')
                 end
     end
     
     def search
       @orders = if params[:keyward].present?
                   if customer = Customer.find_by('store_name LIKE ?', "%#{params[:keyward]}%")
-                    customer.orders.where(shop_id: current_shop.id).order(created_at: 'DESC')
+                    customer.orders.where(shop_id: current_shop.id).page(params[:page]).per(10).order(created_at: 'DESC')
                   else
                     Order.none
                   end

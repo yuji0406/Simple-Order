@@ -43,7 +43,7 @@
                       <%= item.item_name %>
                     </p>
                     <p>
-                      <%= item.tax_price %>（税込）
+                      <%= item.tax_price.to_s(:delimited) %>（税込）
                     </p>
                     <p>
                       <%= item.item_introduction.truncate(10) %>
@@ -63,7 +63,7 @@
                       <%= item.item_name %>
                     </p>
                     <p>
-                      <%= item.tax_price %>（税込）
+                      <%= item.tax_price.to_s(:delimited) %>（税込）
                     </p>
                     <p>
                       <%= item.item_introduction.truncate(10) %>
@@ -73,6 +73,9 @@
               </div>
             <% end %>
           <% end %>
+          <div class="col-12 d-flex justify-content-center">
+            <%= paginate @items %>
+          </div>
         </div>
       <% end %>
     </div>
