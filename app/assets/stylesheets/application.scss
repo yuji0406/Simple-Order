@@ -14,24 +14,24 @@
  *= require_self
  */
  @charset "UTF-8";
- 
+
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @font-face{
-  font-family: 'OradanoGSRR';
+  //font-family: 'OradanoGSRR'; test-furuta
   src: font-url('/assets/OradanoGSRR.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
  }
  @font-face{
-  font-family: 'XANO-mincho';
+  //font-family: 'XANO-mincho';test-furuta
   src: font-url('XANO-mincho.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
  }
  @font-face {
-  font-family: 'Butler-Black';
+  //font-family: 'Butler-Black';test-furuta
   src: asset-url('Butler_Black.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
@@ -48,7 +48,7 @@ $text_color: rgba(221,220,214,0.7);
 }
 body{
  background-color: $base_color;
- font-family: 'XANO-mincho', monospace, serif;
+ //font-family: 'XANO-mincho', monospace, serif; test-furuta
  padding-top: 70px;
 }
 ul{
@@ -308,7 +308,7 @@ p{
     height: 250px;
   }
   .top{
-    font-family: 'Butler-Black';
+   // font-family: 'Butler-Black'; test-furuta
   }
   .top-image{
     background-image: image-url("top-mobile.jpg");
@@ -376,7 +376,7 @@ p{
         color: #fff;
         width: 100%;
         P{
-          font-family: monospace;
+         // font-family: monospace; test-furuta
         }
         .app-title{
           font-size: 2.5em;
@@ -399,7 +399,7 @@ p{
     display: inline-block;
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 0.5rem;
-    font-family: 'XANO-mincho', monospace, serif;
+    //font-family: 'Century'; test-furuta
   }
   section{
     margin: 1rem 0;
@@ -475,7 +475,7 @@ p{
   .introduction-sec-3{
     margin: 20px 0;
     font-size: 25px;
-    font-family: 'XANO-mincho', monospace, serif;
+    //font-family: 'XANO-mincho', monospace, serif;
   }
   .sec-3{
     width: 80%;
@@ -610,11 +610,11 @@ p{
         color: #fff;
         width: 100%;
         P{
-          font-family: monospace;
+          //font-family: monospace; test-furuta
         }
         .app-title{
           font-size: 6em;
-          font-family: 'Butler-Black';
+          //font-family: 'Butler-Black'; test-furuta
         }
         .app-sub-title{
           font-size: 2em;
@@ -633,7 +633,7 @@ p{
     display: inline-block;
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 1rem;
-    font-family: 'Butler-Black';
+    //font-family: 'Butler-Black'; test-furuta
 
   }
   section{
@@ -673,7 +673,7 @@ p{
     background-image: image-url("shop_top.jpg");
   }
   .how-to-guide{
-    font-family: 'Butler-Black', 'XANO-mincho', monospace ,serif;
+   // font-family: 'Butler-Black', 'XANO-mincho', monospace ,serif; test-furuta
   }
   .row.sec-2{
     margin: 40px 0;
