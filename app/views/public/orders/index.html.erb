@@ -20,7 +20,7 @@
               </div>
               <div class="col-8 text-center order-item-info">
                 <p><%= order.order_items.first.item.item_name %></p>
-                <p><%= order.order_items.first.item.tax_price %>円(税込)</p>
+                <p><%= (order.order_items.first.price).to_s(:delimited) %>円(税込)</p>
                 <span>など...</span>
               </div>
             </div>

@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ @charset "UTF-8";
+ 
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
@@ -993,6 +995,10 @@ label{
 }
 .back-btn{
   margin-top: 30px;
+  bottom: 20px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
   .btn{
     padding: 7px 60px;
   }
@@ -1004,11 +1010,6 @@ label{
   margin-top: 20px;
   text-align: center;
   font-size: 1.4em;
-}
-.back-btn{
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
 }
 // showページここまで
 
