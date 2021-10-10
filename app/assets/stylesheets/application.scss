@@ -32,12 +32,12 @@
   font-weight: normal;
   font-style: normal;
  }
- @font-face {
-  //font-family: 'Butler-Black';test-furuta
-  src: asset-url('Butler_Black.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   //font-family: 'Butler-Black';test-furuta
+//   src: asset-url('Butler_Black.otf') format('opentype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 $base_color: #dcdccf5c;
 $main_color: rgb(235,97,1);
@@ -310,7 +310,7 @@ p{
     height: 250px;
   }
   .top{
-   // font-family: 'Butler-Black'; test-furuta
+    font-family: 'Butler', sans-serif;
   }
   .top-image{
     background-image: image-url("top-mobile.jpg");
@@ -377,9 +377,6 @@ p{
         text-align: center;
         color: #fff;
         width: 100%;
-        P{
-         // font-family: monospace; test-furuta
-        }
         .app-title{
           font-size: 2.5em;
         }
@@ -616,7 +613,8 @@ p{
         }
         .app-title{
           font-size: 6em;
-          //font-family: 'Butler-Black'; test-furuta
+          font-family: 'Butler', sans-serif;
+
         }
         .app-sub-title{
           font-size: 2em;
@@ -635,7 +633,8 @@ p{
     display: inline-block;
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 1rem;
-    //font-family: 'Butler-Black'; test-furuta
+    font-family: 'Butler', sans-serif;
+
 
   }
   section{
@@ -675,7 +674,7 @@ p{
     background-image: image-url("shop_top.jpg");
   }
   .how-to-guide{
-   // font-family: 'Butler-Black', 'XANO-mincho', monospace ,serif; test-furuta
+    font-family: 'XANO-mincho', monospace ,serif;
   }
   .row.sec-2{
     margin: 40px 0;
