@@ -2,6 +2,7 @@
 
 module Shops
   class SessionsController < Devise::SessionsController
+    layout 'shop_top'
     # before_action :configure_sign_in_params, only: [:create]
 
     # GET /resource/sign_in

@@ -2,14 +2,12 @@
 
 module Public
   class MypagesController < PublicController
+    before_action :set_customer, only: %i[edit update]
     def show; end
 
-    def edit
-      @customer = current_customer
-    end
+    def edit; end
 
     def update
-      @customer = current_customer
       if @customer.update(customer_params)
         redirect_to mypages_path, notice: '会員情報を変更しました。'
       else
@@ -28,6 +26,10 @@ module Public
         :phone_number,
         :email
       )
+    end
+    
+    def set_customer
+      @customer = current_customer
     end
   end
 end

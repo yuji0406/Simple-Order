@@ -14,30 +14,16 @@
  *= require_self
  */
  @charset "UTF-8";
-
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @font-face{
-  font-family: 'OradanoGSRR';
-  src: font-url('/assets/OradanoGSRR.ttf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
- }
- @font-face{
   font-family: 'XANO-mincho';
-  // src: font-url('XANO-mincho.ttf') format("truetype");
   src: font-url('https://cdn.leafscape.be/XANO-mincho/XANO-mincho_web.woff2')
      format("woff2");
-  font-weight: normal;
-  font-style: normal;
+  // font-weight: normal;
+  // font-style: normal;
  }
-// @font-face {
-//   //font-family: 'Butler-Black';test-furuta
-//   src: asset-url('Butler_Black.otf') format('opentype');
-//   font-weight: normal;
-//   font-style: normal;
-// }
 
 $base_color: #dcdccf5c;
 $main_color: rgb(235,97,1);

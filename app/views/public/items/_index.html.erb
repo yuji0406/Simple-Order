@@ -1,0 +1,80 @@
+<div class="row">
+      <div class="search-box col-lg-3">
+        <div>
+          <% unless params[:shop_id] %>
+            <%= form_with url: items_search_path, method: :get, class: "row mb-2", local: true do |f| %>
+              <%= f.text_field :keyward, class: "col-9 form-control" %>
+              <%= f.submit "検索", class: "btn col-3" %>
+            <% end %>
+          <% end %>
+          <button class="btn sale-only-btn">品切れ中を非表示</button>
+          <button class="btn all-item-btn" style="display: none;">品切れ中も表示</button>
+        </div>
+        <div>
+          <p>ジャンルから探す</p>
+          <p><%= link_to "全て", items_path(shop_id: params[:shop_id]) %></p>
+          <%= form_with url: items_path, method: :get, local: true do |f| %>
+            <%= f.select :item_genre, Item.item_genres.keys.to_a %>
+            <% if params[:shop_id] %>
+              <%= f.hidden_field :shop_id, value: params[:shop_id] %>
+            <% end %>
+            <%= f.submit "検索", class: "btn" %>
+          <% end %>
+        </div>
+      </div>
+      <% if @items.empty? %>
+        <div class="vh-100 col-lg-9">
+          <p>該当の商品がありません</p>
+        </div>
+      <% else %>
+        <div class="col-lg-9 row">
+          <% @items.each do |item| %>
+            <% if item.sale_status %>
+              <div class="shop-contents col-md-4 col-sm-6">
+                <%= link_to item_path(item.id), class: "row" do %>
+                  <div class="col-6">
+                    <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
+                  </div>
+                  <div class="shop-info col-6 text-center">
+                    <p>
+                      <%= item.item_name %>
+                    </p>
+                    <p>
+                      <%= item.tax_price.to_s(:delimited) %>（税込）
+                    </p>
+                    <p>
+                      <%= item.item_introduction.truncate(10) %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="col-md-4 col-sm-6 sold-out-box">
+                <%= link_to item_path(item.id), class: "row" do %>
+                  <div class="sold-out">品切れ</div>
+                  <div class="col-6">
+                    <%= attachment_image_tag item, :item_image, fallback: "no_image.jpeg", class: "sm-image" %>
+                  </div>
+                  <div class="shop-info col-6 text-center">
+                    <p>
+                      <%= item.item_name %>
+                    </p>
+                    <p>
+                      <%= item.tax_price.to_s(:delimited) %>（税込）
+                    </p>
+                    <p>
+                      <%= item.item_introduction.truncate(10) %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="col-12 d-flex justify-content-center">
+            <%= paginate @items %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
