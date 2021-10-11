@@ -17,13 +17,13 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- @font-face{
-  font-family: 'XANO-mincho';
-  src: font-url('https://cdn.leafscape.be/XANO-mincho/XANO-mincho_web.woff2')
-     format("woff2");
-  // font-weight: normal;
-  // font-style: normal;
- }
+
+ @font-face
+  {
+  font-family: 'hannari-mincho';
+  src: url('https://cdn.leafscape.be/hannari/hannari_web.woff2')
+       format("woff2");
+  }
 
 $base_color: #dcdccf5c;
 $main_color: rgb(235,97,1);
@@ -36,7 +36,13 @@ $text_color: rgba(221,220,214,0.7);
 }
 body{
  background-color: $base_color;
- font-family: 'XANO-mincho', monospace, serif;
+  font-family: 'hannari-mincho',
+    "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
  padding-top: 70px;
 }
 ul{
@@ -48,13 +54,13 @@ p{
 }
 .page-title{
  text-align: center;
- font-size: 1.5em;
+ font-size: 2em;
 }
 .errors{
  text-align: center;
  color: red;
  font-weight: bold;
- font-size: 15px;
+ font-size: 18px;
  padding: 10px;
  li{
   list-style: none;
@@ -365,6 +371,7 @@ p{
         width: 100%;
         .app-title{
           font-size: 2.5em;
+
         }
         .app-sub-title{
           font-size: 1.5em;
@@ -384,7 +391,6 @@ p{
     display: inline-block;
     border-bottom: 2px solid #5f5f5f;
     padding-bottom: 0.5rem;
-    //font-family: 'Century';
   }
   section{
     margin: 1rem 0;
@@ -460,7 +466,6 @@ p{
   .introduction-sec-3{
     margin: 20px 0;
     font-size: 25px;
-    font-family: 'XANO-mincho', monospace, serif;
   }
   .sec-3{
     width: 80%;
@@ -594,9 +599,6 @@ p{
         text-align: center;
         color: #fff;
         width: 100%;
-        P{
-          font-family: monospace;
-        }
         .app-title{
           font-size: 6em;
           font-family: 'Butler', sans-serif;
@@ -660,7 +662,6 @@ p{
     background-image: image-url("shop_top.jpg");
   }
   .how-to-guide{
-    font-family: 'XANO-mincho', monospace ,serif;
   }
   .row.sec-2{
     margin: 40px 0;
@@ -753,7 +754,7 @@ p{
   .btn.end-btn{
     width: 35%;
     padding: 5px 10px;
-    font-size: 30px;
+    font-size: 34px;
   }
 
 // アニメーション⬇︎
@@ -827,7 +828,7 @@ p{
  margin-top: 20px;
 }
 .nav{
- font-size: 20px;
+ font-size: 24px;
  margin: 15px 0;
 }
 
@@ -840,7 +841,7 @@ p{
 .search-box{
  p{
   margin: 10px 0;
-  font-size: 18px;
+  font-size: 20px;
  }
 }
 .info-group{
@@ -852,7 +853,7 @@ p{
 }
 label{
  font-weight: bold;
- font-size: 18px;
+ font-size: 20px;
 }
 // マイページここまで
 // indexページ⬇︎
@@ -971,6 +972,41 @@ label{
     width: 100%;
   }
 }
+.thanks-image{
+  background-image: image-url("thanks.jpg");
+  background-position: 50%;
+  height: 93vh;
+  width: 100%;
+  background-size: cover;
+  .thanks-back{
+    background-color: rgba(255,255,255,0.3);
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .thanks-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    width: 100%;
+    .thanks-text{
+      font-size: 3em;
+      color: darkgray;
+    }
+    .back-btn{
+      margin-top: 30px;
+      // bottom: 20px;
+      // position: absolute;
+      // width: 100%;
+      // text-align: center;
+      .btn{
+        padding: 7px 60px;
+      }
+    }
+  }
+}
 .sold-out-message{
   position: absolute;
   left: 50%;
@@ -980,23 +1016,13 @@ label{
   font-size: 1.5em;
   width: 100%;
 }
-.back-btn{
-  margin-top: 30px;
-  bottom: 20px;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  .btn{
-    padding: 7px 60px;
-  }
-}
 .delivery-status-pulldown{
   width: 60%;
 }
 .no-review{
   margin-top: 20px;
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 // showページここまで
 
@@ -1051,7 +1077,7 @@ label{
 // 吹き出し用⬇︎
 @media screen and (min-width: 767px){
   .datetime{
-  font-size: 15px;
+  font-size: 18px;
   }
   .right-message {
      position: relative;
@@ -1063,7 +1089,7 @@ label{
      padding: 25px;
      background-color: $main_color;
      border-radius: 5px;
-     font-size: 17px;
+     font-size: 20px;
 
 }
   .right-message:before {
@@ -1088,7 +1114,7 @@ label{
        padding: 25px;
        background-color: darkgray;
        border-radius: 5px;
-       font-size: 17px;
+       font-size: 20px;
   }
   .left-message:before {
      content: '';
@@ -1106,7 +1132,7 @@ label{
 @media screen and (max-width: 767px){
 
   .datetime{
-    font-size: 13px;
+    font-size: 14px;
   }
   .right-message {
     position: relative;
@@ -1118,7 +1144,7 @@ label{
     padding: 10px;
     background-color: $main_color;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 18px;
   }
   .right-message:before {
     content: '';
@@ -1142,7 +1168,7 @@ label{
     padding: 10px;
     background-color: darkgray;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 18px;
   }
   .left-message:before {
     content: '';
