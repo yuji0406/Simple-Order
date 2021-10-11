@@ -25,6 +25,7 @@ module Public
                else
                  Shop.none
                end
+      @rank_shops = Shop.find(Favorite.group(:shop_id).order('count(shop_id) desc').limit(3).pluck(:shop_id))
     end
   end
 end

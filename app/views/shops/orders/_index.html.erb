@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="form-box">
+    <h3 class="page-title">注文履歴一覧</h3>
+    <div class="row">
+      <div class="search-box col-lg-3">
+        <p>店舗名検索</p>
+        <%= form_with url: shops_orders_search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyward %>
+          <%= f.submit "検索", class: "btn" %>
+        <% end %>
+        <p>配送ステータスから探す</p>
+        <p><%= link_to "全て", shops_orders_path, class: "link genre-search-link" %></p>
+        <%= form_with url: shops_orders_path, method: :get, local: true do |f| %>
+          <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a %>
+          <%= f.submit "検索", class: "btn" %>
+        <% end %>
+      </div>
+      <% if @orders.present? %>
+        <div class="col-lg-9">
+          <% @orders.each do |order| %>
+          <p class="sub-title">注文日：<%= order.created_at.to_s(:datetime) %></p>
+            <div class="row cart-item-boxs border-bottom">
+              <%= link_to shops_customer_path(order.customer.id), class: "col-md-4 col-sm-4 hover-opacity" do %>
+                <%= order.customer.store_name %>
+              <% end %>
+              <div class="col-md-5 col-sm-8 border-left border-right">
+                <div class="row order-item">
+                  <div class="col-4">
+                    <%= attachment_image_tag order.order_items.first.item, :item_image, class: "sm-image", fallback: "no_image.jpeg" %>
+                  </div>
+                  <div class="col-8 text-center order-item-info">
+                    <p><%= order.order_items.first.item.item_name %></p>
+                    <p><%= order.order_items.first.item.tax_price.to_s(:delimited) %>円(税込)</p>
+                    <span>など...</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-right">
+                <p>ただいまの配送状況：<br>
+                  <%= order.delivery_status %>
+                </p>
+                <%= link_to "詳細を表示", shops_order_path(order.id), class: "btn" %>
+              </div>
+            </div>
+          <% end %>
+          <div class="col-12 d-flex justify-content-center mt-3">
+            <%= paginate @orders %>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-lg-9">
+          <div class="vh-100">
+            <p>該当の注文がありません</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

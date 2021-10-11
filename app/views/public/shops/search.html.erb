@@ -1,47 +1,4 @@
 <div class="container-fluid">
   <div class="form-box">
   <h3 class="page-title"><%= "「#{params[:keyward]}」" %>を含む業者一覧</h3>
-    <div class="row">
-      <div class="search-box col-md-3">
-        <%= form_with url: shops_search_path, method: :get, class: "row mb-2", local: true do |f| %>
-          <%= f.text_field :keyward, class: "col-9 form-control" %>
-          <%= f.submit "検索", class: "btn", class: "col-3" %>
-        <% end %>
-        <div class="genre-search">
-           <p>ジャンルから探す</p>
-          <p><%= link_to "全て", shops_path %></p>
-          <%= form_with url: shops_path, method: :get, local: true do |f| %>
-            <%= f.select :shop_genre, Shop.shop_genres.keys.to_a %>
-            <%= f.submit "検索", class: "btn" %>
-          <% end %>
-        </div>
-      </div>
-      <% if @shops.empty? %>
-        <div class="vh-100 col-lg-9">
-          <p><%= "「#{params[:keyward]}」" %>を含む業者が見つかりませんでした</p>
-        </div>
-      <% else %>
-        <div class="col-lg-9 row">
-          <% @shops.each do |shop| %>
-            <div class="shop-contents col-md-4 col-sm-6">
-              <%= link_to shop_path(shop.id), class: "row" do %>
-                <div class="col-6">
-                  <%= attachment_image_tag shop, :shop_image, fallback:"no_image.jpeg",class: "sm-image" %>
-                </div>
-                <div class="shop-info col-6 text-center">
-                  <p><%= shop.shop_name %></p>
-                  <%= shop.shop_genre %>
-                  <p>会社概要</p>
-                  <%= shop.introduction %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-          <div class="col-12 d-flex justify-content-center">
-            <%= paginate @shops %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+    <%= render 'index' %>
