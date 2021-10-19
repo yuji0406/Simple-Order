@@ -51,9 +51,9 @@ $(document).on('turbolinks:load', function () {
 
   $(function () {
     $('.menu-trigger').on('click', function(event) {
-      $('.right-navbar').find('ul').toggleClass('active');
+      // $('.right-navbar').find('ul').toggleClass('active');
       $(this).toggleClass('active');
-      $('.right-navbar').toggleClass('active')
+      $('.right-navbar').fadeToggle(300)
       event.preventDefault();
     });
   });
