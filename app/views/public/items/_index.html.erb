@@ -37,7 +37,7 @@
                   </div>
                   <div class="shop-info col-6 text-center">
                     <p>
-                      <%= item.item_name %>
+                      <%= item.item_name.truncate(15) %>
                     </p>
                     <p>
                       <%= item.tax_price.to_s(:delimited) %>（税込）
