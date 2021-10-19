@@ -16,7 +16,7 @@
 飲食店従業員が食材や備品の発注をする際に利用。
 
 ## 設計書
-<>
+https://docs.google.com/spreadsheets/d/1CHIz1g5r17LphqgDHj98YEBxBfRd770A4iDKAfVDpAk/edit#gid=0
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1NfIHQoItTbWNWwc8Fo1l0ymYJB6aopwwvo2cWN5uRVE/edit#gid=0
