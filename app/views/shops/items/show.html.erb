@@ -39,7 +39,7 @@
             <label class="info-label">商品説明</label>
           </div>
           <div class="col-lg-6">
-            <%= @item.item_introduction %>
+            <p><%= @item.item_introduction %></p>
           </div>
         </div>
          <%= link_to "商品を編集する", edit_shops_item_path(@item.id), class: "btn text-center" %>
