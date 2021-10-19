@@ -5,7 +5,7 @@
         <%= image_tag 'simple_order_logo.png', class: 'site-logo' %>
       <% end %>
       <div class="right-navbar">
-        <ul class="row navlists">
+        <ul class="navlists">
           <li class="login-user">ログイン中：<br>
               <%= current_customer.store_name %>様
           </li>
@@ -79,7 +79,7 @@
         <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
       <% end %>
       <div class="right-navbar">
-        <ul class="row navlists">
+        <ul class="navlists">
           <li class="login-user">ログイン中：<br>
             <%= current_shop.shop_name %>様
           </li>
@@ -141,7 +141,7 @@
         <%= image_tag 'simple_order_logo.png',class: 'site-logo' %>
       <% end %>
       <div class="right-navbar">
-        <ul class="row navlists">
+        <ul class="navlists">
           <%= link_to new_customer_session_path, class: "js-hover" do %>
             <li class="header-link"><span>ログイン</span></li>
           <% end %>
