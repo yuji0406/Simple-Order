@@ -261,6 +261,7 @@ p{
     min-height: 100%;
     z-index: 9;
     text-align: center;
+    opacity: 1;
   }
   .right-navbar a{
     color: $main_color;
@@ -270,6 +271,9 @@ p{
   }
   .navlists{
     display: block;
+    li{
+      margin: 20px 0;
+    }
   }
 }
 // ハンバーガーメニューここまで
