@@ -13,8 +13,12 @@ module Public
 
     def destroy
       review = Review.find(params[:id])
-      review.destroy
-      redirect_to shop_path(review.shop.id), notice: '口コミを削除しました。'
+      if review.customer_id == current_customer.id
+        review.destroy
+        redirect_to shop_path(review.shop.id), notice: '口コミを削除しました。'
+      else
+        redirect_to root_path, alert: '権限がありません。'
+      end
     end
 
     def show

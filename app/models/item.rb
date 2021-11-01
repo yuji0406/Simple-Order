@@ -11,6 +11,27 @@ class Item < ApplicationRecord
     (item_price * tax).floor
   end
 
+  def self.search(keyward)
+    if keyward
+      Item.where('item_name LIKE ? OR item_introduction LIKE ?', "%#{keyward}%",
+                  "%#{keyward}%")
+    else
+       Item.none
+    end
+  end
+
+  def self.select(item_genre, shop_id)
+    if item_genre && shop_id
+       Item.where(item_genre: item_genre, shop_id: shop_id)
+    elsif item_genre
+       Item.where(item_genre: item_genre)
+    elsif shop_id
+       Item.where(shop_id: shop_id)
+    else
+       Item.all
+    end
+  end
+
   belongs_to :shop
 
   has_many :cart_items
