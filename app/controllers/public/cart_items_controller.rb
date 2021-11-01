@@ -10,22 +10,34 @@ module Public
     end
 
     def update
-      if @cart_item.update(cart_item_params)
-        redirect_to cart_items_path, notice: '数量を変更しました。'
+      if @cart_item.customer_id == current_customer.id
+        if @cart_item.update(cart_item_params)
+          redirect_to cart_items_path, notice: '数量を変更しました。'
+        else
+          redirect_to cart_items_path, alert: '数量を入力してください。'
+        end
       else
-        redirect_to cart_items_path, alert: '数量を入力してください。'
+        redirect_to root_path, alert:'権限がありません。'
       end
     end
 
     def empty
       cart_items = CartItem.where(customer_id: current_customer.id, shop_id: params[:shop_id])
-      cart_items.destroy_all
-      redirect_to cart_items_path, notice: '商品を削除しました。'
+      if cart_items.customer_id == current_customer.id
+        cart_items.destroy_all
+        redirect_to cart_items_path, notice: '商品を削除しました。'
+      else
+        redirect_to root_path, alert: '権限がありません。'
+      end
     end
 
     def destroy
-      @cart_item.destroy
-      redirect_to cart_items_path, notice: '商品を削除しました。'
+      if @cart_item.customer_id == current_customer.id
+        @cart_item.destroy
+        redirect_to cart_items_path, notice: '商品を削除しました。'
+      else
+        redirect_to root_path, alert: '権限がありません'
+      end
     end
 
     def create
