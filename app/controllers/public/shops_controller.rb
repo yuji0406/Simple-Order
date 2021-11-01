@@ -2,13 +2,9 @@
 
 module Public
   class ShopsController < PublicController
+    before_action :set_rank_shops, only: %i[index search]
     def index
-      @shops = if params[:shop_genre]
-                 Shop.where(shop_genre: params[:shop_genre]).page(params[:page]).per(15).order(created_at: 'DESC')
-               else
-                 Shop.page(params[:page]).per(15).order(created_at: 'DESC')
-               end
-      @rank_shops = Shop.find(Favorite.group(:shop_id).order('count(shop_id) desc').limit(3).pluck(:shop_id))
+      @shops = Shop.select(params[:shop_genre]).page(params[:page]).per(15).order(created_at: 'DESC')
     end
 
     def show
@@ -19,12 +15,12 @@ module Public
     end
 
     def search
-      @shops = if params[:keyward].present?
-                 Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{params[:keyward]}%",
-                            "%#{params[:keyward]}%").page(params[:page]).per(15).order(created_at: 'DESC')
-               else
-                 Shop.none
-               end
+      @shops = Shop.search(params[:keyward]).page(params[:page]).per(15).order(created_at: 'DESC')
+    end
+
+    private
+
+    def set_rank_shops
       @rank_shops = Shop.find(Favorite.group(:shop_id).order('count(shop_id) desc').limit(3).pluck(:shop_id))
     end
   end

@@ -7,6 +7,23 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :shop_image
+  
+  def self.search(keyward)
+    if keyward
+      Shop.where('shop_name LIKE ? OR introduction LIKE ?', "%#{keyward}%",
+                  "%#{keyward}%")
+    else
+      Shop.none
+    end
+  end
+  
+  def self.select(shop_genre)
+    if shop_genre
+      Shop.where(shop_genre: shop_genre)
+    else
+      Shop.all
+    end
+  end
 
   has_many :items, dependent: :destroy
   has_many :rooms, dependent: :destroy
