@@ -36,5 +36,5 @@ https://docs.google.com/spreadsheets/d/1NfIHQoItTbWNWwc8Fo1l0ymYJB6aopwwvo2cWN5u
 -   URL: https://unsplash.com/
 - ### アイコン
 - Canva
--   https://www.canva.com/
+-   URL: https://www.canva.com/
 - 
