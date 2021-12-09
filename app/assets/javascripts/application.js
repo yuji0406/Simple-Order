@@ -31,6 +31,28 @@ $(document).on('turbolinks:load', function () {
     return false;
   });
 
+  $('#star').empty();
+  $('#star').raty({
+    size: 36,
+    starOff: "star-off.png",
+    starOn: "star-on.png",
+    starHalf: "star-half.png",
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  $('.read-only-star').empty();
+  $('.read-only-star').raty({
+    readOnly: true,
+    half: true,
+    size: 36,
+    starOff: "assets/images/star-off.png",
+    starOn: "assets/images/star-on.png",
+    starHalf: "assets/images/star-half.png",
+    score: function () {
+      return $(this).attr('data-score');
+    }
+  });
+
   $('.js-hover').hover(function (){
     $(this).find('span,i').css({
       color: "white"
@@ -51,7 +73,6 @@ $(document).on('turbolinks:load', function () {
 
   $(function () {
     $('.menu-trigger').on('click', function(event) {
-      // $('.right-navbar').find('ul').toggleClass('active');
       $(this).toggleClass('active');
       $('.right-navbar').fadeToggle(300)
       event.preventDefault();
