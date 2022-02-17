@@ -23,12 +23,13 @@ module Public
 
     def empty
       cart_items = CartItem.where(customer_id: current_customer.id, shop_id: params[:shop_id])
-      if cart_items.customer_id == current_customer.id
+      
+      # if cart_items.customer_id == current_customer.id
         cart_items.destroy_all
         redirect_to cart_items_path, notice: '商品を削除しました。'
-      else
-        redirect_to root_path, alert: '権限がありません。'
-      end
+      # else
+      #   redirect_to root_path, alert: '権限がありません。'
+      # end
     end
 
     def destroy
